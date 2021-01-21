@@ -34,13 +34,15 @@ from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
 import arcobattery
-
+from themes.themes import *
 #mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
 
+
+colors = darcula_colors()  #See themes.themes to select your theme
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -261,7 +263,7 @@ groups = []
 
 group_names = ["1", "2", "3", "4", "5", "6","7","8"]
 #nerd fonts https://www.nerdfonts.com/cheat-sheet
-# fontawesome : internet - programacion - imagen - video - musica - correo - ajustes - documentos
+# fontawesome : web - developer - pictures - video - music - mail - settings - file
 group_labels = ["","","","","","","",""]
 
 group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
@@ -287,34 +289,6 @@ for i in groups:
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
-# COLORS FOR THE BAR
-
-def init_colors():
-    # return [["#2F343F", "#2F343F"], # color 0
-    #         ["#2F343F", "#2F343F"], # color 1
-    #         ["#c0c5ce", "#c0c5ce"], # color 2
-    #         ["#fba922", "#fba922"], # color 3
-    #         ["#3384d0", "#3384d0"], # color 4
-    #         ["#f3f4f5", "#f3f4f5"], # color 5
-    #         ["#cd1f3f", "#cd1f3f"], # color 6
-    #         ["#62FF00", "#62FF00"], # color 7
-    #         ["#6790eb", "#6790eb"], # color 8
-    #         ["#a9a9a9", "#a9a9a9"]]  # color 9
-
-    #dracula
-    return [["#292d3e", "#292d3e"], # color 0
-            ["#292d3e", "#292d3e"], # color 1
-            ["#4c566a", "#4c566a"], # color 2
-            ["#ffb86c", "#ffb86c"], # color 3
-            ["#5e81ac", "#5e81ac"], # color 4
-            ["#f1ffff", "#f1ffff"], # color 5
-            ["#ff5555", "#ff5555"], # color 6
-            ["#62FF00", "#62FF00"], # color 7
-            ["#A77AC4", "#A77AC4"], # color 8
-            ["#a9a9a9", "#a9a9a9"]] # color 9
-
-
-colors = init_colors()
 def init_layout_theme():
     return {"margin":4,
         "border_width":2,
@@ -326,8 +300,8 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=4,borde_width=1,border_focus=colors[8],border_normal=colors[4]),
-    layout.MonadWide(margin=4,borde_width=1,border_focus=colors[8],border_normal=colors[4]),
+    layout.MonadTall(margin=4,borde_width=2,border_focus=colors[8],border_normal=colors[4]),
+    layout.MonadWide(margin=4,borde_width=2,border_focus=colors[8],border_normal=colors[4]),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -407,7 +381,7 @@ def init_widgets_list():
         ),
         widget.Systray(
             background=colors[1],
-            icon_size=26,
+            icon_size=22,
             padding = 4
         ),
         widget.Sep(
@@ -417,12 +391,11 @@ def init_widgets_list():
             background = colors[1]
         ),
         widget.TextBox(
-            font="FiraCode Nerd Font",
             text="",
             foreground=colors[3],
             background=colors[1],
-            fontsize=22,
-            # padding = 4,
+            fontsize=20,
+            padding=4
         ),
         widget.Clock(
             foreground = colors[5],
@@ -515,9 +488,10 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
 
-],  fullscreen_border_width = 0, border_width = 0)
+],  fullscreen_border_width = 0, border_width = 2)
 auto_fullscreen = True
 
-focus_on_window_activation = "focus" # or smart
+#focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 
 wmname = "LG3D"
