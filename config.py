@@ -242,7 +242,6 @@ keys = [
         lazy.layout.increase_nmaster(),
         ),
 
-
     # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip()),
 
@@ -302,9 +301,9 @@ for i in groups:
 def init_layout_theme():
     return {
         "margin": 4,
-        "border_width": 2,
-        "border_focus": colors[8][0],
-        "border_normal": colors[4][0]
+        "border_width": 3,
+        "border_focus": colors[8],
+        "border_normal": colors[4]
     }
 
 
@@ -313,10 +312,10 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=4, borde_width=2,
-                     border_focus=colors[8][0], border_normal=colors[4][0]),
-    layout.MonadWide(margin=4, borde_width=2,
-                     border_focus=colors[8][0], border_normal=colors[4][0]),
+    layout.MonadTall(margin=4, border_width=2,
+                     border_focus=colors[8], border_normal=colors[4]),
+    layout.MonadWide(margin=4, border_width=2,
+                     border_focus=colors[8], border_normal=colors[4]),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -409,10 +408,10 @@ def init_widgets_list():
             background=colors[1]
         ),
         widget.TextBox(
-            text="",
+            text="",
             foreground=colors[3],
             background=colors[1],
-            fontsize=20,
+            fontsize=19,
             padding=4
         ),
         widget.Clock(
@@ -455,8 +454,10 @@ screens = init_screens()
 
 # MOUSE CONFIGURATION
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),start=lazy.window.get_size())
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size())
 ]
 
 dgroups_key_binder = None
@@ -514,7 +515,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
 
-],  fullscreen_border_width=0, border_width=1)
+], fullscreen_border_width=0, border_width=1)
 auto_fullscreen = True
 
 #focus_on_window_activation = "smart"
