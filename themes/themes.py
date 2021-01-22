@@ -1,4 +1,3 @@
-
 # def name():
 #     return [
 #         "#", #color 0
@@ -13,9 +12,11 @@
 #         "#"  #color 9
 #     ]
 
-def darcula():
+def dracula():
     return [
         "#292d3e",
+        "#2f343f",
+        "#4c566a",
         "#ffb86c",
         "#5e81ac",
         "#f1ffff",
@@ -28,8 +29,8 @@ def darcula():
 
 def default():
     return [
-        "#2F343F",
-        "#2F343F",
+        "#2f343f",
+        "#2f343f",
         "#c0c5ce",
         "#fba922",
         "#3384d0",
@@ -74,7 +75,7 @@ def nord():
 def rosepine():
     return [
         "#1f1d29",
-        "#ABB2BF",
+        "#abb2bf",
         "#1f1d29",
         "#eabbb9",
         "#f1ffff",
@@ -104,15 +105,15 @@ def material_ocean():
 def one_dark():
     return [
         "#1e2127",
-        "#ABB2BF",
+        "#Abb2bf",
         "#ffffff",
-        "#282C34",
+        "#282c34",
         "#f1ffff",
         "#4c566a",
-        "#E06C75",
-        "#C678DD",
-        "#61AFEF",
-        "#98C379"
+        "#e06c75",
+        "#c678dd",
+        "#61afef",
+        "#98c379"
     ]
 
 
@@ -127,5 +128,5 @@ def indigo():
         "#8842c7",
         "#0c3389",
         "#0893ff",
-        "#0efff9",
+        "#0efff9"
     ]

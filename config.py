@@ -1,10 +1,6 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
+# Copyright (c) 2010 Aldo Cortesi Copyright (c) 2010, 2014 dequis
+# Copyright (c) 2012 Randall Ma Copyright (c) 2012-2014 Tycho Andersen
+# Copyright (c) 2012 Craig Barnes Copyright (c) 2013 horsik  Copyright (c) 2013 Tao Sauvage
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -41,6 +37,8 @@ mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
 
+colors = dracula()  # See themes.themes to select your theme
+
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -57,20 +55,17 @@ def window_to_next_group(qtile):
 
 
 keys = [
-
     # FUNCTION KEYS
-
     Key([], "F12", lazy.spawn('xfce4-terminal --drop-down')),
 
     # SUPER + FUNCTION KEYS
-
     Key([mod], "e", lazy.spawn('code-oss')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
-    Key([mod], "t", lazy.spawn('urxvt')),
+    Key([mod], "t", lazy.spawn('alacritty')),
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "w", lazy.spawn('firefox')),
     Key([mod], "x", lazy.spawn('arcolinux-logout')),
@@ -84,7 +79,7 @@ keys = [
     Key([mod], "F5", lazy.spawn('meld')),
     Key([mod], "F6", lazy.spawn('vlc --video-on-top')),
     Key([mod], "F7", lazy.spawn('virtualbox')),
-    Key([mod], "F8", lazy.spawn('thunar')),
+    Key([mod], "F8", lazy.spawn('nemo')),
     Key([mod], "F9", lazy.spawn('evolution')),
     Key([mod], "F10", lazy.spawn("spotify")),
     Key([mod], "F11", lazy.spawn('rofi -show run -fullscreen')),
@@ -105,7 +100,7 @@ keys = [
     Key(["mod1", "control"], "Next", lazy.spawn('conky-rotate -n')),
     Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
     Key(["mod1", "control"], "a", lazy.spawn('xfce4-appfinder')),
-    Key(["mod1", "control"], "b", lazy.spawn('thunar')),
+    Key(["mod1", "control"], "b", lazy.spawn('nemo')),
     Key(["mod1", "control"], "c", lazy.spawn('catfish')),
     Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
     Key(["mod1", "control"], "f", lazy.spawn('firefox')),
@@ -113,7 +108,7 @@ keys = [
         'chromium -no-default-browser-check')),
     Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
     Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
-    Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
+    # Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
     Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
     Key(["mod1", "control"], "o", lazy.spawn(
         home + '/.config/qtile/scripts/picom-toggle.sh')),
@@ -307,7 +302,6 @@ def init_layout_theme():
     }
 
 
-colors = darcula_colors()  # See themes.themes to select your theme
 layout_theme = init_layout_theme()
 
 
@@ -330,7 +324,7 @@ def init_widgets_defaults():
     return dict(font="FiraCode Nerd Font",
                 fontsize=16,
                 padding=4,
-                background=colors[1])
+                background=colors[0])
 
 
 widget_defaults = init_widgets_defaults()
@@ -348,37 +342,30 @@ def init_widgets_list():
             padding_x=8,
             borderwidth=0,
             disable_drag=True,
-            active=colors[9],
-            inactive=colors[5],
+            active=colors[4],
+            inactive=colors[1],
             rounded=False,
             highlight_method="text",
-            this_current_screen_border=colors[8],
-            foreground=colors[2],
-            background=colors[1]
+            this_current_screen_border=colors[8]
         ),
         widget.Sep(
             linewidth=1,
-            padding=10,
-            foreground=colors[2],
-            background=colors[1]
+            padding=8
         ),
         widget.CurrentLayout(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[8],
-            background=colors[1]
+            foreground=colors[8]
         ),
         widget.Sep(
             linewidth=1,
-            padding=10,
-            foreground=colors[2],
-            background=colors[1]
+            padding=8
         ),
         widget.WindowName(
             font="FiraCode Nerd Font Italic",
             padding=16,
             fontsize=16,
             foreground=colors[8],
-            background=colors[1],
+            background=colors[0],
         ),
         widget.ThermalSensor(
             foreground=colors[3],
@@ -397,26 +384,21 @@ def init_widgets_list():
             background=colors[1]
         ),
         widget.Systray(
-            background=colors[1],
             icon_size=22,
             padding=4
         ),
         widget.Sep(
             linewidth=1,
-            padding=4,
-            foreground=colors[2],
-            background=colors[1]
+            padding=8
         ),
         widget.TextBox(
             text="",
-            foreground=colors[3],
-            background=colors[1],
+            foreground=colors[4],
             fontsize=19,
             padding=4
         ),
         widget.Clock(
-            foreground=colors[5],
-            background=colors[1],
+            foreground=colors[4],
             padding=4,
             fontsize=16,
             format="%H:%M:%S - %d/%m/%Y"
