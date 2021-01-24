@@ -171,11 +171,12 @@ keys = [
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
 
-    Key([], "XF86AudioPlay", lazy.spawn("mpc toggle")),
-    Key([], "XF86AudioNext", lazy.spawn("mpc next")),
-    Key([], "XF86AudioPrev", lazy.spawn("mpc prev")),
-    Key([], "XF86AudioStop", lazy.spawn("mpc stop")),
+    # Key([], "XF86AudioPlay", lazy.spawn("mpc toggle")),
+    # Key([], "XF86AudioNext", lazy.spawn("mpc next")),
+    # Key([], "XF86AudioPrev", lazy.spawn("mpc prev")),
+    # Key([], "XF86AudioStop", lazy.spawn("mpc stop")),
 
+    # Key([],"KP_ENTER",lazy.spawn("termite")), #calculadora
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
@@ -304,10 +305,10 @@ def init_layout_theme():
 layout_theme = init_layout_theme()
 
 layouts = [
-    layout.MonadTall(margin=4, border_focus=colors[5],
-                     border_normal=colors[3]),
-    layout.MonadWide(margin=4, border_focus=colors[5],
-                     border_normal=colors[3]),
+    layout.MonadTall(margin=4, border_focus=colors[7],
+                     border_normal=colors[8]),
+    layout.MonadWide(margin=4, border_focus=colors[7],
+                     border_normal=colors[8]),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     # layout.Floating(**layout_theme),
@@ -333,6 +334,12 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[5]
+        ),
         widget.GroupBox(
             font="FiraCode Nerd Font",
             fontsize=18,
@@ -342,87 +349,129 @@ def init_widgets_list():
             padding_x=8,
             borderwidth=0,
             disable_drag=True,
-            active=colors[3],
-            inactive=colors[2],
+            active=colors[8],
+            inactive=colors[0],
             rounded=False,
             highlight_method="text",
-            this_current_screen_border=colors[5]
+            this_current_screen_border=colors[7],
+            background=colors[5]
         ),
-        widget.Sep(
-            linewidth=1,
-            padding=8
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[5]
+        ),
+
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[9]
         ),
         widget.CurrentLayoutIcon(
-            scale=0.6
+            background=colors[9],
+            scale=0.8
         ),
         widget.CurrentLayout(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[5]
+            foreground=colors[4],
+            background=colors[9]
         ),
-        widget.Sep(
-            linewidth=1,
-            padding=8
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[9]
         ),
+
         widget.WindowName(
             font="FiraCode Nerd Font Italic",
             padding=16,
             fontsize=16,
-            foreground=colors[5],
+            foreground=colors[7],
+        ),
+
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[6]
         ),
         widget.CapsNumLockIndicator(
-            font="FIraCode Nerd Font Italic Bold",
+            font="FiraCode Nerd Font Italic Bold",
             fontsize=10,
             padding=4,
-            foreground=colors[3]
+            foreground=colors[4],
+            background=colors[6]
         ),
-        widget.Sep(
-            linewidth=1,
-            padding=8
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[6]
+        ),
+
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[8]
         ),
         widget.TextBox(
             text="",
             foreground=colors[4],
+            background=colors[8],
             fontsize=19,
-            padding=4
+            padding=4,
         ),
         widget.Clock(
+            background=colors[8],
             foreground=colors[4],
-            padding=4,
-            fontsize=16,
-            format="%H:%M:%S - %d/%m/%Y"
+            format="%H:%M:%S - %d/%m/%Y",
         ),
-        widget.Sep(
-            linewidth=1,
-            padding=8
-        ),
-        widget.ThermalSensor(
-            foreground=colors[8],
-            foreground_alert=colors[9],
-            metric=True,
-            padding=4,
-            threshold=40
-        ),
-        arcobattery.BatteryIcon(
-            padding=0,
-            scale=0.8,
-            y_poss=2,
-            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-            update_interval=5,
-        ),
-        widget.Sep(
-            linewidth=1,
-            padding=8
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[8]),
+
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[7],
+            margin=0
         ),
         widget.Systray(
             icon_size=22,
-            padding=4
+            background=colors[7],
+        ),
+        widget.ThermalSensor(
+            font="FiraCode Nerd Font Bold",
+            foreground=colors[11],
+            foreground_alert=colors[9],
+            metric=True,
+            background=colors[7],
+            threshold=40
+        ),
+        arcobattery.BatteryIcon(
+            scale=0.6,
+            y_poss=8,
+            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+            update_interval=1,
+            background=colors[7],
         ),
         widget.QuickExit(
-            font="FiraCode Nerd Font",
-            fontsize=14,
-            padding=2,
-            foreground=colors[9]
+            font="FiraCode Nerd Font Bold",
+            foreground=colors[4],
+            background=colors[7]
         ),
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[7]),
     ]
     return widgets_list
 
@@ -460,6 +509,8 @@ mouse = [
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size())
+
+
 ]
 
 dgroups_key_binder = None
@@ -469,19 +520,19 @@ dgroups_app_rules = []
 main = None
 
 
-@hook.subscribe.startup_once
+@ hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
 
-@hook.subscribe.startup
+@ hook.subscribe.startup
 def start_always():
     # Set the cursor to something sane in X
     subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
 
 
-@hook.subscribe.client_new
+@ hook.subscribe.client_new
 def set_floating(window):
     if (window.window.get_wm_transient_for() or window.window.get_wm_type() in floating_types):
         window.floating = True
@@ -491,7 +542,7 @@ floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'Arcolinux-welcome-app.py'},
@@ -517,10 +568,10 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
 
-], fullscreen_border_width=0, border_width=2, border_normal=colors[3], border_focus=colors[5])
+], fullscreen_border_width=0, border_width=2, border_normal=colors[7], border_focus=colors[8])
 auto_fullscreen = True
 
-#focus_on_window_activation = "smart"
+# focus_on_window_activation = "smart"
 focus_on_window_activation = "focus"
 
 wmname = "LG3D"
