@@ -34,13 +34,12 @@ def dark_grey():
         "#0f101a",
         "#37383b",
         "#f1ffff",
-        "#f1ffff",
-        "#f1ffff",
         "#4c566a",
-        "#3f575b",
+        "#f1ffff",
+        "#3f675b",
         "#0f101a",
         "#334148",
-        "#3f575b",
+        "#4f575b",
         "#556a74",
     ] + temperature
 
@@ -49,16 +48,14 @@ def material_darker():
     return [
         "#212121",
         "#353c4a",
+        "#f1f1f1",
         "#f1ffff",
         "#0f101a",
-        "#a151d3",
-        "#f1ffff",
         "#4c566a",
-        "#F07178",
         "#a151d3",
         "#F07178",
-        "#fb9f7f",
         "#ffd47e",
+        "#fb9f7f",
     ] + temperature
 
 
@@ -72,8 +69,6 @@ def material_ocean():
         "#f1ffff",
         "#4c566a",
         "#F07178",
-        "#a151d3",
-        "#F07178",
         "#fb9f7f",
         "#ffd47e",
     ] + temperature
@@ -84,15 +79,13 @@ def nord():
         "#212121",
         "#ABB2BF",
         "#ffffff",
-        "#212121",
         "#81a1c1",
         "#f1ffff",
         "#4c566a",
         "#b48ead",
-        "#81a1c1",
-        "#88c0d0",
-        "#a3be8c",
         "#ebcb8b",
+        "#a3be8c",
+        "#88c0d0",
     ] + temperature
 
 
@@ -101,8 +94,6 @@ def nord_wave():
         "#212121",
         "#ABB2BF",
         "#ffffff",
-        "#212121",
-        "#81a1c1",
         "#f1ffff",
         "#4c566a",
         "#b48ead",
@@ -117,15 +108,13 @@ def rosepine():
     return [
         "#1f1d29",
         "#ABB2BF",
-        "#ffffff",
-        "#1f1d29",
-        "#eabbb9",
-        "#f1ffff",
         "#4c566a",
-        "#ea6f91",
+        "#ffffff",
+        "#f1ffff",
+        "#9bced7",
         "#eabbb9",
         "#f1ca93",
-        "#9bced7",
+        "#eabbb9",
         "#ea6f91",
     ] + temperature
 
@@ -136,12 +125,10 @@ def one_dark():
         "#ABB2BF",
         "#ffffff",
         "#282C34",
-        "#61AFEF",
         "#f1ffff",
         "#4c566a",
+        "#61AFEF",
         "#E06C75",
         "#C678DD",
-        "#E06C75",
-        "#61AFEF",
         "#98C379",
     ] + temperature

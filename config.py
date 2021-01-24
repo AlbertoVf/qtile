@@ -334,12 +334,6 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
-        widget.TextBox(
-            text="",
-            fontsize=40,
-            padding=-6,
-            foreground=colors[5]
-        ),
         widget.GroupBox(
             font="FiraCode Nerd Font",
             fontsize=18,
@@ -360,14 +354,8 @@ def init_widgets_list():
             text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[5]
-        ),
-
-        widget.TextBox(
-            text="",
-            fontsize=40,
-            padding=-6,
-            foreground=colors[9]
+            background=colors[9],
+            foreground=colors[5],
         ),
         widget.CurrentLayoutIcon(
             background=colors[9],
@@ -406,17 +394,11 @@ def init_widgets_list():
             background=colors[6]
         ),
         widget.TextBox(
-            text="",
-            fontsize=40,
-            padding=-6,
-            foreground=colors[6]
-        ),
-
-        widget.TextBox(
             text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[8]
+            foreground=colors[8],
+            background=colors[6]
         ),
         widget.TextBox(
             text="",
@@ -430,30 +412,18 @@ def init_widgets_list():
             foreground=colors[4],
             format="%H:%M:%S - %d/%m/%Y",
         ),
-        widget.TextBox(
-            text="",
-            fontsize=40,
-            padding=-6,
-            foreground=colors[8]),
 
         widget.TextBox(
             text="",
             fontsize=40,
             padding=-6,
             foreground=colors[7],
+            background=colors[8],
             margin=0
         ),
         widget.Systray(
             icon_size=22,
             background=colors[7],
-        ),
-        widget.ThermalSensor(
-            font="FiraCode Nerd Font Bold",
-            foreground=colors[11],
-            foreground_alert=colors[9],
-            metric=True,
-            background=colors[7],
-            threshold=40
         ),
         arcobattery.BatteryIcon(
             scale=0.6,
@@ -462,16 +432,19 @@ def init_widgets_list():
             update_interval=1,
             background=colors[7],
         ),
+        widget.ThermalSensor(
+            font="FiraCode Nerd Font Bold",
+            foreground=colors[11],
+            foreground_alert=colors[12],
+            metric=True,
+            background=colors[7],
+            threshold=40
+        ),
         widget.QuickExit(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[4],
+            foreground=colors[0],
             background=colors[7]
         ),
-        widget.TextBox(
-            text="",
-            fontsize=40,
-            padding=-6,
-            foreground=colors[7]),
     ]
     return widgets_list
 
