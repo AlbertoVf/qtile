@@ -55,4 +55,6 @@ run volumeicon &
 #run insync start &
 #run spotify &
 #run atom &
-#run telegram-desktop &
+# run telegram-desktop &
+run megasync &
+# run teamviewer --daemon start &

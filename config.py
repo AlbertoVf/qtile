@@ -88,8 +88,7 @@ keys = [
     # SUPER + SHIFT KEYS
 
     Key([mod, "shift"], "Return", lazy.spawn('thunar')),
-    Key([mod, "shift"], "d", lazy.spawn(
-        "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    # Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
@@ -265,11 +264,11 @@ groups = []
 
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8"]
 # nerd fonts https://www.nerdfonts.com/cheat-sheet
-# fontawesome : web - developer - pictures - video - music - mail - settings - file
-group_labels = ["", "", "", "", "", "", "", ""]
+# fontawesome : web - developer - mail - file - pictures - video - music - settings
+group_labels = ["", "", "", "", "", "", "", ""]
 
-group_layouts = ["monadtall", "matrix", "monadtall", "bsp",
-                 "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall", ]
+group_layouts = ["monadtall", "monadwide", "matrix", "bsp",
+                 "ratiotile", "max", "zoomy", "monadwide", "monadtall", "bsp", ]
 
 for i in range(len(group_names)):
     groups.append(
@@ -296,25 +295,26 @@ for i in groups:
 def init_layout_theme():
     return {
         "margin": 4,
-        "border_width": 3,
-        "border_focus": colors[8],
-        "border_normal": colors[4]
+        "border_width": 2,
+        "border_focus": colors[5],
+        "border_normal": colors[3]
     }
 
 
 layout_theme = init_layout_theme()
 
-
 layouts = [
-    layout.MonadTall(margin=4, border_width=2,
-                     border_focus=colors[8], border_normal=colors[4]),
-    layout.MonadWide(margin=4, border_width=2,
-                     border_focus=colors[8], border_normal=colors[4]),
+    layout.MonadTall(margin=4, border_focus=colors[5],
+                     border_normal=colors[3]),
+    layout.MonadWide(margin=4, border_focus=colors[5],
+                     border_normal=colors[3]),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
-    layout.Floating(**layout_theme),
+    # layout.Floating(**layout_theme),
     layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.Max(**layout_theme),
+    layout.Zoomy(**layout_theme),
+    # layout.TreeTab(**layout_theme),
 ]
 
 
@@ -342,19 +342,22 @@ def init_widgets_list():
             padding_x=8,
             borderwidth=0,
             disable_drag=True,
-            active=colors[4],
-            inactive=colors[1],
+            active=colors[3],
+            inactive=colors[2],
             rounded=False,
             highlight_method="text",
-            this_current_screen_border=colors[8]
+            this_current_screen_border=colors[5]
         ),
         widget.Sep(
             linewidth=1,
             padding=8
         ),
+        widget.CurrentLayoutIcon(
+            scale=0.6
+        ),
         widget.CurrentLayout(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[8]
+            foreground=colors[5]
         ),
         widget.Sep(
             linewidth=1,
@@ -364,28 +367,13 @@ def init_widgets_list():
             font="FiraCode Nerd Font Italic",
             padding=16,
             fontsize=16,
-            foreground=colors[8],
-            background=colors[0],
+            foreground=colors[5],
         ),
-        widget.ThermalSensor(
-            foreground=colors[3],
-            foreground_alert=colors[6],
-            background=colors[1],
-            metric=True,
+        widget.CapsNumLockIndicator(
+            font="FIraCode Nerd Font Italic Bold",
+            fontsize=10,
             padding=4,
-            threshold=45
-        ),
-        arcobattery.BatteryIcon(
-            padding=0,
-            scale=0.8,
-            y_poss=2,
-            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-            update_interval=5,
-            background=colors[1]
-        ),
-        widget.Systray(
-            icon_size=22,
-            padding=4
+            foreground=colors[3]
         ),
         widget.Sep(
             linewidth=1,
@@ -402,6 +390,38 @@ def init_widgets_list():
             padding=4,
             fontsize=16,
             format="%H:%M:%S - %d/%m/%Y"
+        ),
+        widget.Sep(
+            linewidth=1,
+            padding=8
+        ),
+        widget.ThermalSensor(
+            foreground=colors[8],
+            foreground_alert=colors[9],
+            metric=True,
+            padding=4,
+            threshold=40
+        ),
+        arcobattery.BatteryIcon(
+            padding=0,
+            scale=0.8,
+            y_poss=2,
+            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+            update_interval=5,
+        ),
+        widget.Sep(
+            linewidth=1,
+            padding=8
+        ),
+        widget.Systray(
+            icon_size=22,
+            padding=4
+        ),
+        widget.QuickExit(
+            font="FiraCode Nerd Font",
+            fontsize=14,
+            padding=2,
+            foreground=colors[9]
         ),
     ]
     return widgets_list
@@ -497,7 +517,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
 
-], fullscreen_border_width=0, border_width=1)
+], fullscreen_border_width=0, border_width=2, border_normal=colors[3], border_focus=colors[5])
 auto_fullscreen = True
 
 #focus_on_window_activation = "smart"
