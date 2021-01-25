@@ -1,32 +1,42 @@
-temperature = ["#80FF10", "#fba922", "#cd1f3f"]
 # def name():
 #     return [
-#         "#", #color 0
-#         "#", #color 1
-#         "#", #color 2
-#         "#", #color 3
-#         "#", #color 4
-#         "#", #color 5
-#         "#", #color 6
-#         "#", #color 7
-#         "#", #color 8
-#         "#", #color 9
-#     ] + temperature
+#         "#", #00 - dark
+#         "#", #01 - grey
+#         "#", #02 - light
+#         "#", #03 - text
+#         "#", #04 - focus
+#         "#", #05 - active
+#         "#", #06 - inactive
+#         "#", #07 - urgent
+#         "#", #08 - color1
+#         "#", #09 - color2
+#         "#", #10 - color3
+#         "#", #11 - color4
+#     ]
+
+def temperature():
+    return [
+        "#00ff00",
+        "#ffff00",
+        "#ff0000",
+    ]
 
 
 def dracula():
-    return [
+    return[
         "#292d3e",
         "#434758",
         "#ffffff",
         "#292d3e",
+        "#A77AC4",
+        "#ff5555",
         "#f1ffff",
         "#4c566a",
         "#ff5555",
         "#A77AC4",
         "#7197E7",
-        "#ffb86c"
-    ] + temperature
+        "#ffb86c",
+    ]
 
 
 def dark_grey():
@@ -34,14 +44,16 @@ def dark_grey():
         "#0f101a",
         "#37383b",
         "#f1ffff",
-        "#4c566a",
         "#f1ffff",
-        "#3f675b",
+        "#66818d",
+        "#f1ffff",
+        "#4c566a",
+        "#3f575b",
         "#0f101a",
         "#334148",
-        "#4f575b",
+        "#3f575b",
         "#556a74",
-    ] + temperature
+    ]
 
 
 def material_darker():
@@ -49,14 +61,16 @@ def material_darker():
         "#212121",
         "#353c4a",
         "#f1f1f1",
-        "#f1ffff",
         "#0f101a",
+        "#a151d3",
+        "#f1ffff",
         "#4c566a",
+        "#F07178",
         "#a151d3",
         "#F07178",
-        "#ffd47e",
         "#fb9f7f",
-    ] + temperature
+        "#ffd47e",
+    ]
 
 
 def material_ocean():
@@ -69,9 +83,11 @@ def material_ocean():
         "#f1ffff",
         "#4c566a",
         "#F07178",
+        "#a151d3",
+        "#F07178",
         "#fb9f7f",
         "#ffd47e",
-    ] + temperature
+    ]
 
 
 def nord():
@@ -79,14 +95,16 @@ def nord():
         "#212121",
         "#ABB2BF",
         "#ffffff",
+        "#212121",
         "#81a1c1",
         "#f1ffff",
         "#4c566a",
         "#b48ead",
-        "#ebcb8b",
-        "#a3be8c",
+        "#81a1c1",
         "#88c0d0",
-    ] + temperature
+        "#a3be8c",
+        "#ebcb8b",
+    ]
 
 
 def nord_wave():
@@ -94,6 +112,8 @@ def nord_wave():
         "#212121",
         "#ABB2BF",
         "#ffffff",
+        "#212121",
+        "#81a1c1",
         "#f1ffff",
         "#4c566a",
         "#b48ead",
@@ -101,7 +121,7 @@ def nord_wave():
         "#88c0d0",
         "#a3be8c",
         "#ebcb8b",
-    ] + temperature
+    ]
 
 
 def rosepine():
@@ -110,13 +130,15 @@ def rosepine():
         "#ABB2BF",
         "#4c566a",
         "#ffffff",
+        "#1f1d29",
+        "#eabbb9",
         "#f1ffff",
-        "#9bced7",
+        "#4c566a",
+        "#ea6f91",
         "#eabbb9",
         "#f1ca93",
-        "#eabbb9",
-        "#ea6f91",
-    ] + temperature
+        "#9bced7",
+    ]
 
 
 def one_dark():
@@ -125,10 +147,29 @@ def one_dark():
         "#ABB2BF",
         "#ffffff",
         "#282C34",
+        "#61AFEF",
         "#f1ffff",
         "#4c566a",
-        "#61AFEF",
         "#E06C75",
         "#C678DD",
+        "#E06C75",
+        "#61AFEF",
         "#98C379",
-    ] + temperature
+    ]
+
+
+def default():
+    return[
+        "#0f101a",
+        "#353c4a",
+        "#f1ffff",
+        "#0f101a",
+        "#a151d3",
+        "#f1ffff",
+        "#4c566a",
+        "#F07178",
+        "#a151d3",
+        "#F07178",
+        "#fb9f7f",
+        "#ffd47e",
+    ]

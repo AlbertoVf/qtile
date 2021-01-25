@@ -31,13 +31,15 @@ from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
 import arcobattery
 from themes.themes import *
+
+colors = dracula()  # See themes.themes to select your theme
+temperature = temperature()
+
 # mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
-
-colors = dracula()  # See themes.themes to select your theme
 
 
 @lazy.function
@@ -297,24 +299,22 @@ def init_layout_theme():
     return {
         "margin": 4,
         "border_width": 2,
-        "border_focus": colors[5],
-        "border_normal": colors[3]
+        "border_focus": colors[4],
+        "border_normal": colors[1]
     }
 
 
 layout_theme = init_layout_theme()
 
 layouts = [
-    layout.MonadTall(margin=4, border_focus=colors[7],
-                     border_normal=colors[8]),
-    layout.MonadWide(margin=4, border_focus=colors[7],
-                     border_normal=colors[8]),
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    layout.RatioTile(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
-    # layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme),
     layout.Zoomy(**layout_theme),
+    # layout.Floating(**layout_theme),
     # layout.TreeTab(**layout_theme),
 ]
 
@@ -322,10 +322,13 @@ layouts = [
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
-    return dict(font="FiraCode Nerd Font",
-                fontsize=16,
-                padding=4,
-                background=colors[0])
+    return dict(
+        font="FiraCode Nerd Font",
+        fontsize=16,
+        padding=4,
+        background=colors[0],
+        foreground=colors[2],
+    )
 
 
 widget_defaults = init_widgets_defaults()
@@ -335,7 +338,6 @@ def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
         widget.GroupBox(
-            font="FiraCode Nerd Font",
             fontsize=18,
             margin_y=4,
             margin_x=4,
@@ -343,107 +345,94 @@ def init_widgets_list():
             padding_x=8,
             borderwidth=0,
             disable_drag=True,
-            active=colors[8],
-            inactive=colors[0],
             rounded=False,
             highlight_method="text",
-            this_current_screen_border=colors[7],
-            background=colors[5]
-        ),
-        widget.TextBox(
-            text="",
-            fontsize=40,
-            padding=-6,
-            background=colors[9],
-            foreground=colors[5],
-        ),
-        widget.CurrentLayoutIcon(
-            background=colors[9],
-            scale=0.8
+            active=colors[5],
+            inactive=colors[6],
+            this_current_screen_border=colors[4],
+            background=colors[1],
         ),
         widget.CurrentLayout(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[4],
-            background=colors[9]
+            foreground=colors[8],
+            background=colors[1],
         ),
         widget.TextBox(
             text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[9]
+            foreground=colors[1],
         ),
-
         widget.WindowName(
             font="FiraCode Nerd Font Italic",
             padding=16,
             fontsize=16,
-            foreground=colors[7],
+            foreground=colors[4],
         ),
-
         widget.TextBox(
             text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[6]
+            foreground=colors[11],
         ),
         widget.CapsNumLockIndicator(
             font="FiraCode Nerd Font Italic Bold",
             fontsize=10,
             padding=4,
-            foreground=colors[4],
-            background=colors[6]
+            foreground=colors[3],
+            background=colors[11],
         ),
         widget.TextBox(
             text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[8],
-            background=colors[6]
+            foreground=colors[9],
+            background=colors[11],
         ),
         widget.TextBox(
             text="",
-            foreground=colors[4],
-            background=colors[8],
             fontsize=19,
             padding=4,
+            foreground=colors[3],
+            background=colors[9],
         ),
         widget.Clock(
-            background=colors[8],
-            foreground=colors[4],
             format="%H:%M:%S - %d/%m/%Y",
+            foreground=colors[3],
+            background=colors[9],
         ),
 
         widget.TextBox(
             text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[7],
-            background=colors[8],
-            margin=0
+            margin=0,
+            foreground=colors[10],
+            background=colors[9],
         ),
         widget.Systray(
             icon_size=22,
-            background=colors[7],
+            background=colors[10],
         ),
         arcobattery.BatteryIcon(
             scale=0.6,
             y_poss=8,
             theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
             update_interval=1,
-            background=colors[7],
+            background=colors[10],
         ),
         widget.ThermalSensor(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[11],
-            foreground_alert=colors[12],
             metric=True,
-            background=colors[7],
-            threshold=40
+            threshold=40,
+            foreground=temperature[1],
+            foreground_alert=temperature[2],
+            background=colors[10],
         ),
         widget.QuickExit(
             font="FiraCode Nerd Font Bold",
-            foreground=colors[0],
-            background=colors[7]
+            foreground=colors[3],
+            background=colors[10],
         ),
     ]
     return widgets_list
@@ -540,8 +529,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'Open File'},
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
-
-], fullscreen_border_width=0, border_width=2, border_normal=colors[7], border_focus=colors[8])
+], fullscreen_border_width=0, border_width=1, border_normal=colors[1], border_focus=colors[4])
 auto_fullscreen = True
 
 # focus_on_window_activation = "smart"
