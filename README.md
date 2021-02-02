@@ -2,7 +2,7 @@
 
 Configuracion personalizada para QTile en ArcoLinux
 
-![wall](/home/alberto/.config/qtile/wall.jpg)
+![wall](./wall.jpg)
 
 ## Personalizacion de colores
 

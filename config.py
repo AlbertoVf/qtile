@@ -61,16 +61,37 @@ keys = [
     Key([], "F12", lazy.spawn('xfce4-terminal --drop-down')),
 
     # SUPER + FUNCTION KEYS
+    Key([mod], "a", lazy.spawn('android-studio')),
+    # Key([mod], "b", lazy.spawn('')),
+    Key([mod], "d", lazy.spawn('drawio')),
     Key([mod], "e", lazy.spawn('code-oss')),
-    Key([mod], "c", lazy.spawn('conky-toggle')),
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
+    Key([mod], "f", lazy.spawn('firefox')),
+    # Key([mod], "g", lazy.spawn('')),
+    # Key([mod], "h", lazy.spawn('')),
+    Key([mod], "i", lazy.spawn('idea')),
+    # Key([mod], "j", lazy.spawn('')),
+    # Key([mod], "k", lazy.spawn('')),
+    # Key([mod], "l", lazy.spawn('')),
     Key([mod], "m", lazy.spawn('pragha')),
+    # Key([mod], "n", lazy.spawn('')),
+    Key([mod], "o", lazy.spawn('obs')),
+    Key([mod], "p", lazy.spawn('pycharm')),
     Key([mod], "q", lazy.window.kill()),
-    Key([mod], "r", lazy.spawn('rofi-theme-selector')),
-    Key([mod], "t", lazy.spawn('alacritty')),
-    Key([mod], "v", lazy.spawn('pavucontrol')),
-    Key([mod], "w", lazy.spawn('firefox')),
-    Key([mod], "x", lazy.spawn('arcolinux-logout')),
+    # Key([mod], "r", lazy.spawn('')),
+    # Key([mod], "s", lazy.spawn('')),
+    # Key([mod], "t", lazy.spawn('')),
+    # Key([mod], "u", lazy.spawn('')),
+    Key([mod], "v", lazy.spawn('vlc --video-on-top')),
+    # Key([mod], "w", lazy.spawn('')),
+    # Key([mod], "x", lazy.spawn('')),
+    # Key([mod], "y", lazy.spawn('')),
+    # Key([mod], "z", lazy.spawn('')),
+
+    # Key([mod], "c", lazy.spawn('conky-toggle')),
+    # Key([mod], "f", lazy.window.toggle_fullscreen()),
+    # Key([mod], "v", lazy.spawn('pavucontrol')),
+    # Key([mod], "x", lazy.spawn('arcolinux-logout')),
+
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('termite')),
     Key([mod], "KP_Enter", lazy.spawn('termite')),
@@ -81,7 +102,7 @@ keys = [
     Key([mod], "F5", lazy.spawn('meld')),
     Key([mod], "F6", lazy.spawn('vlc --video-on-top')),
     Key([mod], "F7", lazy.spawn('virtualbox')),
-    Key([mod], "F8", lazy.spawn('nemo')),
+    Key([mod], "F8", lazy.spawn('thunar')),
     Key([mod], "F9", lazy.spawn('evolution')),
     Key([mod], "F10", lazy.spawn("spotify")),
     Key([mod], "F11", lazy.spawn('rofi -show run -fullscreen')),
@@ -94,14 +115,14 @@ keys = [
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
-    # Key([mod, "shift"], "x", lazy.shutdown()),
+    Key([mod, "shift"], "x", lazy.shutdown()),
 
     # CONTROL + ALT KEYS
 
     Key(["mod1", "control"], "Next", lazy.spawn('conky-rotate -n')),
     Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
     Key(["mod1", "control"], "a", lazy.spawn('xfce4-appfinder')),
-    Key(["mod1", "control"], "b", lazy.spawn('nemo')),
+    Key(["mod1", "control"], "b", lazy.spawn('thunar')),
     Key(["mod1", "control"], "c", lazy.spawn('catfish')),
     Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
     Key(["mod1", "control"], "f", lazy.spawn('firefox')),
@@ -109,7 +130,7 @@ keys = [
         'chromium -no-default-browser-check')),
     Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
     Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
-    # Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
+    Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
     Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
     Key(["mod1", "control"], "o", lazy.spawn(
         home + '/.config/qtile/scripts/picom-toggle.sh')),
@@ -173,12 +194,6 @@ keys = [
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
 
-    # Key([], "XF86AudioPlay", lazy.spawn("mpc toggle")),
-    # Key([], "XF86AudioNext", lazy.spawn("mpc next")),
-    # Key([], "XF86AudioPrev", lazy.spawn("mpc prev")),
-    # Key([], "XF86AudioStop", lazy.spawn("mpc stop")),
-
-    # Key([],"KP_ENTER",lazy.spawn("termite")), #calculadora
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
@@ -268,7 +283,9 @@ groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8"]
 # nerd fonts https://www.nerdfonts.com/cheat-sheet
 # fontawesome : web - developer - mail - file - pictures - video - music - settings
-group_labels = ["", "", "", "", "", "", "", ""]
+group_labels = ["\uf269", "\uf121", "\uf6ed",
+                "\uf07c", "\uf03e", "\uf03d", "\ufc58", "\uf992"]
+
 
 group_layouts = ["monadtall", "monadwide", "matrix", "bsp",
                  "ratiotile", "max", "zoomy", "monadwide", "monadtall", "bsp", ]
@@ -297,7 +314,7 @@ for i in groups:
 
 def init_layout_theme():
     return {
-        "margin": 4,
+        "margin": 8,
         "border_width": 2,
         "border_focus": colors[4],
         "border_normal": colors[1]
@@ -310,12 +327,24 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.RatioTile(**layout_theme),
+    layout.VerticalTile(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Zoomy(**layout_theme),
-    # layout.Floating(**layout_theme),
-    # layout.TreeTab(**layout_theme),
+    layout.TreeTab(
+        font="FiraCode Nerd Font",
+        sections=["FIRST", "SECOND"],
+        fontsize=12,
+        section_fontsize=14,
+        padding_y=5,
+        section_top=10,
+        panel_width=320,
+        bg_color=colors[0],
+        active_bg=colors[4],
+        active_fg=colors[3],
+        inactive_bg=colors[1],
+        inactive_fg=colors[6],
+    ),
 ]
 
 
@@ -324,7 +353,7 @@ layouts = [
 def init_widgets_defaults():
     return dict(
         font="FiraCode Nerd Font",
-        fontsize=16,
+        fontsize=14,
         padding=4,
         background=colors[0],
         foreground=colors[2],
@@ -353,24 +382,22 @@ def init_widgets_list():
             background=colors[1],
         ),
         widget.CurrentLayout(
-            font="FiraCode Nerd Font Bold",
-            foreground=colors[8],
+            foreground=colors[4],
             background=colors[1],
         ),
         widget.TextBox(
-            text="",
+            text="\uf44a",
             fontsize=40,
             padding=-6,
             foreground=colors[1],
         ),
         widget.WindowName(
-            font="FiraCode Nerd Font Italic",
-            padding=16,
-            fontsize=16,
+            padding=8,
+            fontsize=12,
             foreground=colors[4],
         ),
         widget.TextBox(
-            text="",
+            text="\uf438",
             fontsize=40,
             padding=-6,
             foreground=colors[11],
@@ -383,15 +410,14 @@ def init_widgets_list():
             background=colors[11],
         ),
         widget.TextBox(
-            text="",
+            text="\uf438",
             fontsize=40,
             padding=-6,
             foreground=colors[9],
             background=colors[11],
         ),
         widget.TextBox(
-            text="",
-            fontsize=19,
+            text="\uf64f",
             padding=4,
             foreground=colors[3],
             background=colors[9],
@@ -403,37 +429,46 @@ def init_widgets_list():
         ),
 
         widget.TextBox(
-            text="",
+            text="\uf438",
             fontsize=40,
             padding=-6,
-            margin=0,
             foreground=colors[10],
             background=colors[9],
         ),
         widget.Systray(
-            icon_size=22,
+            icon_size=26,
+            padding=8,
+            margin=2,
             background=colors[10],
         ),
-        arcobattery.BatteryIcon(
-            scale=0.6,
-            y_poss=8,
-            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-            update_interval=1,
+        widget.TextBox(
+            text="\uf438",
+            fontsize=40,
+            padding=-6,
+            foreground=colors[8],
             background=colors[10],
+        ),
+        widget.Battery(
+            update_interval=10,
+            foreground=colors[3],
+            background=colors[8],
+            format="\uf241 {percent:2.0%} \uf2c8"
         ),
         widget.ThermalSensor(
-            font="FiraCode Nerd Font Bold",
             metric=True,
             threshold=40,
             foreground=temperature[1],
             foreground_alert=temperature[2],
-            background=colors[10],
+            background=colors[8],
         ),
         widget.QuickExit(
-            font="FiraCode Nerd Font Bold",
+            font="FiraCode Nerd FOnt Bold",
+            default_text="[ Cerrar ]",
+            countdown_format="[ {} seg. ]",
             foreground=colors[3],
-            background=colors[10],
+            background=colors[8],
         ),
+
     ]
     return widgets_list
 
@@ -457,8 +492,8 @@ widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26))
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24)),
+        Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=24))
     ]
 
 
@@ -471,8 +506,6 @@ mouse = [
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size())
-
-
 ]
 
 dgroups_key_binder = None
