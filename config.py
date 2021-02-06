@@ -29,7 +29,7 @@ from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
-import arcobattery
+#import arcobattery
 from themes.themes import *
 
 colors = dracula()  # See themes.themes to select your theme
@@ -62,11 +62,11 @@ keys = [
 
     # SUPER + FUNCTION KEYS
     Key([mod], "a", lazy.spawn('android-studio')),
-    # Key([mod], "b", lazy.spawn('')),
+    Key([mod], "b", lazy.spawn('bitwarden-desktop')),
     Key([mod], "d", lazy.spawn('drawio')),
     Key([mod], "e", lazy.spawn('code-oss')),
     Key([mod], "f", lazy.spawn('firefox')),
-    # Key([mod], "g", lazy.spawn('')),
+    Key([mod], "g", lazy.spawn('gparted')),
     # Key([mod], "h", lazy.spawn('')),
     Key([mod], "i", lazy.spawn('idea')),
     # Key([mod], "j", lazy.spawn('')),
@@ -78,8 +78,8 @@ keys = [
     Key([mod], "p", lazy.spawn('pycharm')),
     Key([mod], "q", lazy.window.kill()),
     # Key([mod], "r", lazy.spawn('')),
-    # Key([mod], "s", lazy.spawn('')),
-    # Key([mod], "t", lazy.spawn('')),
+    Key([mod], "s", lazy.spawn('pamac-manager')),
+    Key([mod], "t", lazy.spawn('timeshift')),
     # Key([mod], "u", lazy.spawn('')),
     Key([mod], "v", lazy.spawn('vlc --video-on-top')),
     # Key([mod], "w", lazy.spawn('')),
@@ -94,7 +94,9 @@ keys = [
 
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('termite')),
-    Key([mod], "KP_Enter", lazy.spawn('termite')),
+    # Key([mod], "KP_Enter", lazy.spawn('termite')),
+    Key([mod], "KP_Enter", lazy.spawn('gnome-calculator')),
+
     Key([mod], "F1", lazy.spawn('firefox')),
     Key([mod], "F2", lazy.spawn('code-oss')),
     Key([mod], "F3", lazy.spawn('inkscape')),
@@ -109,7 +111,6 @@ keys = [
     Key([mod], "F12", lazy.spawn('rofi -show run')),
 
     # SUPER + SHIFT KEYS
-
     Key([mod, "shift"], "Return", lazy.spawn('thunar')),
     # Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
@@ -118,7 +119,6 @@ keys = [
     Key([mod, "shift"], "x", lazy.shutdown()),
 
     # CONTROL + ALT KEYS
-
     Key(["mod1", "control"], "Next", lazy.spawn('conky-rotate -n')),
     Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
     Key(["mod1", "control"], "a", lazy.spawn('xfce4-appfinder')),
@@ -126,25 +126,30 @@ keys = [
     Key(["mod1", "control"], "c", lazy.spawn('catfish')),
     Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
     Key(["mod1", "control"], "f", lazy.spawn('firefox')),
-    Key(["mod1", "control"], "g", lazy.spawn(
-        'chromium -no-default-browser-check')),
+    Key(["mod1", "control"], "g", lazy.spawn('chromium -no-default-browser-check')),
+    # Key(["mod1", "control"], "h", lazy.spawn('')),
     Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
+    # Key(["mod1", "control"], "j", lazy.spawn('')),
     Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
-    Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
+    # Key(["mod1", "control"], "l", lazy.spawn('')),
     Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
-    Key(["mod1", "control"], "o", lazy.spawn(
-        home + '/.config/qtile/scripts/picom-toggle.sh')),
+    # Key(["mod1", "control"], "n", lazy.spawn('')),
+    Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
     Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
+    # Key(["mod1", "control"], "q", lazy.spawn('')),
     Key(["mod1", "control"], "r", lazy.spawn('rofi-theme-selector')),
     Key(["mod1", "control"], "s", lazy.spawn('spotify')),
     Key(["mod1", "control"], "t", lazy.spawn('termite')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
     Key(["mod1", "control"], "v", lazy.spawn('vivaldi-stable')),
     Key(["mod1", "control"], "w", lazy.spawn('arcolinux-welcome-app')),
+    Key(["mod1", "control"], "x", lazy.spawn('arcolinux-logout')),
+    # Key(["mod1", "control"], "y", lazy.spawn('')),
+    # Key(["mod1", "control"], "z", lazy.spawn('')),
+
     Key(["mod1", "control"], "Return", lazy.spawn('termite')),
 
     # ALT + ... KEYS
-
     Key(["mod1"], "f", lazy.spawn('variety -f')),
     Key(["mod1"], "h", lazy.spawn('urxvt -e htop')),
     Key(["mod1"], "n", lazy.spawn('variety -n')),
@@ -158,15 +163,10 @@ keys = [
     Key(["mod1"], "F3", lazy.spawn('xfce4-appfinder')),
 
     # VARIETY KEYS WITH PYWAL
-
-    Key(["mod1", "shift"], "f", lazy.spawn(
-        home + '/.config/qtile/scripts/set-pywal.sh -f')),
-    Key(["mod1", "shift"], "p", lazy.spawn(
-        home + '/.config/qtile/scripts/set-pywal.sh -p')),
-    Key(["mod1", "shift"], "n", lazy.spawn(
-        home + '/.config/qtile/scripts/set-pywal.sh -n')),
-    Key(["mod1", "shift"], "u", lazy.spawn(
-        home + '/.config/qtile/scripts/set-pywal.sh -u')),
+    Key(["mod1", "shift"], "f", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -f')),
+    Key(["mod1", "shift"], "p", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -p')),
+    Key(["mod1", "shift"], "n", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -n')),
+    Key(["mod1", "shift"], "u", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -u')),
 
     # CONTROL + SHIFT KEYS
 
@@ -283,12 +283,10 @@ groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8"]
 # nerd fonts https://www.nerdfonts.com/cheat-sheet
 # fontawesome : web - developer - mail - file - pictures - video - music - settings
-group_labels = ["\uf269", "\uf121", "\uf6ed",
-                "\uf07c", "\uf03e", "\uf03d", "\ufc58", "\uf992"]
+group_labels = ["\uf269", "\uf121", "\uf6ed", "\uf07c", "\uf03e", "\uf03d", "\ufc58", "\uf992"]
 
-
-group_layouts = ["monadtall", "monadwide", "matrix", "bsp",
-                 "ratiotile", "max", "zoomy", "monadwide", "monadtall", "bsp", ]
+group_layouts = ["monadtall", "monadwide", "matrix", "bsp", "ratiotile", "max", "zoomy", "monadwide", "monadtall",
+                 "bsp", ]
 
 for i in range(len(group_names)):
     groups.append(
@@ -499,7 +497,6 @@ def init_screens():
 
 screens = init_screens()
 
-
 # MOUSE CONFIGURATION
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
@@ -511,30 +508,28 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []
 
-
 main = None
 
 
-@ hook.subscribe.startup_once
+@hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
 
-@ hook.subscribe.startup
+@hook.subscribe.startup
 def start_always():
     # Set the cursor to something sane in X
     subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
 
 
-@ hook.subscribe.client_new
+@hook.subscribe.client_new
 def set_floating(window):
     if (window.window.get_wm_transient_for() or window.window.get_wm_type() in floating_types):
         window.floating = True
 
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
-
 
 follow_mouse_focus = True
 bring_front_click = True
