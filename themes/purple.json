@@ -1,0 +1,18 @@
+{
+    "purple": [
+        {
+            "dark": "#292d3e",
+            "grey": "#434758",
+            "light": "#ffffff",
+            "text": "#292d3e",
+            "focus": "#7b3ec2",
+            "active": "#5e3ebe",
+            "inactive": "#423ebb",
+            "urgent": "#3e53b7",
+            "color1": "#5e3ebe",
+            "color2": "#7b3ec2",
+            "color3": "#3e6cb4",
+            "color4": "#3d83b0"
+        }
+    ]
+}

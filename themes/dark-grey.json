@@ -1,0 +1,18 @@
+{
+    "dark-grey": [
+        {
+            "dark": "#0f101a",
+            "grey": "#37383b",
+            "light": "#f1ffff",
+            "text": "#f1ffff",
+            "focus": "#66818d",
+            "active": "#f1ffff",
+            "inactive": "#4c566a",
+            "urgent": "#3f575b",
+            "color1": "#0f101a",
+            "color2": "#334148",
+            "color3": "#3f575b",
+            "color4": "#556a74"
+        }
+    ]
+}

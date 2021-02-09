@@ -58,3 +58,4 @@ run volumeicon &
 # run telegram-desktop &
 run megasync &
 # run teamviewer --daemon start &
+run cairo-dock -f &

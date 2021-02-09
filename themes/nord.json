@@ -1,0 +1,18 @@
+{
+    "nord": [
+        {
+            "dark": "#212121",
+            "grey": "#ABB2BF",
+            "light": "#ffffff",
+            "text": "#212121",
+            "focus": "#81a1c1",
+            "active": "#f1ffff",
+            "inactive": "#4c566a",
+            "urgent": "#b48ead",
+            "color1": "#81a1c1",
+            "color2": "#88c0d0",
+            "color3": "#a3be8c",
+            "color4": "#ebcb8b"
+        }
+    ]
+}

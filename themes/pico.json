@@ -1,0 +1,18 @@
+{
+    "pop": [
+        {
+            "dark": "#292d3e",
+            "grey": "#c2c3c7",
+            "light": "#ffffff",
+            "text": "#292d3e",
+            "focus": "#ff004d",
+            "active": "#ff77a8",
+            "inactive": "#f1ffff",
+            "urgent": "#5f574f",
+            "color1": "#83769c",
+            "color2": "#ff77a8",
+            "color3": "#29adff",
+            "color4": "#ffa300"
+        }
+    ]
+}

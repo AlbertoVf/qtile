@@ -29,18 +29,19 @@ from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
-#import arcobattery
-from themes.themes import *
 
-colors = dracula()  # See themes.themes to select your theme
-temperature = temperature()
+from settings.themes import *
+from settings.path import *
+
+colors = Colors('dracula')
+# print(c.color1)
+# colors = dracula()  # See themes.themes to select your theme
+temperature = ["#00ff00","#ffff00","#ff0000"]
 
 # mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
-home = os.path.expanduser('~')
-
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -59,18 +60,18 @@ def window_to_next_group(qtile):
 keys = [
     # FUNCTION KEYS
     Key([], "F12", lazy.spawn('xfce4-terminal --drop-down')),
-
     # SUPER + FUNCTION KEYS
     Key([mod], "a", lazy.spawn('android-studio')),
     Key([mod], "b", lazy.spawn('bitwarden-desktop')),
+    Key([mod], "c", lazy.spawn('code-oss')),
     Key([mod], "d", lazy.spawn('drawio')),
-    Key([mod], "e", lazy.spawn('code-oss')),
+    Key([mod], "e", lazy.spawn('evolution')),
     Key([mod], "f", lazy.spawn('firefox')),
     Key([mod], "g", lazy.spawn('gparted')),
     # Key([mod], "h", lazy.spawn('')),
     Key([mod], "i", lazy.spawn('idea')),
     # Key([mod], "j", lazy.spawn('')),
-    # Key([mod], "k", lazy.spawn('')),
+    Key([mod], "k", lazy.spawn('krita')),
     # Key([mod], "l", lazy.spawn('')),
     Key([mod], "m", lazy.spawn('pragha')),
     # Key([mod], "n", lazy.spawn('')),
@@ -83,20 +84,16 @@ keys = [
     # Key([mod], "u", lazy.spawn('')),
     Key([mod], "v", lazy.spawn('vlc --video-on-top')),
     # Key([mod], "w", lazy.spawn('')),
-    # Key([mod], "x", lazy.spawn('')),
+    Key([mod], "x", lazy.spawn('arcolinux-logout')),
     # Key([mod], "y", lazy.spawn('')),
     # Key([mod], "z", lazy.spawn('')),
-
     # Key([mod], "c", lazy.spawn('conky-toggle')),
     # Key([mod], "f", lazy.window.toggle_fullscreen()),
     # Key([mod], "v", lazy.spawn('pavucontrol')),
-    # Key([mod], "x", lazy.spawn('arcolinux-logout')),
-
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('termite')),
     # Key([mod], "KP_Enter", lazy.spawn('termite')),
     Key([mod], "KP_Enter", lazy.spawn('gnome-calculator')),
-
     Key([mod], "F1", lazy.spawn('firefox')),
     Key([mod], "F2", lazy.spawn('code-oss')),
     Key([mod], "F3", lazy.spawn('inkscape')),
@@ -109,20 +106,17 @@ keys = [
     Key([mod], "F10", lazy.spawn("spotify")),
     Key([mod], "F11", lazy.spawn('rofi -show run -fullscreen')),
     Key([mod], "F12", lazy.spawn('rofi -show run')),
-
     # SUPER + SHIFT KEYS
     Key([mod, "shift"], "Return", lazy.spawn('thunar')),
-    # Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "shift"], "x", lazy.shutdown()),
-
     # CONTROL + ALT KEYS
     Key(["mod1", "control"], "Next", lazy.spawn('conky-rotate -n')),
     Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
     Key(["mod1", "control"], "a", lazy.spawn('xfce4-appfinder')),
-    Key(["mod1", "control"], "b", lazy.spawn('thunar')),
+    Key(["mod1", "control"], "b", lazy.spawn('polo')),
     Key(["mod1", "control"], "c", lazy.spawn('catfish')),
     Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
     Key(["mod1", "control"], "f", lazy.spawn('firefox')),
@@ -134,7 +128,7 @@ keys = [
     # Key(["mod1", "control"], "l", lazy.spawn('')),
     Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
     # Key(["mod1", "control"], "n", lazy.spawn('')),
-    Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
+    Key(["mod1", "control"], "o", lazy.spawn(qtile_scripts+'/picom-toggle.sh')),
     Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
     # Key(["mod1", "control"], "q", lazy.spawn('')),
     Key(["mod1", "control"], "r", lazy.spawn('rofi-theme-selector')),
@@ -146,9 +140,7 @@ keys = [
     Key(["mod1", "control"], "x", lazy.spawn('arcolinux-logout')),
     # Key(["mod1", "control"], "y", lazy.spawn('')),
     # Key(["mod1", "control"], "z", lazy.spawn('')),
-
     Key(["mod1", "control"], "Return", lazy.spawn('termite')),
-
     # ALT + ... KEYS
     Key(["mod1"], "f", lazy.spawn('variety -f')),
     Key(["mod1"], "h", lazy.spawn('urxvt -e htop')),
@@ -161,43 +153,32 @@ keys = [
     Key(["mod1"], "Right", lazy.spawn('variety -n')),
     Key(["mod1"], "F2", lazy.spawn('gmrun')),
     Key(["mod1"], "F3", lazy.spawn('xfce4-appfinder')),
-
     # VARIETY KEYS WITH PYWAL
-    Key(["mod1", "shift"], "f", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -f')),
-    Key(["mod1", "shift"], "p", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -p')),
-    Key(["mod1", "shift"], "n", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -n')),
-    Key(["mod1", "shift"], "u", lazy.spawn( home + '/.config/qtile/scripts/set-pywal.sh -u')),
-
+    Key(["mod1", "shift"], "f", lazy.spawn( qtile_scripts+'/set-pywal.sh -f')),
+    Key(["mod1", "shift"], "p", lazy.spawn( qtile_scripts+'/set-pywal.sh -p')),
+    Key(["mod1", "shift"], "n", lazy.spawn( qtile_scripts+'/set-pywal.sh -n')),
+    Key(["mod1", "shift"], "u", lazy.spawn( qtile_scripts+'/set-pywal.sh -u')),
     # CONTROL + SHIFT KEYS
-
     Key([mod2, "shift"], "Escape", lazy.spawn('xfce4-taskmanager')),
-
     # SCREENSHOTS
-
-    Key([], "Print", lazy.spawn(
-        "scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
+    Key([], "Print", lazy.spawn("scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'")),
     Key([mod2], "Print", lazy.spawn('xfce4-screenshooter')),
     Key([mod2, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
     # MULTIMEDIA KEYS
-
     # INCREASE/DECREASE BRIGHTNESS
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")),
-
     # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
-
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
-
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
-
     # CHANGE FOCUS
     Key([mod], "Up", lazy.layout.up()),
     Key([mod], "Down", lazy.layout.down()),
@@ -207,86 +188,44 @@ keys = [
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "h", lazy.layout.left()),
     Key([mod], "l", lazy.layout.right()),
-
     # RESIZE UP, DOWN, LEFT, RIGHT
-    Key([mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "k",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "Up",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "j",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
-    Key([mod, "control"], "Down",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
+    Key([mod, "control"], "l",lazy.layout.grow_right(),lazy.layout.grow(),lazy.layout.increase_ratio(),lazy.layout.delete(),),
+    Key([mod, "control"], "Right",lazy.layout.grow_right(),lazy.layout.grow(),lazy.layout.increase_ratio(),lazy.layout.delete(),),
+    Key([mod, "control"], "h",lazy.layout.grow_left(),lazy.layout.shrink(),lazy.layout.decrease_ratio(),lazy.layout.add(),),
+    Key([mod, "control"], "Left",lazy.layout.grow_left(),lazy.layout.shrink(),lazy.layout.decrease_ratio(),lazy.layout.add(),),
+    Key([mod, "control"], "k",lazy.layout.grow_up(),lazy.layout.grow(),lazy.layout.decrease_nmaster(),),
+    Key([mod, "control"], "Up",lazy.layout.grow_up(),lazy.layout.grow(),lazy.layout.decrease_nmaster(),),
+    Key([mod, "control"], "j",lazy.layout.grow_down(),lazy.layout.shrink(),lazy.layout.increase_nmaster(),),
+    Key([mod, "control"], "Down",lazy.layout.grow_down(),lazy.layout.shrink(),lazy.layout.increase_nmaster(),),
 
     # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip()),
-
     # FLIP LAYOUT FOR BSP
     Key([mod, "mod1"], "k", lazy.layout.flip_up()),
     Key([mod, "mod1"], "j", lazy.layout.flip_down()),
     Key([mod, "mod1"], "l", lazy.layout.flip_right()),
     Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-
     # MOVE WINDOWS UP OR DOWN BSP LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
-
     # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "Left", lazy.layout.swap_left()),
     Key([mod, "shift"], "Right", lazy.layout.swap_right()),
-
     # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()), ]
+    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
+]
 
 groups = []
 
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8"]
 # nerd fonts https://www.nerdfonts.com/cheat-sheet
 # fontawesome : web - developer - mail - file - pictures - video - music - settings
-group_labels = ["\uf269", "\uf121", "\uf6ed", "\uf07c", "\uf03e", "\uf03d", "\ufc58", "\uf992"]
-
-group_layouts = ["monadtall", "monadwide", "matrix", "bsp", "ratiotile", "max", "zoomy", "monadwide", "monadtall",
-                 "bsp", ]
+group_labels = ["", "", "", "", "", "", "ﱘ", "漣"]
+group_layouts = ["monadtall", "monadwide", "matrix", "bsp", "ratiotile", "max", "zoomy", "monadwide", "monadtall","bsp", ]
 
 for i in range(len(group_names)):
     groups.append(
@@ -298,26 +237,22 @@ for i in range(len(group_names)):
 
 for i in groups:
     keys.extend([
-
         # CHANGE WORKSPACES
         Key([mod], i.name, lazy.group[i.name].toscreen()),
         Key([mod], "Tab", lazy.screen.next_group()),
         Key(["mod1"], "Tab", lazy.screen.next_group()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
-
         # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
-
 
 def init_layout_theme():
     return {
         "margin": 8,
         "border_width": 2,
-        "border_focus": colors[4],
-        "border_normal": colors[1]
+        "border_focus": colors.focus,
+        "border_normal": colors.grey
     }
-
 
 layout_theme = init_layout_theme()
 
@@ -337,139 +272,163 @@ layouts = [
         padding_y=5,
         section_top=10,
         panel_width=320,
-        bg_color=colors[0],
-        active_bg=colors[4],
-        active_fg=colors[3],
-        inactive_bg=colors[1],
-        inactive_fg=colors[6],
+        bg_color=colors.dark,
+        active_bg=colors.focus,
+        active_fg=colors.text,
+        inactive_bg=colors.grey,
+        inactive_fg=colors.inactive,
     ),
 ]
 
-
+# MOUSE CALLBACKS
+def mouse_app_finder(qtile):
+    qtile.cmd_spawn('xfce4-appfinder')
+def mouse_logout(qtile):
+    qtile.cmd_spawn('arcolinux-logout')
+def mouse_calendar(qtile):
+    qtile.cmd_spawn('evolution --component=calendar')
+def mouse_rofi(qtile):
+    qtile.cmd_spawn('rofi -show run')
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
     return dict(
         font="FiraCode Nerd Font",
-        fontsize=14,
-        padding=4,
-        background=colors[0],
-        foreground=colors[2],
+        fontsize=16,
+        padding=8,
+        background=colors.dark,
+        foreground=colors.light,
     )
 
-
 widget_defaults = init_widgets_defaults()
-
 
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
+        widget.TextBox(
+            text='',
+            fontsize=22,
+            padding=16,
+            mouse_callbacks={'Button1':mouse_app_finder,'Button3':mouse_rofi},
+            background=colors.dark,
+            foreground=colors.color3,
+        ),
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors.dark,
+            background=colors.grey
+        ),
         widget.GroupBox(
             fontsize=18,
-            margin_y=4,
-            margin_x=4,
-            padding_y=8,
-            padding_x=8,
+            margin=4,
+            padding=8,
             borderwidth=0,
             disable_drag=True,
             rounded=False,
             highlight_method="text",
-            active=colors[5],
-            inactive=colors[6],
-            this_current_screen_border=colors[4],
-            background=colors[1],
+            active=colors.active,
+            inactive=colors.inactive,
+            this_current_screen_border=colors.focus,
+            background=colors.grey,
+        ),
+        widget.TextBox(
+            text="",
+            fontsize=40,
+            padding=-6,
+            foreground=colors.grey,
+            background=colors.focus
         ),
         widget.CurrentLayout(
-            foreground=colors[4],
-            background=colors[1],
+            foreground=colors.grey,
+            background=colors.focus,
+        ),
+        widget.CurrentLayoutIcon(
+            scale=0.7,
+            padding=0,
+            background=colors.focus,
         ),
         widget.TextBox(
-            text="\uf44a",
+            text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[1],
+            foreground=colors.focus,
         ),
         widget.WindowName(
-            padding=8,
             fontsize=12,
-            foreground=colors[4],
+            foreground=colors.focus,
         ),
         widget.TextBox(
-            text="\uf438",
+            text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[11],
+            foreground=colors.color4,
         ),
         widget.CapsNumLockIndicator(
             font="FiraCode Nerd Font Italic Bold",
             fontsize=10,
-            padding=4,
-            foreground=colors[3],
-            background=colors[11],
+            padding=8,
+            foreground=colors.text,
+            background=colors.color4,
         ),
         widget.TextBox(
-            text="\uf438",
+            text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[9],
-            background=colors[11],
-        ),
-        widget.TextBox(
-            text="\uf64f",
-            padding=4,
-            foreground=colors[3],
-            background=colors[9],
+            foreground=colors.color2,
+            background=colors.color4,
         ),
         widget.Clock(
-            format="%H:%M:%S - %d/%m/%Y",
-            foreground=colors[3],
-            background=colors[9],
+            padding=4,
+            format=" %H:%M:%S - %d/%m/%Y",
+            mouse_callbacks={'Button1':mouse_calendar},
+            foreground=colors.text,
+            background=colors.color2,
         ),
-
         widget.TextBox(
-            text="\uf438",
+            text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[10],
-            background=colors[9],
+            foreground=colors.color3,
+            background=colors.color2,
         ),
         widget.Systray(
             icon_size=26,
             padding=8,
-            margin=2,
-            background=colors[10],
+            background=colors.color3,
         ),
         widget.TextBox(
-            text="\uf438",
+            text="",
             fontsize=40,
             padding=-6,
-            foreground=colors[8],
-            background=colors[10],
+            foreground=colors.color1,
+            background=colors.color3,
         ),
         widget.Battery(
+            format="  {percent:2.0%}  ",
+            padding=0,
             update_interval=10,
-            foreground=colors[3],
-            background=colors[8],
-            format="\uf241 {percent:2.0%} \uf2c8"
+            foreground=colors.text,
+            background=colors.color1,
         ),
         widget.ThermalSensor(
+            padding=0,
             metric=True,
             threshold=40,
             foreground=temperature[1],
             foreground_alert=temperature[2],
-            background=colors[8],
+            background=colors.color1,
         ),
-        widget.QuickExit(
-            font="FiraCode Nerd FOnt Bold",
-            default_text="[ Cerrar ]",
-            countdown_format="[ {} seg. ]",
-            foreground=colors[3],
-            background=colors[8],
-        ),
-
+        widget.TextBox(
+            text='⏻',
+            fontsize=20,
+            mouse_callbacks={'Button1':mouse_logout},
+            foreground=colors.text,
+            background=colors.color1,
+        )
     ]
     return widgets_list
-
 
 widgets_list = init_widgets_list()
 
@@ -499,10 +458,8 @@ screens = init_screens()
 
 # MOUSE CONFIGURATION
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size())
+    Drag([mod], "Button1", lazy.window.set_position_floating(),start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),start=lazy.window.get_size())
 ]
 
 dgroups_key_binder = None
@@ -514,7 +471,7 @@ main = None
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+    subprocess.call([qtile_scripts + '/autostart.sh'])
 
 
 @hook.subscribe.startup
@@ -557,10 +514,9 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'Open File'},
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
-], fullscreen_border_width=0, border_width=1, border_normal=colors[1], border_focus=colors[4])
-auto_fullscreen = True
+], fullscreen_border_width=0, border_width=1, border_normal=colors.grey, border_focus=colors.focus)
 
+auto_fullscreen = True
 # focus_on_window_activation = "smart"
 focus_on_window_activation = "focus"
-
 wmname = "LG3D"
