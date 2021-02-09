@@ -33,9 +33,7 @@ from libqtile.widget import Spacer
 from settings.themes import *
 from settings.path import *
 
-colors = Colors('dracula')
-# print(c.color1)
-# colors = dracula()  # See themes.themes to select your theme
+colors = Colors('dracula')# See themes.themes to select your theme
 temperature = ["#00ff00","#ffff00","#ff0000"]
 
 # mod4 or mod = super key
