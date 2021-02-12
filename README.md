@@ -4,27 +4,17 @@ Configuracion personalizada para QTile en ArcoLinux
 
 ![wall](./wall.jpg)
 
-## Personalizacion de colores
+## Personalizacion de thema
 
-1. Agregar a themes.themes una funcion con los colores a utilizar
-
-```python
-def name():
-  return [
-    "#", #00 - dark
-    "#", #01 - grey
-    "#", #02 - light
-    "#", #03 - text
-    "#", #04 - focus
-    "#", #05 - active
-    "#", #06 - inactive
-    "#", #07 - urgent
-    "#", #08 - color1
-    "#", #09 - color2
-    "#", #10 - color3
-    "#", #11 - color4
-  ]
-```
-
-2. Modificar en el archivo config.py la variable colors asignandole la funcion con los colores deseados.
+1. Agregar a __themes__ un fichero json con el esquema de colores ([Configuracion de colores](themes/README.md))
+2. Modificar el archivo __theme.json__ y substituir el valor de la propiedad **theme**.
 3. Reiniciar Qtile para aplicar los cambios.
+
+
+
+## Instalacion
+
+```bash
+git clone https://github.com/AlbertoVf/qtile ~/.config/qtile
+reboot
+```

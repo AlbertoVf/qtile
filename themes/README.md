@@ -26,3 +26,43 @@
 }
 
 ```
+
+## Vista previa
+### blue
+![blue](./scheme/blue.jpg)
+
+### dark grey
+![dark-grey](./scheme/dark-grey.jpg)
+
+### default
+![default](./scheme/default.jpg)
+
+### dracula
+![dracula](./scheme/dracula.jpg)
+
+### material darker
+![material-darker](./scheme/material-darker.jpg)
+
+### material ocean
+![material-ocean](./scheme/material-ocean.jpg)
+
+### nord wave
+![nord-wave](./scheme/nord-wave.jpg)
+
+### nord
+![nord](./scheme/nord.jpg)
+
+### one dark
+![one-dark](./scheme/one-dark.jpg)
+
+### pico
+![pico](./scheme/pico.jpg)
+
+### pop
+![pop](./scheme/pop.jpg)
+
+### purple
+![purple](./scheme/purple.jpg)
+
+### rosepine
+![rosepine](./scheme/rosepine.jpg)
