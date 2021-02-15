@@ -40,6 +40,9 @@
 ### dracula
 ![dracula](./scheme/dracula.jpg)
 
+### green
+![green](./scheme/green.jpg)
+
 ### material darker
 ![material-darker](./scheme/material-darker.jpg)
 

@@ -100,7 +100,8 @@ def init_widgets_defaults():
         foreground=colors.light,
     )
 
-
+icon_left = ""
+icon_right=""
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
@@ -113,7 +114,7 @@ def init_widgets_list():
             foreground=colors.color3,
         ),
         widget.TextBox(
-            text="",
+            text=icon_left,
             fontsize=40,
             padding=-6,
             foreground=colors.dark,
@@ -133,14 +134,14 @@ def init_widgets_list():
             background=colors.grey,
         ),
         widget.TextBox(
-            text="",
+            text=icon_left,
             fontsize=40,
             padding=-6,
             foreground=colors.grey,
             background=colors.focus,
         ),
         widget.CurrentLayout(
-            foreground=colors.grey,
+            foreground=colors.light,
             background=colors.focus,
         ),
         widget.CurrentLayoutIcon(
@@ -149,7 +150,7 @@ def init_widgets_list():
             background=colors.focus,
         ),
         widget.TextBox(
-            text="",
+            text=icon_left,
             fontsize=40,
             padding=-6,
             foreground=colors.focus,
@@ -159,7 +160,7 @@ def init_widgets_list():
             foreground=colors.focus,
         ),
         widget.TextBox(
-            text="",
+            text=icon_right,
             fontsize=40,
             padding=-6,
             foreground=colors.color4,
@@ -171,11 +172,12 @@ def init_widgets_list():
             foreground=colors.text,
             background=colors.color4,
         ),
+
         widget.TextBox(
-            text="",
+            text=icon_right,
             fontsize=40,
             padding=-6,
-            foreground=colors.color2,
+            foreground=colors.color3,
             background=colors.color4,
         ),
         widget.Clock(
@@ -183,27 +185,29 @@ def init_widgets_list():
             format=" %H:%M:%S - %d/%m/%Y",
             mouse_callbacks={"Button1": mouse_calendar},
             foreground=colors.text,
-            background=colors.color2,
+            background=colors.color3,
         ),
+
         widget.TextBox(
-            text="",
+            text=icon_right,
             fontsize=40,
             padding=-6,
-            foreground=colors.color3,
-            background=colors.color2,
+            foreground=colors.color2,
+            background=colors.color3,
         ),
         widget.Systray(
             icon_size=22,
             margin=4,
             padding=8,
-            background=colors.color3,
+            background=colors.color2,
         ),
+
         widget.TextBox(
-            text="",
+            text=icon_right,
             fontsize=40,
             padding=-6,
             foreground=colors.color1,
-            background=colors.color3,
+            background=colors.color2,
         ),
         widget.Battery(
             format="  {percent:2.0%}",
@@ -492,30 +496,16 @@ keys = [
 
 #
 # GROUPS
-#
-groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8"]
 # nerd fonts https://www.nerdfonts.com/cheat-sheet
-# fontawesome : web - developer - mail - file - pictures - video - music - settings
-group_labels = ["", "", "", "", "", "", "ﱘ", "漣"]
-group_layouts = [
-    "monadtall",
-    "monadwide",
-    "matrix",
-    "bsp",
-    "ratiotile",
-    "max",
-    "zoomy",
-    "monadwide",
-    "monadtall",
-    "bsp",
-]
+groups = [] # web - developer - terminal - mail - settings - files - music - video - pictures - games
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"]
+#group_labels=["\uf8a4","\uf8a7","\uf8aa","\uf8ad","\uf8b0","\uf8b3","\uf8b6","\uf8b9","\uf8bc",]
+group_labels = ["", "","ﲵ", "", "漣", "", "ﱘ", "", "", ""]
 
 for i in range(len(group_names)):
     groups.append(
         Group(
             name=group_names[i],
-            layout=group_layouts[i].lower(),
             label=group_labels[i],
         )
     )

@@ -1,19 +1,18 @@
 {
-    "blue":[
+    "blue": [
         {
-        	"dark":"#272727",
-	        "grey":"#393939",
-	        "light":"#ffffff",
-	        "text":"#272727",
-	        "focus":"#2f6b8c",
-	        "active":"#3880a8",
-	        "inactive":"#4394c2",
-	        "urgent":"#4c4c4c",
-	        "color1":"#3880a8",
-	        "color2":"#2f6b8c",
-	        "color3":"#4998c4",
-	        "color4":"#61a6cd"
+            "dark": "#292d3e",
+            "grey": "#434758",
+            "light": "#ffffff",
+            "text": "#0a0a0a",
+            "focus": "#abbee4",
+            "active": "#416abd",
+            "inactive": "#273b63",
+            "urgent": "#304c85",
+            "color1": "#273b63",
+            "color2": "#304c85",
+            "color3": "#416abd",
+            "color4": "#abbee4"
         }
     ]
 }
-

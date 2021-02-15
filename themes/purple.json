@@ -2,17 +2,17 @@
     "purple": [
         {
             "dark": "#292d3e",
-            "grey": "#434758",
+            "grey": "#cdcdcd",
             "light": "#ffffff",
             "text": "#292d3e",
-            "focus": "#7b3ec2",
-            "active": "#5e3ebe",
-            "inactive": "#423ebb",
-            "urgent": "#3e53b7",
-            "color1": "#5e3ebe",
-            "color2": "#7b3ec2",
-            "color3": "#3e6cb4",
-            "color4": "#3d83b0"
+            "focus": "#b5458b",
+            "active": "#b455c9",
+            "inactive": "#af82d5",
+            "urgent": "#7955c9",
+            "color1": "#9e67cb",
+            "color2": "#7955c9",
+            "color3": "#b455c9",
+            "color4": "#b5458b"
         }
     ]
 }
