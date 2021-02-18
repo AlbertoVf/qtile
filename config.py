@@ -84,10 +84,7 @@ def start_always():
 
 @hook.subscribe.client_new
 def set_floating(window):
-    if (
-        window.window.get_wm_transient_for()
-        or window.window.get_wm_type() in floating_types
-    ):
+    if (window.window.get_wm_transient_for() or window.window.get_wm_type() in floating_types):
         window.floating = True
 
 
@@ -100,8 +97,11 @@ def init_widgets_defaults():
         foreground=colors.light,
     )
 
+
 icon_left = ""
-icon_right=""
+icon_right = ""
+
+
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
@@ -109,7 +109,8 @@ def init_widgets_list():
             text="",
             fontsize=22,
             padding=16,
-            mouse_callbacks={"Button3": mouse_app_finder, "Button1": mouse_rofi},
+            mouse_callbacks={"Button3": mouse_app_finder,
+                             "Button1": mouse_rofi},
             background=colors.dark,
             foreground=colors.color3,
         ),
@@ -338,7 +339,8 @@ keys = [
     Key(["mod1", "control"], "c", lazy.spawn("catfish")),
     Key(["mod1", "control"], "e", lazy.spawn("arcolinux-tweak-tool")),
     Key(["mod1", "control"], "f", lazy.spawn("firefox")),
-    Key(["mod1", "control"], "g", lazy.spawn("chromium -no-default-browser-check")),
+    Key(["mod1", "control"], "g", lazy.spawn(
+        "chromium -no-default-browser-check")),
     # Key(["mod1", "control"], "h", lazy.spawn('')),
     Key(["mod1", "control"], "i", lazy.spawn("nitrogen")),
     # Key(["mod1", "control"], "j", lazy.spawn('')),
@@ -346,7 +348,8 @@ keys = [
     # Key(["mod1", "control"], "l", lazy.spawn('')),
     Key(["mod1", "control"], "m", lazy.spawn("xfce4-settings-manager")),
     # Key(["mod1", "control"], "n", lazy.spawn('')),
-    Key(["mod1", "control"], "o", lazy.spawn(qtile_scripts + "/picom-toggle.sh")),
+    Key(["mod1", "control"], "o", lazy.spawn(
+        qtile_scripts + "/picom-toggle.sh")),
     Key(["mod1", "control"], "p", lazy.spawn("pamac-manager")),
     # Key(["mod1", "control"], "q", lazy.spawn('')),
     Key(["mod1", "control"], "r", lazy.spawn("rofi-theme-selector")),
@@ -372,20 +375,21 @@ keys = [
     Key(["mod1"], "F2", lazy.spawn("gmrun")),
     Key(["mod1"], "F3", lazy.spawn("xfce4-appfinder")),
     # VARIETY KEYS WITH PYWAL
-    Key(["mod1", "shift"], "f", lazy.spawn(qtile_scripts + "/set-pywal.sh -f")),
-    Key(["mod1", "shift"], "p", lazy.spawn(qtile_scripts + "/set-pywal.sh -p")),
-    Key(["mod1", "shift"], "n", lazy.spawn(qtile_scripts + "/set-pywal.sh -n")),
-    Key(["mod1", "shift"], "u", lazy.spawn(qtile_scripts + "/set-pywal.sh -u")),
+    Key(["mod1", "shift"], "f", lazy.spawn(
+        qtile_scripts + "/set-pywal.sh -f")),
+    Key(["mod1", "shift"], "p", lazy.spawn(
+        qtile_scripts + "/set-pywal.sh -p")),
+    Key(["mod1", "shift"], "n", lazy.spawn(
+        qtile_scripts + "/set-pywal.sh -n")),
+    Key(["mod1", "shift"], "u", lazy.spawn(
+        qtile_scripts + "/set-pywal.sh -u")),
     # CONTROL + SHIFT KEYS
     Key([mod2, "shift"], "Escape", lazy.spawn("xfce4-taskmanager")),
     # SCREENSHOTS
-    Key(
-        [],
-        "Print",
+    Key([], "Print",
         lazy.spawn(
-            "scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'"
+        "scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'"),
         ),
-    ),
     Key([mod2], "Print", lazy.spawn("xfce4-screenshooter")),
     Key([mod2, "shift"], "Print", lazy.spawn("gnome-screenshot -i")),
     # MULTIMEDIA KEYS
@@ -400,9 +404,14 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
+
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
+    # FLIP LAYOUT FOR MONADTALL/MONADWIDE
+    Key([mod, "shift"], "f", lazy.layout.flip()),
+    # TOGGLE FLOATING LAYOUT
+    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
     # CHANGE FOCUS
     Key([mod], "Up", lazy.layout.up()),
     Key([mod], "Down", lazy.layout.down()),
@@ -414,67 +423,58 @@ keys = [
     Key([mod], "l", lazy.layout.right()),
     # RESIZE UP, DOWN, LEFT, RIGHT
     Key(
-        [mod, "control"],
-        "l",
+        [mod, "control"], "l",
         lazy.layout.grow_right(),
         lazy.layout.grow(),
         lazy.layout.increase_ratio(),
         lazy.layout.delete(),
     ),
     Key(
-        [mod, "control"],
-        "Right",
+        [mod, "control"], "Right",
         lazy.layout.grow_right(),
         lazy.layout.grow(),
         lazy.layout.increase_ratio(),
         lazy.layout.delete(),
     ),
     Key(
-        [mod, "control"],
-        "h",
+        [mod, "control"], "h",
         lazy.layout.grow_left(),
         lazy.layout.shrink(),
         lazy.layout.decrease_ratio(),
         lazy.layout.add(),
     ),
     Key(
-        [mod, "control"],
-        "Left",
+        [mod, "control"], "Left",
         lazy.layout.grow_left(),
         lazy.layout.shrink(),
         lazy.layout.decrease_ratio(),
         lazy.layout.add(),
     ),
     Key(
-        [mod, "control"],
-        "k",
+        [mod, "control"], "k",
         lazy.layout.grow_up(),
         lazy.layout.grow(),
         lazy.layout.decrease_nmaster(),
     ),
     Key(
-        [mod, "control"],
-        "Up",
+        [mod, "control"], "Up",
         lazy.layout.grow_up(),
         lazy.layout.grow(),
         lazy.layout.decrease_nmaster(),
     ),
     Key(
-        [mod, "control"],
-        "j",
+        [mod, "control"], "j",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
         lazy.layout.increase_nmaster(),
     ),
     Key(
-        [mod, "control"],
-        "Down",
+        [mod, "control"], "Down",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
         lazy.layout.increase_nmaster(),
     ),
-    # FLIP LAYOUT FOR MONADTALL/MONADWIDE
-    Key([mod, "shift"], "f", lazy.layout.flip()),
+
     # FLIP LAYOUT FOR BSP
     Key([mod, "mod1"], "k", lazy.layout.flip_up()),
     Key([mod, "mod1"], "j", lazy.layout.flip_down()),
@@ -483,25 +483,36 @@ keys = [
     # MOVE WINDOWS UP OR DOWN BSP LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, "shift"], "h",
+        lazy.layout.shuffle_left(),
+        lazy.layout.swap_left()
+        ),
+    Key([mod, "shift"], "l",
+        lazy.layout.shuffle_right(),
+        lazy.layout.swap_right()
+        ),
     # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Left", lazy.layout.swap_left()),
-    Key([mod, "shift"], "Right", lazy.layout.swap_right()),
-    # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
+    Key([mod, "shift"], "Left",
+        lazy.layout.swap_left(),
+        lazy.layout.shuffle_left()
+        ),
+    Key([mod, "shift"], "Right",
+        lazy.layout.swap_right(),
+        lazy.layout.shuffle_right()
+        ),
+
 ]
 
 #
 # GROUPS
 # nerd fonts https://www.nerdfonts.com/cheat-sheet
-groups = [] # web - developer - terminal - mail - settings - files - music - video - pictures - games
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"]
-#group_labels=["\uf8a4","\uf8a7","\uf8aa","\uf8ad","\uf8b0","\uf8b3","\uf8b6","\uf8b9","\uf8bc",]
-group_labels = ["", "","ﲵ", "", "漣", "", "ﱘ", "", "", ""]
-
+groups = []  # web - developer - terminal - mail - settings - files - music - video - pictures - games
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+# group_labels = ["\uf8a4", "\uf8a7", "\uf8aa", "\uf8ad","\uf8b0", "\uf8b3", "\uf8b6", "\uf8b9", "\uf8bc", "\uf8a1"]
+group_labels = ["", "", "ﲵ", "", "漣", "", "ﱘ", "", "", ""]
+# group_labels = ["WWW", "DEV", "TER", "MSG","SET", "DOC", "MUS", "VID", "IMG", "GAM"]
 for i in range(len(group_names)):
     groups.append(
         Group(
