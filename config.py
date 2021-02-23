@@ -42,6 +42,9 @@ mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 
+editor = "code-oss"
+terminal = "tilix"
+fileManager = "nemo"
 
 dgroups_key_binder = None
 dgroups_app_rules = []
@@ -282,9 +285,9 @@ keys = [
     # SUPER + FUNCTION KEYS
     Key([mod], "a", lazy.spawn("android-studio")),
     Key([mod], "b", lazy.spawn("bitwarden-desktop")),
-    Key([mod], "c", lazy.spawn("code-oss")),
+    # Key([mod], "c", lazy.spawn("")),
     Key([mod], "d", lazy.spawn("drawio")),
-    Key([mod], "e", lazy.spawn("evolution")),
+    Key([mod], "e", lazy.spawn(editor)),
     Key([mod], "f", lazy.spawn("firefox")),
     Key([mod], "g", lazy.spawn("gparted")),
     # Key([mod], "h", lazy.spawn('')),
@@ -310,23 +313,23 @@ keys = [
     # Key([mod], "f", lazy.window.toggle_fullscreen()),
     # Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "Escape", lazy.spawn("xkill")),
-    Key([mod], "Return", lazy.spawn("termite")),
+    Key([mod], "Return", lazy.spawn(terminal)),
     # Key([mod], "KP_Enter", lazy.spawn('termite')),
     Key([mod], "KP_Enter", lazy.spawn("gnome-calculator")),
     Key([mod], "F1", lazy.spawn("firefox")),
-    Key([mod], "F2", lazy.spawn("code-oss")),
+    Key([mod], "F2", lazy.spawn(editor)),
     Key([mod], "F3", lazy.spawn("inkscape")),
     Key([mod], "F4", lazy.spawn("gimp")),
     Key([mod], "F5", lazy.spawn("meld")),
     Key([mod], "F6", lazy.spawn("vlc --video-on-top")),
     Key([mod], "F7", lazy.spawn("virtualbox")),
-    Key([mod], "F8", lazy.spawn("thunar")),
+    Key([mod], "F8", lazy.spawn(fileManager)),
     Key([mod], "F9", lazy.spawn("evolution")),
     Key([mod], "F10", lazy.spawn("spotify")),
     Key([mod], "F11", lazy.spawn("rofi -show run -fullscreen")),
     Key([mod], "F12", lazy.spawn("rofi -show run")),
     # SUPER + SHIFT KEYS
-    Key([mod, "shift"], "Return", lazy.spawn("thunar")),
+    Key([mod, "shift"], "Return", lazy.spawn(fileManager)),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
@@ -335,7 +338,7 @@ keys = [
     Key(["mod1", "control"], "Next", lazy.spawn("conky-rotate -n")),
     Key(["mod1", "control"], "Prior", lazy.spawn("conky-rotate -p")),
     Key(["mod1", "control"], "a", lazy.spawn("xfce4-appfinder")),
-    Key(["mod1", "control"], "b", lazy.spawn("polo")),
+    Key(["mod1", "control"], "b", lazy.spawn(fileManager)),
     Key(["mod1", "control"], "c", lazy.spawn("catfish")),
     Key(["mod1", "control"], "e", lazy.spawn("arcolinux-tweak-tool")),
     Key(["mod1", "control"], "f", lazy.spawn("firefox")),
@@ -354,14 +357,14 @@ keys = [
     # Key(["mod1", "control"], "q", lazy.spawn('')),
     Key(["mod1", "control"], "r", lazy.spawn("rofi-theme-selector")),
     Key(["mod1", "control"], "s", lazy.spawn("spotify")),
-    Key(["mod1", "control"], "t", lazy.spawn("termite")),
+    Key(["mod1", "control"], "t", lazy.spawn(terminal)),
     Key(["mod1", "control"], "u", lazy.spawn("pavucontrol")),
     Key(["mod1", "control"], "v", lazy.spawn("vivaldi-stable")),
     Key(["mod1", "control"], "w", lazy.spawn("arcolinux-welcome-app")),
     Key(["mod1", "control"], "x", lazy.spawn("arcolinux-logout")),
     # Key(["mod1", "control"], "y", lazy.spawn('')),
     # Key(["mod1", "control"], "z", lazy.spawn('')),
-    Key(["mod1", "control"], "Return", lazy.spawn("termite")),
+    Key(["mod1", "control"], "Return", lazy.spawn(terminal)),
     # ALT + ... KEYS
     Key(["mod1"], "f", lazy.spawn("variety -f")),
     Key(["mod1"], "h", lazy.spawn("urxvt -e htop")),

@@ -1,0 +1,18 @@
+{
+    "github": [
+        {
+            "dark": "#24292e",
+            "grey": "#f6f8fa",
+            "light": "#f1f8ff",
+            "text": "#f6f8fa",
+            "focus": "#0366d6",
+            "active": "#3fb950",
+            "inactive": "#f8e3a1",
+            "urgent": "#da3633",
+            "color1": "#da3633",
+            "color2": "#f0883e",
+            "color3": "#8957e5",
+            "color4": "#0366d6"
+        }
+    ]
+}

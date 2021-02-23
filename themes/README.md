@@ -40,6 +40,8 @@
 ### dracula
 ![dracula](./scheme/dracula.jpg)
 
+### github
+![github](scheme/github.jpg)
 ### green
 ![green](./scheme/green.jpg)
 
