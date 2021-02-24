@@ -26,7 +26,7 @@ import socket
 import subprocess
 from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import bar, hook, layout, qtile, widget
 from libqtile.widget import Spacer
 
 from settings.themes import *
@@ -44,7 +44,8 @@ mod2 = "control"
 
 editor = "code-oss"
 terminal = "tilix"
-fileManager = "nemo"
+fileManager = "polo"
+browser = "vivaldi-stable"
 
 dgroups_key_binder = None
 dgroups_app_rules = []
@@ -112,8 +113,10 @@ def init_widgets_list():
             text="",
             fontsize=22,
             padding=16,
-            mouse_callbacks={"Button3": mouse_app_finder,
-                             "Button1": mouse_rofi},
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn('rofi -show run'),
+                "Button3": lambda: qtile.cmd_spawn('xfce4-appfinder'),
+            },
             background=colors.dark,
             foreground=colors.color3,
         ),
@@ -187,7 +190,9 @@ def init_widgets_list():
         widget.Clock(
             padding=4,
             format=" %H:%M:%S - %d/%m/%Y",
-            mouse_callbacks={"Button1": mouse_calendar},
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn('evolution --component=calendar')
+            },
             foreground=colors.text,
             background=colors.color3,
         ),
@@ -215,7 +220,9 @@ def init_widgets_list():
         ),
         widget.Battery(
             format="  {percent:2.0%}",
-            mouse_callbacks={"Button1": mouse_power_manager},
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn('xfce4-power-manager-settings')
+            },
             padding=0,
             update_interval=10,
             foreground=colors.text,
@@ -233,7 +240,9 @@ def init_widgets_list():
         widget.TextBox(
             text="⏻",
             fontsize=20,
-            mouse_callbacks={"Button1": mouse_logout},
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn('arcolinux-logout')
+            },
             foreground=colors.text,
             background=colors.color1,
         ),
@@ -316,7 +325,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal)),
     # Key([mod], "KP_Enter", lazy.spawn('termite')),
     Key([mod], "KP_Enter", lazy.spawn("gnome-calculator")),
-    Key([mod], "F1", lazy.spawn("firefox")),
+    Key([mod], "F1", lazy.spawn(browser)),
     Key([mod], "F2", lazy.spawn(editor)),
     Key([mod], "F3", lazy.spawn("inkscape")),
     Key([mod], "F4", lazy.spawn("gimp")),
