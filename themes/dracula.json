@@ -5,12 +5,12 @@
             "grey": "#434758",
             "light": "#ffffff",
             "text": "#292d3e",
-            "focus": "#A77AC4",
-            "active": "#ff5555",
+            "focus": "#BD93F9",
+            "active": "#FF5454",
             "inactive": "#f1ffff",
-            "urgent": "#4c566a",
-            "color1": "#ff5555",
-            "color2": "#A77AC4",
+            "urgent": "#5AF78D",
+            "color1": "#FF5454",
+            "color2": "#BD93F9",
             "color3": "#7197E7",
             "color4": "#ffb86c"
         }
