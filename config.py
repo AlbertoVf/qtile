@@ -31,21 +31,18 @@ from libqtile.widget import Spacer
 
 from settings.themes import *
 from settings.path import *
-from settings.callbacks import *
-
 
 colors = Colors()
 temperature = ["#00ff00", "#ffff00", "#ff0000"]
 
-# mod4 or mod = super key
-mod = "mod4"
+mod = "mod4"  # mod4 or mod = super key
 mod1 = "alt"
 mod2 = "control"
 
-editor = "code-oss"
-terminal = "tilix"
-fileManager = "polo"
-browser = "vivaldi-stable"
+editor = "code-oss"         # Code editor
+terminal = "tilix"          # Terminal
+fileManager = "polo"        # File Manager
+browser = "vivaldi-stable"  # Web Browser
 
 dgroups_key_binder = None
 dgroups_app_rules = []
@@ -57,7 +54,8 @@ cursor_warp = False
 auto_fullscreen = True
 # focus_on_window_activation = "smart"
 focus_on_window_activation = "focus"
-wmname = "LG3D"
+# wmname = "LG3D"
+wmname = "Qtile"
 
 
 @lazy.function
@@ -95,7 +93,7 @@ def set_floating(window):
 def init_widgets_defaults():
     return dict(
         font="FiraCode Nerd Font",
-        fontsize=16,
+        fontsize=14,
         padding=8,
         background=colors.dark,
         foreground=colors.light,
@@ -137,8 +135,12 @@ def init_widgets_list():
             highlight_method="text",
             active=colors.active,
             inactive=colors.inactive,
+            highlight_color=colors.grey,
             this_current_screen_border=colors.focus,
             background=colors.grey,
+            this_screen_border=colors.grey,
+            other_current_screen_border=colors.active,
+            other_screen_border=colors.inactive,
         ),
         widget.TextBox(
             text=icon_left,
@@ -175,7 +177,6 @@ def init_widgets_list():
         widget.CapsNumLockIndicator(
             font="FiraCode Nerd Font Italic Bold",
             fontsize=10,
-            padding=8,
             foreground=colors.text,
             background=colors.color4,
         ),
@@ -188,15 +189,13 @@ def init_widgets_list():
             background=colors.color4,
         ),
         widget.Clock(
-            padding=4,
-            format=" %H:%M:%S - %d/%m/%Y",
+            format=" %H:%M:%S %d/%m/%Y",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn('evolution --component=calendar')
             },
             foreground=colors.text,
             background=colors.color3,
         ),
-
         widget.TextBox(
             text=icon_right,
             fontsize=40,
@@ -210,13 +209,45 @@ def init_widgets_list():
             padding=8,
             background=colors.color2,
         ),
-
         widget.TextBox(
             text=icon_right,
             fontsize=40,
             padding=-6,
             foreground=colors.color1,
             background=colors.color2,
+        ),
+        widget.Net(
+            format='{down}\uf545 {up}\uf55d',
+            fontsize=14,
+            margin=4,
+            padding=8,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn('nm-connection-editor'),
+            },
+            foreground=colors.text,
+            background=colors.color1,
+        ),
+        widget.TextBox(
+            text="",
+            fontsize=22,
+            margin=4,
+            padding=8,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')
+            },
+            foreground=colors.text,
+            background=colors.color1,
+        ),
+        widget.TextBox(
+            text="",
+            fontsize=22,
+            margin=4,
+            padding=8,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')
+            },
+            foreground=colors.text,
+            background=colors.color1,
         ),
         widget.Battery(
             format="  {percent:2.0%}",
@@ -235,15 +266,6 @@ def init_widgets_list():
             fmt=" {}",
             foreground=temperature[1],
             foreground_alert=temperature[2],
-            background=colors.color1,
-        ),
-        widget.TextBox(
-            text="⏻",
-            fontsize=20,
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('arcolinux-logout')
-            },
-            foreground=colors.text,
             background=colors.color1,
         ),
     ]
@@ -278,13 +300,14 @@ def init_layout_theme():
 
 mouse = [
     Drag(
-        [mod],
-        "Button1",
+        [mod], "Button1",
         lazy.window.set_position_floating(),
         start=lazy.window.get_position(),
     ),
     Drag(
-        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+        [mod], "Button3",
+        lazy.window.set_size_floating(),
+        start=lazy.window.get_size()
     ),
 ]
 
@@ -417,6 +440,21 @@ keys = [
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
 
+
+    # Switch focus of monitors
+    Key([mod], "period",
+        lazy.next_screen(),
+        ),
+    Key([mod], "comma",
+        lazy.prev_screen(),
+        ),
+    # Switch focus to specific monitor
+    Key([mod, "shift"], "period",
+        lazy.to_screen(0),
+        ),
+    Key([mod, "shift"], "comma",
+        lazy.to_screen(1),
+        ),
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
@@ -467,24 +505,28 @@ keys = [
         lazy.layout.grow_up(),
         lazy.layout.grow(),
         lazy.layout.decrease_nmaster(),
+        lazy.layout.section_up(),
     ),
     Key(
         [mod, "control"], "Up",
         lazy.layout.grow_up(),
         lazy.layout.grow(),
         lazy.layout.decrease_nmaster(),
+        lazy.layout.section_up(),
     ),
     Key(
         [mod, "control"], "j",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
         lazy.layout.increase_nmaster(),
+        lazy.layout.section_down(),
     ),
     Key(
         [mod, "control"], "Down",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
         lazy.layout.increase_nmaster(),
+        lazy.layout.section_down(),
     ),
 
     # FLIP LAYOUT FOR BSP
