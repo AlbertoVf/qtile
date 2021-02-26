@@ -29,33 +29,21 @@ from libqtile.command import lazy
 from libqtile import bar, hook, layout, qtile, widget
 from libqtile.widget import Spacer
 
+from settings.shortcut import *
 from settings.themes import *
 from settings.path import *
+from settings.widgets import *
 
 colors = Colors()
-temperature = ["#00ff00", "#ffff00", "#ff0000"]
-
-mod = "mod4"  # mod4 or mod = super key
-mod1 = "alt"
-mod2 = "control"
-
-editor = "code-oss"         # Code editor
-terminal = "tilix"          # Terminal
-fileManager = "polo"        # File Manager
-browser = "vivaldi-stable"  # Web Browser
-
 dgroups_key_binder = None
 dgroups_app_rules = []
-
 main = None
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
 auto_fullscreen = True
-# focus_on_window_activation = "smart"
-focus_on_window_activation = "focus"
-# wmname = "LG3D"
-wmname = "Qtile"
+focus_on_window_activation = "focus"  # "smart"
+wmname = "Qtile"  # "LG3D"
 
 
 @lazy.function
@@ -92,184 +80,12 @@ def set_floating(window):
 
 def init_widgets_defaults():
     return dict(
-        font="FiraCode Nerd Font",
+        font=f,
         fontsize=14,
-        padding=8,
+        padding=4,
         background=colors.dark,
         foreground=colors.light,
     )
-
-
-icon_left = ""
-icon_right = ""
-
-
-def init_widgets_list():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
-    widgets_list = [
-        widget.TextBox(
-            text="",
-            fontsize=22,
-            padding=16,
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('rofi -show run'),
-                "Button3": lambda: qtile.cmd_spawn('xfce4-appfinder'),
-            },
-            background=colors.dark,
-            foreground=colors.color3,
-        ),
-        widget.TextBox(
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.dark,
-            background=colors.grey,
-        ),
-        widget.GroupBox(
-            fontsize=18,
-            margin=4,
-            padding=8,
-            borderwidth=0,
-            disable_drag=True,
-            rounded=False,
-            highlight_method="text",
-            active=colors.active,
-            inactive=colors.inactive,
-            highlight_color=colors.grey,
-            this_current_screen_border=colors.focus,
-            background=colors.grey,
-            this_screen_border=colors.grey,
-            other_current_screen_border=colors.active,
-            other_screen_border=colors.inactive,
-        ),
-        widget.TextBox(
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.grey,
-            background=colors.focus,
-        ),
-        widget.CurrentLayout(
-            foreground=colors.light,
-            background=colors.focus,
-        ),
-        widget.CurrentLayoutIcon(
-            scale=0.7,
-            padding=0,
-            background=colors.focus,
-        ),
-        widget.TextBox(
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.focus,
-        ),
-        widget.WindowName(
-            fontsize=12,
-            foreground=colors.focus,
-        ),
-        widget.TextBox(
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color4,
-        ),
-        widget.CapsNumLockIndicator(
-            font="FiraCode Nerd Font Italic Bold",
-            fontsize=10,
-            foreground=colors.text,
-            background=colors.color4,
-        ),
-
-        widget.TextBox(
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color3,
-            background=colors.color4,
-        ),
-        widget.Clock(
-            format=" %H:%M:%S %d/%m/%Y",
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('evolution --component=calendar')
-            },
-            foreground=colors.text,
-            background=colors.color3,
-        ),
-        widget.TextBox(
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color2,
-            background=colors.color3,
-        ),
-        widget.Systray(
-            icon_size=22,
-            margin=4,
-            padding=8,
-            background=colors.color2,
-        ),
-        widget.TextBox(
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color1,
-            background=colors.color2,
-        ),
-        widget.Net(
-            format='{down}\uf545 {up}\uf55d',
-            fontsize=14,
-            margin=4,
-            padding=8,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn('nm-connection-editor'),
-            },
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.TextBox(
-            text="",
-            fontsize=22,
-            margin=4,
-            padding=8,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')
-            },
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.TextBox(
-            text="",
-            fontsize=22,
-            margin=4,
-            padding=8,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')
-            },
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.Battery(
-            format="  {percent:2.0%}",
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('xfce4-power-manager-settings')
-            },
-            padding=0,
-            update_interval=10,
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.ThermalSensor(
-            padding=8,
-            metric=True,
-            threshold=40,
-            fmt=" {}",
-            foreground=temperature[1],
-            foreground_alert=temperature[2],
-            background=colors.color1,
-        ),
-    ]
-    return widgets_list
 
 
 def init_widgets_screen1():
@@ -300,7 +116,7 @@ def init_layout_theme():
 
 mouse = [
     Drag(
-        [mod], "Button1",
+        [mod], "Button2",
         lazy.window.set_position_floating(),
         start=lazy.window.get_position(),
     ),
@@ -309,8 +125,11 @@ mouse = [
         lazy.window.set_size_floating(),
         start=lazy.window.get_size()
     ),
+    Click(
+        [mod], "Button1",
+        lazy.window.bring_to_front()
+    )
 ]
-
 keys = [
     # FUNCTION KEYS
     Key([], "F12", lazy.spawn("xfce4-terminal --drop-down")),
@@ -440,21 +259,24 @@ keys = [
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
 
-
     # Switch focus of monitors
-    Key([mod], "period",
+    Key(
+        [mod], "period",
         lazy.next_screen(),
-        ),
-    Key([mod], "comma",
+    ),
+    Key(
+        [mod], "comma",
         lazy.prev_screen(),
-        ),
+    ),
     # Switch focus to specific monitor
-    Key([mod, "shift"], "period",
+    Key(
+        [mod, "shift"], "period",
         lazy.to_screen(0),
-        ),
-    Key([mod, "shift"], "comma",
+    ),
+    Key(
+        [mod, "shift"], "comma",
         lazy.to_screen(1),
-        ),
+    ),
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
@@ -528,7 +350,6 @@ keys = [
         lazy.layout.increase_nmaster(),
         lazy.layout.section_down(),
     ),
-
     # FLIP LAYOUT FOR BSP
     Key([mod, "mod1"], "k", lazy.layout.flip_up()),
     Key([mod, "mod1"], "j", lazy.layout.flip_down()),
@@ -537,26 +358,29 @@ keys = [
     # MOVE WINDOWS UP OR DOWN BSP LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h",
+    Key(
+        [mod, "shift"], "h",
         lazy.layout.shuffle_left(),
         lazy.layout.swap_left()
-        ),
-    Key([mod, "shift"], "l",
+    ),
+    Key(
+        [mod, "shift"], "l",
         lazy.layout.shuffle_right(),
         lazy.layout.swap_right()
-        ),
+    ),
     # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Left",
+    Key(
+        [mod, "shift"], "Left",
         lazy.layout.swap_left(),
         lazy.layout.shuffle_left()
-        ),
-    Key([mod, "shift"], "Right",
+    ),
+    Key(
+        [mod, "shift"], "Right",
         lazy.layout.swap_right(),
         lazy.layout.shuffle_right()
-        ),
-
+    ),
 ]
 
 #
@@ -574,7 +398,6 @@ for i in range(len(group_names)):
             label=group_labels[i],
         )
     )
-
 for i in groups:
     keys.extend(
         [
@@ -588,7 +411,6 @@ for i in groups:
         ]
     )
 
-
 #
 # WIDGETS FOR THE BAR
 #
@@ -596,9 +418,7 @@ widget_defaults = init_widgets_defaults()
 widgets_list = init_widgets_list()
 widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
-
 screens = init_screens()
-
 
 #
 # LAYOUTS
@@ -628,7 +448,6 @@ layouts = [
     ),
 ]
 floating_types = ["notification", "toolbar", "splash", "dialog"]
-
 floating_layout = layout.Floating(
     float_rules=[
         {"wmclass": "Arcolinux-welcome-app.py"},
