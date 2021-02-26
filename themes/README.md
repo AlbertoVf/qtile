@@ -3,9 +3,7 @@
 1. Crear un fichero __json__ con el nombre del tema.
 2. Copiar la siguiente estructura y añadir los valores.
 
-
 ```json
-
 {
   "nombre_tema":[
     {
@@ -24,10 +22,10 @@
     }
   ]
 }
-
 ```
 
 ## Vista previa
+
 ### blue
 ![blue](./scheme/blue.jpg)
 
@@ -42,11 +40,9 @@
 
 ### github
 ![github](scheme/github.jpg)
+
 ### green
 ![green](./scheme/green.jpg)
-
-### material darker
-![material-darker](./scheme/material-darker.jpg)
 
 ### material ocean
 ![material-ocean](./scheme/material-ocean.jpg)
