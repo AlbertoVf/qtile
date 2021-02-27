@@ -30,11 +30,10 @@ from libqtile import bar, hook, layout, qtile, widget
 from libqtile.widget import Spacer
 
 from settings.shortcut import *
-from settings.themes import *
 from settings.path import *
 from settings.widgets import *
+from settings.groups import *
 
-colors = Colors()
 dgroups_key_binder = None
 dgroups_app_rules = []
 main = None
@@ -80,7 +79,6 @@ def set_floating(window):
 
 def init_widgets_defaults():
     return dict(
-        font=f,
         fontsize=14,
         padding=4,
         background=colors.dark,
@@ -88,20 +86,10 @@ def init_widgets_defaults():
     )
 
 
-def init_widgets_screen1():
-    widgets_screen1 = init_widgets_list()
-    return widgets_screen1
-
-
-def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list()
-    return widgets_screen2
-
-
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=24)),
+        Screen(top=bar.Bar(widgets=init_widgets_list(), size=24)),
+        Screen(top=bar.Bar(widgets=init_widgets_list(), size=24)),
     ]
 
 
@@ -385,19 +373,16 @@ keys = [
 
 #
 # GROUPS
-# nerd fonts https://www.nerdfonts.com/cheat-sheet
-groups = []  # web - developer - terminal - mail - settings - files - music - video - pictures - games
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-# group_labels = ["\uf8a4", "\uf8a7", "\uf8aa", "\uf8ad","\uf8b0", "\uf8b3", "\uf8b6", "\uf8b9", "\uf8bc", "\uf8a1"]
-group_labels = ["", "", "ﲵ", "", "漣", "", "ﱘ", "", "", ""]
-# group_labels = ["WWW", "DEV", "TER", "MSG","SET", "DOC", "MUS", "VID", "IMG", "GAM"]
-for i in range(len(group_names)):
-    groups.append(
-        Group(
-            name=group_names[i],
-            label=group_labels[i],
-        )
-    )
+#
+groups = group(["Www", "Dev", "Term", "Msg", "Sys",
+                "Doc", "Mus", "Vid", "Img", "Gam"])
+
+# groups = group(["\uf8a4", "\uf8a7", "\uf8aa", "\uf8ad", "\uf8b0",
+#                 "\uf8b3", "\uf8b6", "\uf8b9", "\uf8bc", "\uf8a1"])
+
+# groups = group(["", "", "ﲵ", "", "漣", "", "ﱘ", "", "", ""])
+
+
 for i in groups:
     keys.extend(
         [
@@ -415,9 +400,6 @@ for i in groups:
 # WIDGETS FOR THE BAR
 #
 widget_defaults = init_widgets_defaults()
-widgets_list = init_widgets_list()
-widgets_screen1 = init_widgets_screen1()
-widgets_screen2 = init_widgets_screen2()
 screens = init_screens()
 
 #
