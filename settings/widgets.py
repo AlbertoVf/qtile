@@ -1,15 +1,25 @@
 from libqtile import qtile, widget
 import os
 import socket
-from settings.shortcut import terminal, colors, font
+from settings.shortcut import terminal, colors, font, icon_left, icon_right
 from settings.path import *
 
 
+def init_widgets_defaults():
+    return dict(
+        fontsize=14,
+        padding=4,
+        background=colors.dark,
+        foreground=colors.light,
+    )
+
+
+widget_defaults = init_widgets_defaults()
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+
+
 def init_widgets_list0():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     font = 'FiraCode Nerd Font'
-    icon_left = ""
-    icon_right = ""
 
     widgets_list = [
         widget.TextBox(
@@ -170,10 +180,7 @@ def init_widgets_list0():
 
 
 def init_widgets_list1():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     font = 'FiraCode Nerd Font'
-    icon_left = ""
-    icon_right = ""
     widgets_list = [
         widget.TextBox(
             font=f'{font}',
@@ -358,10 +365,7 @@ def init_widgets_list1():
 
 
 def init_widgets_list2():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     font = 'FiraCode Nerd Font'
-    icon_left = ""
-    icon_right = ""
     widgets_list = [
         widget.TextBox(
             font=f'{font}',
@@ -527,8 +531,7 @@ def init_widgets_list2():
     return widgets_list
 
 
-def init_widgets_list():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+def init_widgets_list3():
     font = 'Monofurbold Nerd Font'
     widgets_list = [
         widget.GroupBox(
