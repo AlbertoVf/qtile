@@ -1,9 +1,6 @@
-
-#
-# LAYOUTS
-#
 from libqtile import layout
-from settings.shortcut import colors, font
+from settings.shortcut import colors
+from settings.widgets import font
 
 
 def init_layout_theme():

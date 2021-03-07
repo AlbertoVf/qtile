@@ -1,21 +1,10 @@
 import json
 
 from settings.path import qtile_themes, qtile_path
+from os import path
 
 
 class Colors:
-    dark = "#292d3e"
-    grey = "#434758"
-    light = "#ffffff"
-    text = "#292d3e"
-    focus = "#A77AC4"
-    active = "#ff5555"
-    inactive = "#f1ffff"
-    urgent = "#4c566a"
-    color1 = "#ff5555"
-    color2 = "#A77AC4"
-    color3 = "#7197E7"
-    color4 = "#ffb86c"
 
     def __init__(self):
         tema = theme_selector()

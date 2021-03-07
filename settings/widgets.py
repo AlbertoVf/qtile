@@ -1,117 +1,116 @@
 from libqtile import qtile, widget
 import os
 import socket
-from settings.shortcut import terminal, colors, font, icon_left, icon_right
+from settings.shortcut import terminal, colors
 from settings.path import *
 
+font = 'Monofurbold Nerd Font'  # nerd fonts https://www.nerdfonts.com/cheat-sheet
+icon_left = ""
+icon_right = ""
 
-def init_widgets_defaults():
-    return dict(
-        fontsize=14,
-        padding=4,
-        background=colors.dark,
-        foreground=colors.light,
-    )
+widget_defaults = dict(font=font, fontsize=12, padding=4,
+                       foreground=colors.light, background=colors.dark)
 
-
-widget_defaults = init_widgets_defaults()
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 
+def indicator(tx="{}", size=12, style=f'{font}', pad=8, mg=8, fg=colors.text, bg=colors.color4):
+    return widget.CapsNumLockIndicator(
+        fmt=tx,
+        fontsize=size,
+        font=style,
+        padding=pad,
+        margin=mg,
+        foreground=fg,
+        background=bg,
+    )
+
+
+def separator(tx="", fg=colors.dark, bg=colors.dark):
+    return widget.TextBox(
+        font='FiraCode Nerd Font',
+        text=tx,
+        fontsize=40,
+        padding=-6,
+        foreground=fg,
+        background=bg,
+    )
+
+
+def systray(size=22, bg=colors.dark):
+    return widget.Systray(
+        icon_size=size,
+        margin=4,
+        padding=8,
+        background=bg,
+    )
+
+
+def groupbox(fontsize=14, border=0, highlight_method="text", bg=colors.dark):
+    return widget.GroupBox(
+        fontsize=fontsize,
+        margin=4,
+        padding=8,
+        borderwidth=border,
+        disable_drag=True,
+        rounded=False,
+        highlight_method=highlight_method,
+        active=colors.active,
+        inactive=colors.inactive,
+        highlight_color=colors.grey,
+        this_current_screen_border=colors.focus,
+        this_screen_border=colors.grey,
+        other_current_screen_border=colors.active,
+        other_screen_border=colors.inactive,
+        background=bg,
+    )
+
+
+def menu(fg=colors.color3, bg=colors.dark, size=22):
+    return widget.TextBox(
+        text="",
+        fontsize=size,
+        padding=16,
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn('rofi -show run'),
+            "Button3": lambda: qtile.cmd_spawn('xfce4-appfinder'),
+        },
+        background=bg,
+        foreground=fg,
+    ),
+
+
 def init_widgets_list0():
-    font = 'FiraCode Nerd Font'
 
     widgets_list = [
-        widget.TextBox(
-            text="",
-            font='{font}',
-            fontsize=22,
-            padding=16,
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('rofi -show run'),
-                "Button3": lambda: qtile.cmd_spawn('xfce4-appfinder'),
-            },
-            background=colors.dark,
-            foreground=colors.color3,
-        ),
-        widget.TextBox(
-            text=icon_left,
-            font=f'{font}',
-            fontsize=40,
-            padding=-6,
-            foreground=colors.dark,
-            background=colors.grey,
-        ),
-        widget.GroupBox(
-            font=f'{font}',
-            fontsize=18,
-            margin=4,
-            padding=8,
-            borderwidth=0,
-            disable_drag=True,
-            rounded=False,
-            highlight_method="text",
-            active=colors.active,
-            inactive=colors.inactive,
-            this_current_screen_border=colors.focus,
-            background=colors.grey,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.grey,
-            background=colors.focus,
-        ),
+        menu(),
+        separator(tx=icon_left, fg=colors.dark, bg=colors.grey),
+
+        groupbox(fontsize=18, border=0,
+                 highlight_method="text", bg=colors.grey),
+        separator(tx=icon_left, fg=colors.grey, bg=colors.focus),
+
         widget.CurrentLayout(
-            font=f'{font}',
             foreground=colors.light,
             background=colors.focus,
         ),
         widget.CurrentLayoutIcon(
-            font=f'{font}',
             scale=0.7,
             padding=0,
             background=colors.focus,
         ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.focus,
-        ),
+        separator(tx=icon_left, fg=colors.focus),
+
         widget.WindowName(
-            font=f'{font}',
             fontsize=12,
             foreground=colors.focus,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color4,
-        ),
-        widget.CapsNumLockIndicator(
-            font="{font} Italic Bold",
-            fontsize=12,
-            padding=8,
-            foreground=colors.text,
-            background=colors.color4,
         ),
 
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color3,
-            background=colors.color4,
-        ),
+        separator(tx=icon_right, fg=colors.color4),
+        indicator(),
+
+        separator(tx=icon_right, fg=colors.text, bg=colors.colors4),
         widget.Clock(
-            font=f'{font}',
             padding=4,
             format=" %H:%M:%S - %d/%m/%Y",
             mouse_callbacks={
@@ -121,31 +120,12 @@ def init_widgets_list0():
             background=colors.color3,
         ),
 
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color2,
-            background=colors.color3,
-        ),
-        widget.Systray(
-            icon_size=22,
-            margin=4,
-            padding=8,
-            background=colors.color2,
-        ),
+        separator(tx=icon_right, fg=colors.color2, bg=colors.color3),
+        systray(bg=colors.color2),
 
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color1,
-            background=colors.color2,
-        ),
+        separator(tx=icon_right, fg=colors.color1, bg=colors.color2),
         widget.Battery(
-            font=f'{font}',
+            fontsize=16,
             format="  {percent:2.0%}",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn('xfce4-power-manager-settings')
@@ -156,7 +136,7 @@ def init_widgets_list0():
             background=colors.color1,
         ),
         widget.ThermalSensor(
-            font=f'{font}',
+            fontsize=16,
             padding=8,
             metric=True,
             threshold=40,
@@ -166,7 +146,7 @@ def init_widgets_list0():
             background=colors.color1,
         ),
         widget.TextBox(
-            font=f'{font}',
+            fontsize=16,
             text="⏻",
             padding=8,
             mouse_callbacks={
@@ -180,56 +160,13 @@ def init_widgets_list0():
 
 
 def init_widgets_list1():
-    font = 'FiraCode Nerd Font'
     widgets_list = [
-        widget.TextBox(
-            font=f'{font}',
-            text="",
-            fontsize=22,
-            padding=16,
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('rofi -show run'),
-                "Button3": lambda: qtile.cmd_spawn('xfce4-appfinder'),
-            },
-            background=colors.dark,
-            foreground=colors.color3,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.dark,
-            background=colors.grey,
-        ),
-        widget.GroupBox(
-            font=f'{font}',
-            fontsize=18,
-            margin=4,
-            padding=8,
-            borderwidth=0,
-            disable_drag=True,
-            rounded=False,
-            highlight_method="text",
-            active=colors.active,
-            inactive=colors.inactive,
-            highlight_color=colors.grey,
-            this_current_screen_border=colors.focus,
-            background=colors.grey,
-            this_screen_border=colors.grey,
-            other_current_screen_border=colors.active,
-            other_screen_border=colors.inactive,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.grey,
-            background=colors.focus,
-        ),
+        menu(),
+        separator(tx=icon_left, fg=colors.dark, bg=colors.grey),
+        groupbox(fontsize=18, highlight_method="text"),
+        separator(tx=icon_left, fg=colors.grey, bg=colors.focus),
+
         widget.CurrentLayout(
-            font=f'{font}',
             foreground=colors.light,
             background=colors.focus,
         ),
@@ -238,233 +175,22 @@ def init_widgets_list1():
             padding=0,
             background=colors.focus,
         ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.focus,
-        ),
+        separator(tx=icon_left, fg=colors.focus),
+
         widget.WindowName(
-            font=f'{font}',
-            fontsize=12,
-            foreground=colors.focus,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color4,
-        ),
-        widget.CapsNumLockIndicator(
-            font="{font} Italic Bold",
-            fontsize=10,
-            foreground=colors.text,
-            background=colors.color4,
-        ),
-
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color3,
-            background=colors.color4,
-        ),
-        widget.Clock(
-            font=f'{font}',
-            format=" %H:%M:%S %d/%m/%Y",
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('evolution --component=calendar')
-            },
-            foreground=colors.text,
-            background=colors.color3,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color2,
-            background=colors.color3,
-        ),
-        widget.Systray(
-            icon_size=22,
-            margin=4,
-            padding=8,
-            background=colors.color2,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=40,
-            padding=-6,
-            foreground=colors.color1,
-            background=colors.color2,
-        ),
-        widget.Net(
-            font=f'{font}',
-            format='{down}\uf545 {up}\uf55d',
-            fontsize=14,
-            margin=4,
-            padding=8,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn('nm-connection-editor'),
-            },
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text="",
-            fontsize=22,
-            margin=4,
-            padding=8,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')
-            },
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text="",
-            fontsize=22,
-            margin=4,
-            padding=8,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')
-            },
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.Battery(
-            font=f'{font}',
-            format="  {percent:2.0%}",
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('xfce4-power-manager-settings')
-            },
-            padding=0,
-            update_interval=10,
-            foreground=colors.text,
-            background=colors.color1,
-        ),
-        widget.ThermalSensor(
-            font=f'{font}',
-            padding=8,
-            metric=True,
-            threshold=40,
-            fmt=" {}",
-            foreground="#ffff00",
-            foreground_alert="#ff0000",
-            background=colors.color1,
-        ),
-    ]
-    return widgets_list
-
-
-def init_widgets_list2():
-    font = 'FiraCode Nerd Font'
-    widgets_list = [
-        widget.TextBox(
-            font=f'{font}',
-            text="",
-            fontsize=22,
-            padding=10,
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn('rofi -show run'),
-                "Button3": lambda: qtile.cmd_spawn('xfce4-appfinder'),
-            },
-            background=colors.dark,
-            foreground=colors.color3,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.dark,
-            background=colors.grey,
-        ),
-        widget.GroupBox(
-            font=f'{font}',
-            fontsize=18,
-            padding=8,
-            borderwidth=0,
-            disable_drag=True,
-            rounded=False,
-            highlight_method="text",
-            active=colors.active,
-            inactive=colors.inactive,
-            highlight_color=colors.grey,
-            this_current_screen_border=colors.focus,
-            background=colors.grey,
-            this_screen_border=colors.grey,
-            other_current_screen_border=colors.active,
-            other_screen_border=colors.inactive,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.grey,
-            background=colors.focus,
-        ),
-        widget.CurrentLayout(
-            font=f'{font}',
-            foreground=colors.light,
-            background=colors.focus,
-        ),
-        widget.CurrentLayoutIcon(
-            scale=0.7,
-            padding=0,
-            background=colors.focus,
-        ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_left,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.focus,
-        ),
-        widget.WindowName(
-            font=f'{font}',
             fontsize=12,
             max_chars=32,
             formant='{name}',
             foreground=colors.focus,
         ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.color4,
-        ),
-        widget.CapsNumLockIndicator(
-            font=f"{font} Italic Bold",
-            fontsize=10,
-            foreground=colors.text,
-            background=colors.color4,
-        ),
 
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.color3,
-            background=colors.color4,
-        ),
+        separator(tx=icon_right, fg=colors.color4),
+        indicator(),
+
+        separator(tx=icon_right, fg=colors.color3, bg=colors.color4),
+
         widget.Clock(
-            font=f'{font}',
+            padding=4,
             format="%d %b, %H.%M",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn('evolution --component=calendar')
@@ -472,17 +198,8 @@ def init_widgets_list2():
             foreground=colors.text,
             background=colors.color3,
         ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.color2,
-            background=colors.color3,
-        ),
+        separator(tx=icon_right, fg=colors.color2, bg=colors.color3),
         widget.Net(
-            font=f'{font}',
             format='Net:{down} \uf545\uf55d {up}',
             padding=4,
             mouse_callbacks={
@@ -492,30 +209,15 @@ def init_widgets_list2():
             background=colors.color2,
         ),
         widget.Volume(
-            font=f'{font}',
             fmt="Vol: {}",
             padding=4,
             foreground=colors.text,
             background=colors.color2,
         ),
-        widget.TextBox(
-            font=f'{font}',
-            text=icon_right,
-            fontsize=38,
-            margin=0,
-            padding=-5,
-            foreground=colors.color1,
-            background=colors.color2,
-        ),
-        widget.Systray(
-            font=f'{font}',
-            icon_size=22,
-            margin=8,
-            padding=8,
-            background=colors.color1,
-        ),
+
+        separator(tx=icon_right, fg=colors.color1, bg=colors.color2),
+        systray(bg=colors.color1),
         widget.Battery(
-            font=f'{font}',
             format="Bat:{percent:2.0%}",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn('xfce4-power-manager-settings'),
@@ -531,90 +233,60 @@ def init_widgets_list2():
     return widgets_list
 
 
-def init_widgets_list3():
-    font = 'Monofurbold Nerd Font'
+def init_widgets_list2():
     widgets_list = [
-        widget.GroupBox(
-            font=f'{font}',
-            padding=8,
-            borderwidth=0,
-            disable_drag=True,
-            rounded=False,
-            highlight_method="text",
-            active=colors.active,
-            inactive=colors.inactive,
-            highlight_color=colors.grey,
-            this_current_screen_border=colors.focus,
-            this_screen_border=colors.grey,
-            other_current_screen_border=colors.active,
-            other_screen_border=colors.inactive,
-        ),
+        groupbox(fontsize=14, highlight_method="text"),
+        widget.Sep(padding=8, margin=8,
+                   foreground=colors.grey, size_percent=50,),
         widget.CurrentLayout(
-            font=f'{font}',
             margin=4,
             padding=4,
             foreground=colors.focus,
         ),
-        widget.Sep(
-            padding=8, margin=8,
-            foreground=colors.color2,
-            size_percent=50,
-        ),
+        widget.Sep(padding=8, margin=8,
+                   foreground=colors.grey, size_percent=50,),
         widget.WindowName(
             max_chars=50,
-            font=f'{font}',
             formant='{name}',
             margin=4,
             padding=4,
             foreground=colors.focus,
         ),
-        widget.CapsNumLockIndicator(
-            fmt="[{}]",
-            font=f'{font}',
-            fontsize=12,
-            margin=4,
-            padding=4,
-            foreground=colors.color4,
-        ),
+
+        indicator(tx="[{}]", fg=colors.color4, bg=colors.dark),
 
         widget.Clock(
-            format="[%c]",
-            font=f'{font}',
-            margin=4,
             padding=4,
+            format="[%c]",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn('evolution --component=calendar')
             },
             foreground=colors.color3,
+            background=colors.dark,
         ),
         widget.Net(
             format='[Up: {up} Down: {down}',
-            font=f'{font}',
             margin=4,
             padding=4,
             mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn('nm-connection-editor'),
+                'Button3': lambda: qtile.cmd_spawn('nm-connection-editor'),
             },
             foreground=colors.color2,
         ),
-        widget.Sep(
-            padding=8, margin=8,
-            foreground=colors.color2,
-            size_percent=30,
-        ),
+        widget.Sep(padding=8, margin=8,
+                   foreground=colors.color2, size_percent=30,),
         widget.Volume(
             fmt="Vol: {}]",
-            font=f'{font}',
             margin=4,
             padding=4,
             foreground=colors.color2,
         ),
+
         widget.Battery(
             format="[Bat: {percent:2.0%}]",
-            font=f'{font}',
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn('xfce4-power-manager-settings'),
-                'Button1': lambda: qtile.cmd_spawn('xfce4-taskmanager'),
+                'Button3': lambda: qtile.cmd_spawn('xfce4-taskmanager'),
                 'Button2': lambda: qtile.cmd_spawn(terminal + ' -e htop'),
             },
             margin=4,
@@ -622,9 +294,6 @@ def init_widgets_list3():
             update_interval=10,
             foreground=colors.color1,
         ),
-
-        widget.Systray(
-            icon_size=18,
-        ),
+        systray(size=18),
     ]
     return widgets_list

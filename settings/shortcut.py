@@ -9,13 +9,7 @@ mod2 = "control"
 colors = Colors()
 
 # APP DEFAULT
-editor = "code-oss"         # Code editor
-terminal = "tilix"          # Terminal
-fileManager = "polo"        # File Manager
-browser = "vivaldi-stable"  # Web Browser
-
-# WIDGETS
-# nerd fonts https://www.nerdfonts.com/cheat-sheet
-font = 'Monofurbold Nerd Font'
-icon_left = ""
-icon_right = ""
+editor = "code-oss"         # Code editor (code-oss/nvim/vim)
+terminal = "tilix"          # Terminal (tilix/termite)
+fileManager = "thunar"      # File Manager (nautilus/thunar/polo)
+browser = "vivaldi-stable"  # Web Browser (vivaldi-stable/firefox)

@@ -22,10 +22,6 @@ focus_on_window_activation = "focus"  # "smart"
 wmname = "Qtile"  # "LG3D"
 
 
-
-
-
-
 @lazy.function
 def window_to_prev_group(qtile):
     if qtile.currentWindow is not None:
