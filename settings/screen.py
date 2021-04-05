@@ -3,7 +3,7 @@ from libqtile import bar
 from settings.widgets import *
 
 widget_screen1 = init_widgets_list2()
-widget_screen2 = init_widgets_list2()
+widget_screen2 = init_widgets_list01()
 
 
 def init_screens():

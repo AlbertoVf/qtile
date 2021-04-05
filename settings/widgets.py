@@ -4,12 +4,12 @@ import socket
 from settings.shortcut import terminal, colors
 from settings.path import *
 
-font = 'Monofurbold Nerd Font'  # nerd fonts https://www.nerdfonts.com/cheat-sheet
+font='FantasqueSansMono NF'
+# font = 'Monofurbold NF'  # nerd fonts https://www.nerdfonts.com/cheat-sheet
 icon_left = ""
 icon_right = ""
 
-widget_defaults = dict(font=font, fontsize=12, padding=4,
-                       foreground=colors.light, background=colors.dark)
+widget_defaults = dict(font=font, fontsize=12, padding=4,foreground=colors.light, background=colors.dark)
 
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
@@ -295,5 +295,27 @@ def init_widgets_list2():
             foreground=colors.color1,
         ),
         systray(size=18),
+    ]
+    return widgets_list
+
+def init_widgets_list01():
+    widgets_list=[
+        groupbox(fontsize=14, highlight_method="text"),
+        widget.Sep(padding=8, margin=8,
+                   foreground=colors.grey, size_percent=50,),
+        widget.CurrentLayout(
+            margin=4,
+            padding=4,
+            foreground=colors.focus,
+        ),
+        widget.Sep(padding=8, margin=8,
+                   foreground=colors.grey, size_percent=50,),
+        widget.WindowName(
+            max_chars=50,
+            formant='{name}',
+            margin=4,
+            padding=4,
+            foreground=colors.focus,
+        ),
     ]
     return widgets_list

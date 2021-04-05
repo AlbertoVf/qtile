@@ -15,14 +15,14 @@ keys = [
     Key([mod], "f", lazy.spawn("firefox")),
     Key([mod], "g", lazy.spawn("gparted")),
     # Key([mod], "h", lazy.spawn('')),
-    Key([mod], "i", lazy.spawn("idea")),
+    Key([mod], "i", lazy.spawn("eclipse")),
     # Key([mod], "j", lazy.spawn('')),
     Key([mod], "k", lazy.spawn("krita")),
     # Key([mod], "l", lazy.spawn('')),
     Key([mod], "m", lazy.spawn("pragha")),
     # Key([mod], "n", lazy.spawn('')),
     Key([mod], "o", lazy.spawn("obs")),
-    Key([mod], "p", lazy.spawn("pycharm")),
+    Key([mod], "p", lazy.spawn("eclipse")),
     Key([mod], "q", lazy.window.kill()),
     # Key([mod], "r", lazy.spawn('')),
     Key([mod], "s", lazy.spawn("pamac-manager")),
@@ -141,7 +141,7 @@ keys = [
         [mod], "comma",
         lazy.prev_screen(),
     ),
-    # Switch focus to specific monitor
+    # Change Window to specific monitor
     Key(
         [mod, "shift"], "period",
         lazy.to_screen(0),

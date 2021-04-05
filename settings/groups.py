@@ -14,8 +14,7 @@ def group(group_labels: []):
     return group
 
 
-groups = group(["Www", "Dev", "Term", "Msg", "Sys",
-                "Doc", "Mus", "Vid", "Img", "Gam"])
+groups = group(["Www", "Dev", "Term", "Msg", "Sys", "Doc", "Mus", "Vid", "Img", "Gam"])
 
 # groups = group(["\uf8a4", "\uf8a7", "\uf8aa", "\uf8ad", "\uf8b0",
 #                 "\uf8b3", "\uf8b6", "\uf8b9", "\uf8bc", "\uf8a1"])
