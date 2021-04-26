@@ -41,6 +41,7 @@ floating_layout = layout.Floating(
     float_rules=[
         {"wmclass": "Arcolinux-welcome-app.py"},
         {"wmclass": "Arcolinux-tweak-tool.py"},
+        {"wmclass": "Ulauncher"},
         {"wmclass": "confirm"},
         {"wmclass": "dialog"},
         {"wmclass": "download"},
