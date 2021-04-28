@@ -7,8 +7,8 @@ def init_layout_theme():
     return {
         "margin": 8,
         "border_width": 2,
-        "border_focus": colors.focus,
-        "border_normal": colors.grey,
+        "border_focus": colors["focus"],
+        "border_normal": colors["grey"],
     }
 
 
@@ -29,11 +29,11 @@ layouts = [
         padding_y=5,
         section_top=10,
         panel_width=320,
-        bg_color=colors.dark,
-        active_bg=colors.focus,
-        active_fg=colors.text,
-        inactive_bg=colors.grey,
-        inactive_fg=colors.inactive,
+        bg_color=colors["dark"],
+        active_bg=colors["focus"],
+        active_fg=colors["text"],
+        inactive_bg=colors["grey"],
+        inactive_fg=colors["inactive"],
     ),
 ]
 floating_types = ["notification", "toolbar", "splash", "dialog"]
@@ -65,6 +65,6 @@ floating_layout = layout.Floating(
     ],
     fullscreen_border_width=0,
     border_width=1,
-    border_normal=colors.grey,
-    border_focus=colors.focus,
+    border_normal=colors["grey"],
+    border_focus=colors["focus"],
 )
