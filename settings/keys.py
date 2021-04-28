@@ -1,7 +1,6 @@
 from libqtile.config import Key
 from libqtile.command import lazy
-from settings.shortcut import *
-from settings.path import *
+from settings.shortcut import mod, mod1,editor,terminal, fileManager,browser
 from settings.groups import groups
 
 keys = [

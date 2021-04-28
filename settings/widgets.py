@@ -2,7 +2,6 @@ import os
 import socket
 from libqtile import qtile, widget
 from settings.shortcut import terminal, colors
-from settings.path import *
 
 font = "FantasqueSansMono NF"
 # font = 'Monofurbold NF'  # nerd fonts https://www.nerdfonts.com/cheat-sheet

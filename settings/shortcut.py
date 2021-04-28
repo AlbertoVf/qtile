@@ -3,8 +3,6 @@ from settings.themes import theme_selector
 # KEYS
 mod = "mod4"  # mod4 or mod = super key
 mod1 = "alt"
-mod2 = "control"
-
 # COLORS
 colors = theme_selector()
 
