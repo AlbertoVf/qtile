@@ -5,10 +5,9 @@ from settings.groups import groups
 
 keys = [
     # SUPER + FUNCTION KEYS
-    Key([mod], "b", lazy.spawn("bitwarden-desktop")),
+    Key([mod], "b", lazy.spawn("bitwarden")),
     Key([mod], "d", lazy.spawn("drawio")),
     Key([mod], "e", lazy.spawn(editor)),
-    Key([mod], "f", lazy.spawn("firefox")),
     Key([mod], "g", lazy.spawn("gparted")),
     Key([mod], "i", lazy.spawn("eclipse")),
     Key([mod], "k", lazy.spawn("krita")),

@@ -7,7 +7,7 @@ mod1 = "alt"
 colors = theme_selector()
 
 # APP DEFAULT
-editor = "code-oss"  # Code editor (code-oss/nvim/vim)
+editor = "code"  # Code editor (code-oss/nvim/vim)
 terminal = "tilix"  # Terminal (tilix/termite)
 fileManager = "thunar"  # File Manager (nautilus/thunar/polo)
-browser = "vivaldi-stable"  # Web Browser (vivaldi-stable/firefox)
+browser = "brave"  # Web Browser (brave/vivaldi-stable/firefox)

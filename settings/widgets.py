@@ -3,7 +3,7 @@ import socket
 from libqtile import qtile, widget
 from settings.shortcut import terminal, colors
 
-font = "FantasqueSansMono NF"
+font = "FantasqueSansMono Nerd Font"
 # font = 'Monofurbold NF'  # nerd fonts https://www.nerdfonts.com/cheat-sheet
 icon_left = ""
 icon_right = ""
