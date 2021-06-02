@@ -1,16 +1,14 @@
 import os
 import socket
 from libqtile import qtile, widget
-from settings.shortcut import terminal, colors
+from settings.shortcut import terminal, colors, font
 
-font = "FantasqueSansMono Nerd Font"
-# font = 'Monofurbold NF'  # nerd fonts https://www.nerdfonts.com/cheat-sheet
 icon_left = ""
 icon_right = ""
 
 widget_defaults = dict(
     font=font,
-    fontsize=12,
+    fontsize=13,
     padding=4,
     foreground=colors["light"],
     background=colors["dark"],
@@ -58,7 +56,10 @@ def systray(size=22, bg=colors["dark"]):
     )
 
 
-def groupbox(fontsize=14, border=0, highlight_method="text", bg=colors["dark"]):
+def groupbox(fontsize=14,
+             border=0,
+             highlight_method="text",
+             bg=colors["dark"]):
     return widget.GroupBox(
         fontsize=fontsize,
         margin=4,
@@ -79,32 +80,31 @@ def groupbox(fontsize=14, border=0, highlight_method="text", bg=colors["dark"]):
 
 
 def menu(fg=colors["color3"], bg=colors["dark"], size=22):
-    return (
-        widget.TextBox(
-            text="",
-            fontsize=size,
-            padding=16,
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("rofi -show run"),
-                "Button3": lambda: qtile.cmd_spawn("xfce4-appfinder"),
-            },
-            background=bg,
-            foreground=fg,
-        ),
-    )
+    return (widget.TextBox(
+        text="",
+        fontsize=size,
+        padding=16,
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn("rofi -show run"),
+            "Button3": lambda: qtile.cmd_spawn("xfce4-appfinder"),
+        },
+        background=bg,
+        foreground=fg,
+    ), )
 
 
 #
 # WIDGETS LIST
 #
-
-
 def init_widgets_list0():
 
     widgets_list = [
         menu(),
         separator(tx=icon_left, fg=colors["dark"], bg=colors["grey"]),
-        groupbox(fontsize=18, border=0, highlight_method="text", bg=colors["grey"]),
+        groupbox(fontsize=18,
+                 border=0,
+                 highlight_method="text",
+                 bg=colors["grey"]),
         separator(tx=icon_left, fg=colors["grey"], bg=colors["focus"]),
         widget.CurrentLayout(
             foreground=colors["light"],
@@ -127,7 +127,8 @@ def init_widgets_list0():
             padding=4,
             format=" %H:%M:%S - %d/%m/%Y",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("evolution --component=calendar")
+                "Button1":
+                lambda: qtile.cmd_spawn("evolution --component=calendar")
             },
             foreground=colors["text"],
             background=colors["color3"],
@@ -139,7 +140,8 @@ def init_widgets_list0():
             fontsize=16,
             format="  {percent:2.0%}",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("xfce4-power-manager-settings")
+                "Button1":
+                lambda: qtile.cmd_spawn("xfce4-power-manager-settings")
             },
             padding=0,
             update_interval=10,
@@ -160,7 +162,9 @@ def init_widgets_list0():
             fontsize=16,
             text="⏻",
             padding=8,
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("arcolinux-logout")},
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn("arcolinux-logout")
+            },
             foreground=colors["text"],
             background=colors["color1"],
         ),
@@ -197,7 +201,8 @@ def init_widgets_list1():
             padding=4,
             format="%d %b, %H.%M",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("evolution --component=calendar")
+                "Button1":
+                lambda: qtile.cmd_spawn("evolution --component=calendar")
             },
             foreground=colors["text"],
             background=colors["color3"],
@@ -223,7 +228,8 @@ def init_widgets_list1():
         widget.Battery(
             format="Bat:{percent:2.0%}",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
+                "Button1":
+                lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
                 "Button1": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
                 "Button2": lambda: qtile.cmd_spawn(terminal + " -e htop"),
             },
@@ -238,7 +244,7 @@ def init_widgets_list1():
 
 def init_widgets_list2():
     widgets_list = [
-        groupbox(fontsize=14, highlight_method="text"),
+        groupbox(fontsize=13, highlight_method="text"),
         widget.Sep(
             padding=8,
             margin=8,
@@ -268,7 +274,8 @@ def init_widgets_list2():
             padding=4,
             format="[%c]",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("evolution --component=calendar")
+                "Button1":
+                lambda: qtile.cmd_spawn("evolution --component=calendar")
             },
             foreground=colors["color3"],
             background=colors["dark"],
@@ -288,16 +295,37 @@ def init_widgets_list2():
             foreground=colors["color2"],
             size_percent=30,
         ),
-        widget.Volume(
-            fmt="Vol: {}]",
-            margin=4,
-            padding=4,
+        widget.CheckUpdates(
+            update_interval=1800,
+            foreground=colors["color2"],
+            distro="Arco_checkupdates",
+            display_format="{updates}",
+            mouse_callbacks={
+                "Button1":
+                lambda: qtile.cmd_spawn(terminal + " -e sudo pacman -Syu")
+            },
+        ),
+        widget.TextBox(
+            text="⟳ ]",
             foreground=colors["color2"],
         ),
+        widget.Volume(
+            fmt="[ Vol: {}",
+            margin=4,
+            padding=4,
+            foreground=colors["color1"],
+        ),
+        widget.Sep(
+            padding=8,
+            margin=8,
+            foreground=colors["color1"],
+            size_percent=30,
+        ),
         widget.Battery(
-            format="[Bat: {percent:2.0%}]",
+            format=" Bat: {percent:2.0%}]",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
+                "Button1":
+                lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
                 "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
                 "Button2": lambda: qtile.cmd_spawn(terminal + " -e htop"),
             },

@@ -1,6 +1,5 @@
 import json
 from settings.path import qtile_themes, qtile_path
-from os import path
 
 
 def theme_selector():
