@@ -1,12 +1,18 @@
 import json
-from settings.path import qtile_themes, qtile_path
+from settings.path import home, qtile_themes, qtile_path
+
+
+def get_property(property: str):
+    try:
+        with open(f"{qtile_path}/theme.json") as f:
+            property = str(json.load(f)[property])
+        return property
+    except:
+        return None
 
 
 def theme_selector():
-    tema: str
-    with open(f"{qtile_path}/theme.json") as f:
-        theme = json.load(f)["theme"]
-        tema = str(theme)
+    tema = get_property("theme")
 
     with open(f"{qtile_themes}/{tema}.json") as themes:
         for colors in json.load(themes)[tema]:

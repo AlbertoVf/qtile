@@ -1,15 +1,13 @@
 import subprocess
-from libqtile.config import Screen, Group, Rule
 from libqtile.command import lazy
-from libqtile import bar, hook, layout, qtile, widget
+from libqtile import hook
 
 from settings.path import qtile_scripts
-from settings.widgets import *
 from settings.groups import groups
 from settings.keys import keys
-from settings.mouse import mouse
-from settings.layout import *
 from settings.screen import screens
+from settings.layout import *
+from settings.widgets import *
 
 dgroups_key_binder = None
 dgroups_app_rules = []
