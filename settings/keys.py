@@ -40,8 +40,11 @@ keys = [
     Key([mod, "shift"], "r", lazy.restart()),
     # ALT + ... KEYS
     Key(["mod1"], "Escape", lazy.spawn("xfce4-taskmanager")),
-    Key(["mod1"], "F2", lazy.spawn("ulauncher")),
-    Key(["mod1"], "F3", lazy.spawn("xfce4-appfinder")),
+    Key(["mod1"], "F1", lazy.spawn("rofi -show window")),
+    # Key(["mod1"], "F2", lazy.spawn("ulauncher")),
+    Key(["mod1"], "F2", lazy.spawn("rofi -show drun")),
+    Key(["mod1"], "F3", lazy.spawn("rofi -show file-browser")),
+    Key(["mod1"], "F4", lazy.spawn("rofi -show ssh")),
     Key(["mod1"], "Print", lazy.spawn("xfce4-screenshooter")),
     # SCREENSHOTS
     Key(
