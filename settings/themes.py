@@ -1,5 +1,5 @@
 import json
-from settings.path import home, qtile_themes, qtile_path
+from settings.path import qtile_themes, qtile_path
 
 
 def get_property(property: str):

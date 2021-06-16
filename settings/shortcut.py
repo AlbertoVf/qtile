@@ -5,7 +5,8 @@ mod = "mod4"  # mod4 or mod = super key
 mod1 = "alt"
 # COLORS
 colors = theme_selector()
-font = "FantasqueSansMono Nerd Font"  # nerd fonts https://www.nerdfonts.com/cheat-sheet
+# nerd fonts https://www.nerdfonts.com/cheat-sheet
+font = "Anonymice Nerd Font"
 
 # APP DEFAULT
 editor = "code"  # Code editor (code-oss/nvim/vim/code)

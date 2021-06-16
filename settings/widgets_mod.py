@@ -1,65 +1,49 @@
-import os
-import socket
 from libqtile import qtile, widget
 from settings.shortcut import colors, font
 
 widget_defaults = dict(
     font=font,
-    fontsize=13,
+    fontsize=12,
     padding=4,
+    margin=4,
     foreground=colors["light"],
     background=colors["dark"],
 )
 
 
-def indicator(
-    tx="{}",
-    size=12,
-    style=f"{font}",
-    pad=8,
-    mg=8,
-    fg=colors["text"],
-    bg=colors["color4"],
-):
-    return widget.CapsNumLockIndicator(
-        fmt=tx,
-        fontsize=size,
-        font=style,
-        padding=pad,
-        margin=mg,
-        foreground=fg,
-        background=bg,
-    )
-
-
-def separator(tx="", fg=colors["dark"], bg=colors["dark"]):
+def powerline(tx="", fg=colors["dark"], bg=colors["dark"]):
     return widget.TextBox(
-        font=F"{font}",
-        text=tx,
-        fontsize=40,
         padding=-6,
         foreground=fg,
         background=bg,
     )
 
 
-def systray(size=22, bg=colors["dark"]):
+def separator(fg=colors["grey"], bg=colors["dark"], size=50):
+    return widget.Sep(
+        padding=8,
+        margin=8,
+        foreground=fg,
+        background=bg,
+        size_percent=size,
+    )
+
+
+def systray(size=18, bg=colors["dark"]):
     return widget.Systray(
         icon_size=size,
-        margin=4,
+        margin=8,
         padding=8,
         background=bg,
     )
 
 
-def groupbox(fontsize=14,
+def groupbox(fontsize=12,
              border=0,
              highlight_method="text",
              bg=colors["dark"]):
     return widget.GroupBox(
         fontsize=fontsize,
-        margin=4,
-        padding=8,
         borderwidth=border,
         disable_drag=True,
         rounded=False,

@@ -17,24 +17,13 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.RatioTile(**layout_theme),
-    layout.VerticalTile(**layout_theme),
+    # layout.VerticalTile(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Max(**layout_theme),
-    layout.TreeTab(
-        font=font,
-        sections=["FIRST", "SECOND"],
-        fontsize=12,
-        section_fontsize=14,
-        padding_y=5,
-        section_top=10,
-        panel_width=320,
-        bg_color=colors["dark"],
-        active_bg=colors["focus"],
-        active_fg=colors["text"],
-        inactive_bg=colors["grey"],
-        inactive_fg=colors["inactive"],
-    ),
+    # layout.TreeTab(
+    #     font=font, sections=["FIRST", "SECOND"], fontsize=12, section_fontsize=14, padding_y=5, section_top=10, panel_width=320, bg_color=colors["dark"], active_bg=colors["focus"], active_fg=colors["text"], inactive_bg=colors["grey"], inactive_fg=colors["inactive"],
+    # ),
 ]
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 floating_layout = layout.Floating(
@@ -54,7 +43,7 @@ floating_layout = layout.Floating(
         {"wmclass": "makebranch"},
         {"wmclass": "maketag"},
         {"wmclass": "Arandr"},
-        {"wmclass": "feh"},
+        # {"wmclass": "feh"},
         {"wmclass": "Galculator"},
         {"wmclass": "arcolinux-logout"},
         {"wmclass": "xfce4-terminal"},

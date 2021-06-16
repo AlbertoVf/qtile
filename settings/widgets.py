@@ -14,35 +14,38 @@ icon_used = icon_triangle
 #
 def init_widgets_list():
     widgets_list = [
-        groupbox(fontsize=13, highlight_method="text"),
-        widget.Sep(
-            padding=8,
-            margin=8,
-            foreground=colors["grey"],
-            size_percent=50,
+        widget.GroupBox(
+            font=font,
+            fontsize=12,
+            borderwidth=4,
+            rounded=False,
+            disable_drag=True,
+            highlight_method="line",
+            active=colors["active"],
+            inactive=colors["inactive"],
+            highlight_color=colors["grey"],
+            this_current_screen_border=colors["focus"],
+            other_current_screen_border=colors["focus"],
+            this_screen_border=colors["color3"],
+            other_screen_border=colors["color3"],
         ),
+        separator(),
         widget.CurrentLayout(
-            margin=4,
-            padding=4,
             foreground=colors["focus"],
         ),
-        widget.Sep(
-            padding=8,
-            margin=8,
-            foreground=colors["grey"],
-            size_percent=50,
-        ),
+        separator(),
         widget.WindowName(
             max_chars=50,
             formant="{name}",
-            margin=4,
-            padding=4,
             foreground=colors["focus"],
         ),
-        indicator(tx="[{}]", fg=colors["color4"], bg=colors["dark"]),
+        widget.CapsNumLockIndicator(
+            fmt="[ {} ]",
+            foreground=colors["color4"],
+            backgound=colors["dark"]
+        ),
         widget.Clock(
-            padding=4,
-            format="[%c]",
+            format="[ %c ]",
             mouse_callbacks={
                 "Button1":
                 lambda: qtile.cmd_spawn("evolution --component=calendar")
@@ -51,60 +54,40 @@ def init_widgets_list():
             background=colors["dark"],
         ),
         widget.Net(
-            format="[Up: {up} Down: {down}",
-            margin=4,
-            padding=4,
+            format="[ Up:{up}  Down:{down}",
             mouse_callbacks={
-                "Button3": lambda: qtile.cmd_spawn("nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn("nm-connection-editor"),
             },
             foreground=colors["color2"],
         ),
-        widget.Sep(
-            padding=8,
-            margin=8,
-            foreground=colors["color2"],
-            size_percent=30,
-        ),
+        separator(fg=colors["color2"], size=30),
         widget.CheckUpdates(
-            update_interval=1800,
-            foreground=colors["color2"],
-            distro="Arco_checkupdates",
-            display_format="{updates}",
-            mouse_callbacks={
-                "Button1":
-                lambda: qtile.cmd_spawn(terminal + " -e sudo pacman -Syu")
-            },
-        ),
-        widget.TextBox(
-            text="⟳ ]",
-            foreground=colors["color2"],
+            distro="Arch",
+            custom_command="pacman -Qyu",
+            update_interval=60,
+            execute=f"{terminal} -e sudo pacman -Syu",
+            display_format='Updates: {updates} ]',
+            no_update_string="Updates: 0 ]",
+            colour_no_updates=colors["color2"],
+            colour_have_updates=colors["color2"],
         ),
         widget.Volume(
             fmt="[ Vol: {}",
-            margin=4,
-            padding=4,
             foreground=colors["color1"],
         ),
-        widget.Sep(
-            padding=8,
-            margin=8,
-            foreground=colors["color1"],
-            size_percent=30,
-        ),
+        separator(fg=colors["color1"], size=30),
         widget.Battery(
-            format=" Bat: {percent:2.0%}]",
+            format="Bat: {percent:2.0%} ]",
             mouse_callbacks={
                 "Button1":
                 lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
-                "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
                 "Button2": lambda: qtile.cmd_spawn(terminal + " -e htop"),
+                "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
             },
-            margin=4,
-            padding=4,
             update_interval=10,
             foreground=colors["color1"],
         ),
-        systray(size=18),
+        systray(),
     ]
     return widgets_list
 
@@ -114,30 +97,15 @@ def init_widgets_list():
 #
 def init_widgets_list01():
     widgets_list = [
-        groupbox(fontsize=14, highlight_method="text"),
-        widget.Sep(
-            padding=8,
-            margin=8,
-            foreground=colors["grey"],
-            size_percent=50,
-        ),
-        widget.CurrentLayout(
-            margin=4,
-            padding=4,
-            foreground=colors["focus"],
-        ),
-        widget.Sep(
-            padding=8,
-            margin=8,
-            foreground=colors["grey"],
-            size_percent=50,
-        ),
         widget.WindowName(
-            max_chars=50,
             formant="{name}",
-            margin=4,
-            padding=4,
             foreground=colors["focus"],
+        ),
+        separator(),
+        widget.Clock(
+            format="[ %c ]",
+            foreground=colors["color4"],
+            background=colors["dark"],
         ),
     ]
     return widgets_list
