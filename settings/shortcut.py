@@ -10,6 +10,6 @@ font = "Anonymice Nerd Font"
 
 # APP DEFAULT
 editor = "code"  # Code editor (code-oss/nvim/vim/code)
-terminal = "tilix"  # Terminal (tilix/termite)
+terminal = "alacritty"  # Terminal (alacritty/tilix/termite)
 fileManager = "thunar"  # File Manager (nautilus/thunar/polo)
 browser = "brave"  # Web Browser (brave/vivaldi-stable/firefox)

@@ -63,7 +63,7 @@ def init_widgets_list():
         separator(fg=colors["color2"], size=30),
         widget.CheckUpdates(
             distro="Arch",
-            custom_command="pacman -Qyu",
+            custom_command="pacman -Qu",
             update_interval=60,
             execute=f"{terminal} -e sudo pacman -Syu",
             display_format='Updates: {updates} ]',
