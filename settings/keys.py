@@ -79,11 +79,7 @@ keys = [
         lazy.prev_screen(),
     ),
     # Change Window to specific monitor
-    Key(
-        [mod, "shift"],
-        "period",
-        lazy.to_screen(0),
-    ),
+    Key([mod, "shift"],"period",lazy.to_screen(0)),
     Key([mod, "shift"], "comma", lazy.to_screen(1)),
     # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),

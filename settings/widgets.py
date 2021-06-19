@@ -64,7 +64,7 @@ def init_widgets_list():
         widget.CheckUpdates(
             distro="Arch",
             custom_command="pacman -Qu",
-            update_interval=60,
+            update_interval=30,
             execute=f"{terminal} -e sudo pacman -Syu",
             display_format='Updates: {updates} ]',
             no_update_string="Updates: 0 ]",
@@ -104,7 +104,7 @@ def init_widgets_list01():
         separator(),
         widget.Clock(
             format="[ %c ]",
-            foreground=colors["color4"],
+            foreground=colors["color3"],
             background=colors["dark"],
         ),
     ]
