@@ -64,7 +64,7 @@ def init_widgets_list():
         widget.CheckUpdates(
             distro="Arch",
             custom_command="pacman -Qu",
-            update_interval=30,
+            update_interval=1800,
             execute=f"{terminal} -e sudo pacman -Syu",
             display_format='Updates: {updates} ]',
             no_update_string="Updates: 0 ]",
