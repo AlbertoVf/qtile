@@ -1,18 +1,18 @@
 {
-    "dracula": [
-        {
-            "dark": "#292d3e",
-            "grey": "#434758",
-            "light": "#ffffff",
-            "text": "#292d3e",
-            "focus": "#BD93F9",
-            "active": "#FF5454",
-            "inactive": "#f1ffff",
-            "urgent": "#5AF78D",
-            "color1": "#FF5454",
-            "color2": "#BD93F9",
-            "color3": "#7197E7",
-            "color4": "#ffb86c"
-        }
-    ]
+  "dracula": [
+    {
+      "dark": "#292d3e",
+      "grey": "#434758",
+      "light": "#ffffff",
+      "text": "#292d3e",
+      "focus": "#BD93F9",
+      "active": "#FF5454",
+      "inactive": "#f1ffff",
+      "urgent": "#5AF78D",
+      "color1": "#FF5454",
+      "color2": "#BD93F9",
+      "color3": "#7197E7",
+      "color4": "#ffb86c"
+    }
+  ]
 }

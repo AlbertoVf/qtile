@@ -51,3 +51,24 @@ def set_floating(window):
     if (window.window.get_wm_transient_for()
             or window.window.get_wm_type() in floating_types):
         window.floating = True
+
+
+@hook.subscribe.client_new
+def assign_app_group(client):
+    d = {
+        "1": ["vivaldi-stable", "brave-browser", "bitwarden", "discord", "slack"],
+        "2": ["code", "emacs", "neovim", "Eclipse", "pycharm", "idea"],
+        "3": ["Alacritty", "tilix", "termite", "GitAhead", "alacritty"],
+        "4": ["VirtualBox Manager", "VirtualBox Machine", "Vmplayer", ],
+        "5": ["evolution", "notion"],
+        "6": ["pamac-manager", "stacer"],
+        "7": ["vlc", "spotify", "pragha"],
+    }
+
+    wm_class = client.window.get_wm_class()[0]
+
+    for i in range(len(d)):
+        if wm_class in list(d.values())[i]:
+            group = list(d.keys())[i]
+            client.togroup(group)
+            client.group.cmd_toscreen()
