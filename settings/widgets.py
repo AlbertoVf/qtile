@@ -69,7 +69,7 @@ def init_widgets_list():
         ),
         widget.Clock(
             font=f"{font} Bold",
-            format="\uf5ec %c",
+            format="\uf5ec  %c",
             mouse_callbacks={
                 "Button1":
                 lambda: qtile.cmd_spawn("gnome-calendar")
