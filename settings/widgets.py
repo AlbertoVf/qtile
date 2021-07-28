@@ -62,10 +62,12 @@ def init_widgets_list():
             font=f"{font} Bold",
             distro="Arch",
             custom_command="pacman -Qu",
-            update_interval=1800,
             execute=f"{terminal} -e sudo pacman -Syu",
+            update_interval=3600,
             display_format='\uf547 {updates} Updates',
+            # no_update_string="\uf547  0 Updates",
             colour_have_updates=colors["urgent"],
+            # colour_no_updates=colors["urgent"],
         ),
         widget.Clock(
             font=f"{font} Bold",

@@ -1,18 +1,14 @@
 {
-    "arc-dark-crimson": [
-        {
-            "dark": "#292d3e",
-            "grey": "#434758",
-            "light": "#F9F9F9",
-            "text": "#292d3e",
-            "active": "#DC141E",
-            "focus": "#65ACFF",
-            "inactive": "#7C8189",
-            "urgent": "#da3633",
-            "color1": "#CC6666",
-            "color2": "#f0883e",
-            "color3": "#586875",
-            "color4": "#65ACFF"
-        }
-    ]
+  "dark": "#292d3e",
+  "grey": "#434758",
+  "light": "#F9F9F9",
+  "text": "#292d3e",
+  "active": "#DC141E",
+  "focus": "#65ACFF",
+  "inactive": "#7C8189",
+  "urgent": "#da3633",
+  "color1": "#CC6666",
+  "color2": "#f0883e",
+  "color3": "#586875",
+  "color4": "#65ACFF"
 }

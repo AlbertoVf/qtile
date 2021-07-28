@@ -1,18 +1,14 @@
 {
-    "pico": [
-        {
-            "dark": "#292d3e",
-            "grey": "#a2a3a7",
-            "light": "#ffffff",
-            "text": "#292d3e",
-            "focus": "#ff004d",
-            "active": "#ff77a8",
-            "inactive": "#f1ffff",
-            "urgent": "#5f574f",
-            "color1": "#ffa300",
-            "color2": "#ff004d",
-            "color3": "#29adff",
-            "color4": "#00e756"
-        }
-    ]
+  "dark": "#292d3e",
+  "grey": "#a2a3a7",
+  "light": "#ffffff",
+  "text": "#292d3e",
+  "focus": "#ff004d",
+  "active": "#ff77a8",
+  "inactive": "#f1ffff",
+  "urgent": "#5f574f",
+  "color1": "#ffa300",
+  "color2": "#ff004d",
+  "color3": "#29adff",
+  "color4": "#00e756"
 }

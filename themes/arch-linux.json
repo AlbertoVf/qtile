@@ -1,18 +1,14 @@
 {
-  "arch-linux": [
-    {
-      "dark": "#222c37",
-      "grey": "#333333",
-      "light": "#ffffff",
-      "text": "#222c37",
-      "focus": "#1793d1",
-      "active": "#1793d1",
-      "inactive": "#ffffff",
-      "urgent": "#bc91fc",
-      "color1": "#ffffff",
-      "color2": "#1793d1",
-      "color3": "#ffffff",
-      "color4": "#1793d1"
-    }
-  ]
+  "dark": "#222c37",
+  "grey": "#333333",
+  "light": "#ffffff",
+  "text": "#222c37",
+  "focus": "#1793d1",
+  "active": "#1793d1",
+  "inactive": "#ffffff",
+  "urgent": "#bc91fc",
+  "color1": "#ffffff",
+  "color2": "#1793d1",
+  "color3": "#ffffff",
+  "color4": "#1793d1"
 }

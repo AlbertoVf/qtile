@@ -1,18 +1,14 @@
 {
-    "green": [
-        {
-            "dark": "#212121",
-            "grey": "#37a056",
-            "light": "#ffffff",
-            "text": "#212121",
-            "focus": "#256839",
-            "active": "#2e8447",
-            "inactive": "#3fbc64",
-            "urgent": "#ebcb8b",
-            "color1": "#256839",
-            "color2": "#37a056",
-            "color3": "#2e8447",
-            "color4": "#3fbc64"
-        }
-    ]
+  "dark": "#212121",
+  "grey": "#37a056",
+  "light": "#ffffff",
+  "text": "#212121",
+  "focus": "#256839",
+  "active": "#2e8447",
+  "inactive": "#3fbc64",
+  "urgent": "#ebcb8b",
+  "color1": "#256839",
+  "color2": "#37a056",
+  "color3": "#2e8447",
+  "color4": "#3fbc64"
 }

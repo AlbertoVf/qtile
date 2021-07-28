@@ -7,7 +7,7 @@ def init_layout_theme():
         "margin": 4,
         "border_width": 2,
         "border_focus": colors["focus"],
-        "border_normal": colors["grey"],
+        "border_normal": colors["inactive"],
     }
 
 

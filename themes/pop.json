@@ -1,18 +1,14 @@
 {
-    "pop": [
-        {
-            "dark": "#202020",
-            "grey": "#303030",
-            "light": "#ffffff",
-            "text": "#202020",
-            "focus": "#0e5a94",
-            "active": "#00aabb",
-            "inactive": "#f1ffff",
-            "urgent": "#e0e0e0",
-            "color1": "#0e5a94",
-            "color2": "#00aabb",
-            "color3": "#37b349",
-            "color4": "#f8ca12"
-        }
-    ]
+  "dark": "#202020",
+  "grey": "#303030",
+  "light": "#ffffff",
+  "text": "#202020",
+  "focus": "#0e5a94",
+  "active": "#00aabb",
+  "inactive": "#f1ffff",
+  "urgent": "#e0e0e0",
+  "color1": "#0e5a94",
+  "color2": "#00aabb",
+  "color3": "#37b349",
+  "color4": "#f8ca12"
 }

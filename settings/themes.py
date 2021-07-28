@@ -1,32 +1,22 @@
 import json
+from os import path
 from settings.path import qtile_themes, qtile_path
 
 
-def get_property(property: str):
-    try:
-        with open(f"{qtile_path}/theme.json") as f:
-            property = str(json.load(f)[property])
-        return property
-    except:
-        return None
-
-
 def theme_selector():
-    tema = get_property("theme")
+    theme = "default"
 
-    with open(f"{qtile_themes}/{tema}.json") as themes:
-        for colors in json.load(themes)[tema]:
-            return {
-                "dark": colors["dark"],
-                "grey": colors["grey"],
-                "light": colors["light"],
-                "text": colors["text"],
-                "focus": colors["focus"],
-                "active": colors["active"],
-                "inactive": colors["inactive"],
-                "urgent": colors["urgent"],
-                "color1": colors["color1"],
-                "color2": colors["color2"],
-                "color3": colors["color3"],
-                "color4": colors["color4"],
-            }
+    config = path.join(qtile_path, "theme.json")
+    if path.isfile(config):
+        with open(config) as f:
+            theme = json.load(f)["theme"]
+    else:
+        with open(config, "w") as f:
+            f.write(f'{{\n"theme": "{theme}\n"}}\n')
+
+    theme_file = path.join(qtile_themes, f'{theme}.json')
+    if not path.isfile(theme_file):
+        raise Exception(f'"{theme_file}" does not exist')
+
+    with open(path.join(theme_file)) as f:
+        return json.load(f)
