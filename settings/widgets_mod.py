@@ -1,5 +1,6 @@
-from libqtile import widget
-from settings.shortcut import colors, font
+from libqtile import qtile, widget
+from settings.shortcut import font
+from settings.themes import colors
 
 widget_defaults = dict(
     font=font,
@@ -30,10 +31,42 @@ def separator(fg=colors["urgent"], bg=colors["dark"], size=50):
     )
 
 
-def systray(size=18, bg=colors["dark"]):
+def systray(size=18):
     return widget.Systray(
         icon_size=size,
         margin=8,
         padding=8,
-        background=bg,
+    )
+
+
+def current_layout():
+    return widget.CurrentLayout(
+        font=f"{font} Bold",
+        foreground=colors["urgent"],
+    )
+
+
+def window_name():
+    return widget.WindowName(
+        font=f"{font} Bold",
+        format="{name}",
+        max_chars=90,
+        foreground=colors["focus"],
+    )
+
+
+def group_box(this_screen_color, other_screen_color):
+    return widget.GroupBox(
+        fontsize=12,
+        borderwidth=2,
+        rounded=False,
+        disable_drag=True,
+        highlight_method="line",
+        active=colors["active"],
+        inactive=colors["inactive"],
+        highlight_color=colors["text"],
+        this_current_screen_border=this_screen_color,
+        this_screen_border=this_screen_color,
+        other_current_screen_border=other_screen_color,
+        other_screen_border=other_screen_color,
     )
