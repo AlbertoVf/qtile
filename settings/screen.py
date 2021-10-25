@@ -1,5 +1,5 @@
 from libqtile import layout, bar
-from libqtile.config import Screen, Group
+from libqtile.config import Screen, Group, Match
 
 from settings.widgets import init_widgets_list, init_widgets_list01
 from settings.themes import colors
@@ -7,15 +7,10 @@ from settings.themes import colors
 widget_screen1 = init_widgets_list()
 widget_screen2 = init_widgets_list01()
 
-
-def init_screens():
-    return [
-        Screen(top=bar.Bar(widgets=widget_screen1, size=28)),
-        Screen(top=bar.Bar(widgets=widget_screen2, size=28)),
-    ]
-
-
-screens = init_screens()
+screens = [
+    Screen(top=bar.Bar(widgets=widget_screen1, size=28)),
+    Screen(top=bar.Bar(widgets=widget_screen2, size=28)),
+]
 
 layout_theme = {
     "margin": 4,
@@ -34,14 +29,15 @@ layouts = [
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 floating_layout = layout.Floating(
     float_rules=[
-        {"wmclass": "confirm"},
-        {"wmclass": "dialog"},
-        {"wmclass": "download"},
-        {"wmclass": "error"},
-        {"wmclass": "file_progress"},
-        {"wmclass": "notification"},
-        {"wmclass": "splash"},
-        {"wmclass": "toolbar"},
+        *layout.Floating.default_float_rules,
+        Match(wm_class='confirm'),
+        Match(wm_class='dialog'),
+        Match(wm_class='download'),
+        Match(wm_class='error'),
+        Match(wm_class='file_progress'),
+        Match(wm_class='notification'),
+        Match(wm_class='splash'),
+        Match(wm_class='toolbar'),
     ],
     border_normal=colors["color4"],
     border_focus=colors["focus"],
@@ -50,7 +46,8 @@ floating_layout = layout.Floating(
 
 def group(group_labels):
     group = []
-    group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    # group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    group_names = ["1", "2", "3", "4", "5"]
     for i in range(len(group_names)):
         group.append(Group(
             name=group_names[i],
@@ -61,6 +58,7 @@ def group(group_labels):
 
 
 groups = group(
-    ["Web", "Dev", "Term", "Vbox", "Msg", "Docs", "Media", "Games", "Sys"],
+    # ["Web", "Dev", "Term", "Vbox", "Msg", "Docs", "Media", "Games", "Sys"],
     # ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    ["Web/Sys", "Developer", "Term/Vbox", "Msg/Docs", "Media/Games"],
 )

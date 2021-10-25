@@ -15,11 +15,12 @@ def init_widgets_list():
         window_name(),
         widget.CapsNumLockIndicator(
             font=f"{font} Bold",
+            fontsize=12,
             fmt="{}",
             foreground=colors["color4"],
         ),
         widget.Volume(
-            font=f"{font} Bold",
+            font=f"{font}",
             fmt="\uf026 {}",
             foreground=colors["color3"],
             mouse_callbacks={
@@ -49,7 +50,7 @@ def init_widgets_list():
         ),
         widget.Clock(
             font=f"{font} Bold",
-            format="\uf5ec  %c",
+            format="\uf5ec %c",
             mouse_callbacks={
                 "Button1":
                     lambda: qtile.cmd_spawn("gnome-calendar")

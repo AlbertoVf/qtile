@@ -1,10 +1,11 @@
-from libqtile import qtile, widget
+from libqtile import widget
+# from libqtile import qtile, widget
 from settings.shortcut import font
 from settings.themes import colors
 
 widget_defaults = dict(
     font=font,
-    fontsize=13,
+    fontsize=14,
     padding=8,
     margin=8,
     foreground=colors["light"],
@@ -48,7 +49,7 @@ def current_layout():
 
 def window_name():
     return widget.WindowName(
-        font=f"{font} Bold",
+        font=f"{font} Bold Italic",
         format="{name}",
         max_chars=90,
         foreground=colors["focus"],
@@ -57,7 +58,7 @@ def window_name():
 
 def group_box(this_screen_color, other_screen_color):
     return widget.GroupBox(
-        fontsize=12,
+        fontsize=13,
         borderwidth=2,
         rounded=False,
         disable_drag=True,
