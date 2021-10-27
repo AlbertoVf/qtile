@@ -1,0 +1,72 @@
+{
+  "arc-dark-crimson": {
+    "dark": "#292d3e",
+    "grey": "#434758",
+    "light": "#F9F9F9",
+    "text": "#292d3e",
+    "active": "#DC141E",
+    "focus": "#65ACFF",
+    "inactive": "#7C8189",
+    "urgent": "#da3633",
+    "color1": "#CC6666",
+    "color2": "#f0883e",
+    "color3": "#586875",
+    "color4": "#65ACFF"
+  },
+  "arch-linux": {
+    "dark": "#222c37",
+    "grey": "#333333",
+    "light": "#ffffff",
+    "text": "#222c37",
+    "focus": "#1793d1",
+    "active": "#1793d1",
+    "inactive": "#ffffff",
+    "urgent": "#bc91fc",
+    "color1": "#ffffff",
+    "color2": "#1793d1",
+    "color3": "#ffffff",
+    "color4": "#1793d1"
+  },
+  "default": {
+    "dark": "#0f101a",
+    "grey": "#353c4a",
+    "light": "#f1ffff",
+    "text": "#0f101a",
+    "focus": "#a151d3",
+    "active": "#f1ffff",
+    "inactive": "#4c566a",
+    "urgent": "#F07178",
+    "color1": "#a151d3",
+    "color2": "#F07178",
+    "color3": "#fb9f7f",
+    "color4": "#ffd47e"
+  },
+  "dracula": {
+    "dark": "#292d3e",
+    "grey": "#434758",
+    "light": "#ffffff",
+    "text": "#292d3e",
+    "focus": "#BD93F9",
+    "active": "#FF5454",
+    "inactive": "#f1ffff",
+    "urgent": "#5AF78D",
+    "color1": "#FF5454",
+    "color2": "#BD93F9",
+    "color3": "#7197E7",
+    "color4": "#ffb86c"
+  },
+  "one-dark": {
+    "dark": "#1e2127",
+    "grey": "#ABB2BF",
+    "light": "#ffffff",
+    "text": "#282C34",
+    "focus": "#61AFEF",
+    "active": "#f1ffff",
+    "inactive": "#4c566a",
+    "urgent": "#E06C75",
+    "color1": "#C678DD",
+    "color2": "#E06C75",
+    "color3": "#61AFEF",
+    "color4": "#98C379"
+  }
+}
