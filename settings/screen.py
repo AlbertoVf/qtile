@@ -15,15 +15,16 @@ screens = [
 layout_theme = {
     "margin": 4,
     "border_width": 2,
-    "border_focus": colors["focus"],
+    "border_focus": colors["active"],
     "border_normal": colors["inactive"],
 }
 layouts = [
+    layout.Bsp(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
     layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
 ]
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
@@ -39,8 +40,8 @@ floating_layout = layout.Floating(
         Match(wm_class='splash'),
         Match(wm_class='toolbar'),
     ],
-    border_normal=colors["color4"],
-    border_focus=colors["focus"],
+    border_normal=colors["inactive"],
+    border_focus=colors["active"],
 )
 
 

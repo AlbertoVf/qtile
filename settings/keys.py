@@ -10,10 +10,8 @@ mod = "mod4"  # mod4 or mod = super key
 keys = [
     # SUPER + FUNCTION KEYS
     Key([mod], "a", lazy.spawn("xfce4-appfinder")),
-    # Key([mod], "b", lazy.spawn("bwmenu")),
     Key([mod], "b", lazy.spawn("bitwarden")),
     Key([mod], "c", lazy.spawn("catfish")),
-    Key([mod], "d", lazy.spawn("drawio"), ),
     Key([mod], "e", lazy.spawn(editor)),
     Key([mod], "f", lazy.spawn("firefox")),
     Key([mod], "g", lazy.spawn("gparted")),
@@ -23,7 +21,6 @@ keys = [
     Key([mod], "p", lazy.spawn("pycharm")),
     Key([mod], "q", lazy.window.kill(), desc='Kill the focused window'),
     Key([mod], "s", lazy.spawn("pamac-manager")),
-    Key([mod], "t", lazy.spawn("teamviewer")),
     Key([mod], "v", lazy.spawn("vlc --video-on-top")),
     Key([mod], "x", lazy.spawn("arcolinux-logout")),
     Key([mod], "z", lazy.spawn("zeal")),
@@ -37,7 +34,6 @@ keys = [
     Key([mod], "F8", lazy.spawn(fileManager)),
     Key([mod], "F9", lazy.spawn(mail)),
     Key([mod], "F10", lazy.spawn("spotify")),
-    Key([mod], "F11", lazy.spawn("rofi -show run -fullscreen")),
     Key([mod], "F12", lazy.spawn("rofi -show run")),
     Key([mod], "Escape", lazy.spawn("xkill"), desc='Select window to kill'),
     Key([mod], "Return", lazy.spawn(terminal)),
@@ -58,22 +54,18 @@ keys = [
     KeyChord(["mod1"], "q", [
         Key([], "h", lazy.spawn(
             "rofi -show file-browser-extended -file-browser-dir ~/.config"
-        )
-            ),
+        )),
         Key([], "j", lazy.spawn(
             "rofi -show file-browser-extended -file-browser-dir ~/Git"
-        )
-            ),
+        )),
         Key([], "k", lazy.spawn(
             "rofi -show file-browser-extended -file-browser-dir ~/.screenlayout"
-        ), ),
+        )),
         Key([], "l", lazy.spawn(
             "rofi -show file-browser-extended -file-browser-dir ~/Proyectos"
-        )
-            ),
-        Key([], "t", lazy.spawn("dofi")),
+        )),
     ]
-             ),
+    ),
     Key(["mod1"], "h", lazy.spawn(terminal + ' -e htop')),
     Key(["mod1"], "Left", lazy.spawn('variety -p')),
     Key(["mod1"], "Right", lazy.spawn('variety -n')),

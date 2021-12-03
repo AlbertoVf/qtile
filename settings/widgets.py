@@ -32,7 +32,7 @@ def init_widgets_list():
             format=" {percent:2.0%} \ufbd3",
             mouse_callbacks={
                 "Button1":
-                    lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
+                lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
                 "Button2": lambda: qtile.cmd_spawn(terminal + " -e htop"),
                 "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
             },
@@ -41,19 +41,18 @@ def init_widgets_list():
         ),
         widget.CheckUpdates(
             font=f"{font} Bold",
-            distro="Arch",
-            custom_command="pacman -Qu",
+            distro="Arch_checkupdates",
             execute=f"{terminal} -e sudo pacman -Syu",
             update_interval=1800,
             display_format='\uf547 {updates} Updates',
-            colour_have_updates=colors["urgent"],
+            colour_have_updates=colors["color1"],
         ),
         widget.Clock(
             font=f"{font} Bold",
             format="\uf5ec %c",
             mouse_callbacks={
-                "Button1":
-                    lambda: qtile.cmd_spawn("gnome-calendar")
+                "Button1": lambda: qtile.cmd_spawn(terminal + " -e calcurse"),
+                "Button3": lambda: qtile.cmd_spawn("gnome-calendar")
             },
             foreground=colors["color1"],
         ),

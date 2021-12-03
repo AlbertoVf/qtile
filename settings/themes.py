@@ -19,20 +19,16 @@ def check_theme():
 def theme_selector(theme=check_theme()):
     # 1 theme in 1 file
     theme_file = path.join(qtile_themes, f'{theme}.json')
-
     if not path.isfile(theme_file):
-        # raise Exception(f'"{theme_file}" does not exist')
         return 0
     with open(theme_file) as f:
         return json.load(f)
 
 
 def theme_selector_v2(theme=check_theme()):
-    # +1 themes in 1 file
     theme_file = path.join(qtile_themes, 'themes.json')
 
     if not path.isfile(theme_file):
-        # raise Exception(f'"{theme_file}" does not exist')
         return 0
     with open(theme_file) as f:
         return json.load(f)[theme]

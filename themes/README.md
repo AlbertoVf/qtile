@@ -5,14 +5,10 @@
 
 ```json
 {
-  "dark":"",
-  "grey":"",
-  "light":"",
-  "text":"",
-  "focus":"",
+  "background":"",
+  "foreground":"",
   "active":"",
   "inactive":"",
-  "urgent":"",
   "color1":"",
   "color2":"",
   "color3":"",
