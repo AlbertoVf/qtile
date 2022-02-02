@@ -1,18 +1,18 @@
 from libqtile import widget
-from settings.shortcut import font
-from settings.themes import colors
+from settings.manager import theme, font
+
 
 widget_defaults = dict(
     font=font,
     fontsize=14,
     padding=8,
     margin=8,
-    foreground=colors["foreground"],
-    background=colors["background"],
+    foreground=theme["foreground"],
+    background=theme["background"],
 )
 
 
-def powerline(tx="", fg=colors["background"], bg=colors["background"]):
+def powerline(tx="", fg=theme["background"], bg=theme["background"]):
     return widget.TextBox(
         padding=-6,
         text=tx,
@@ -21,7 +21,7 @@ def powerline(tx="", fg=colors["background"], bg=colors["background"]):
     )
 
 
-def separator(fg=colors["color1"], bg=colors["background"], size=50):
+def separator(fg=theme["color1"], bg=theme["background"], size=50):
     return widget.Sep(
         padding=8,
         margin=8,
@@ -42,7 +42,7 @@ def systray(size=18):
 def current_layout():
     return widget.CurrentLayout(
         font=f"{font} Bold",
-        foreground=colors["color1"],
+        foreground=theme["color1"],
     )
 
 
@@ -51,7 +51,7 @@ def window_name():
         font=f"{font} Bold Italic",
         format="{name}",
         max_chars=90,
-        foreground=colors["active"],
+        foreground=theme["active"],
     )
 
 
@@ -62,9 +62,9 @@ def group_box(this_screen_color, other_screen_color):
         rounded=False,
         disable_drag=True,
         highlight_method="line",
-        active=colors["active"],
-        inactive=colors["inactive"],
-        highlight_color=colors["background"],
+        active=theme["active"],
+        inactive=theme["inactive"],
+        highlight_color=theme["background"],
         this_current_screen_border=this_screen_color,
         this_screen_border=this_screen_color,
         other_current_screen_border=other_screen_color,

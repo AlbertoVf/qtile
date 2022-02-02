@@ -7,16 +7,17 @@ function run {
   fi
 }
 
-(conky -c $HOME/.conkyrc) &
-# run concky-toogle
 run variety &
-run nm-applet &
-run pamac-tray &
+run plank &
 run xfce4-power-manager &
+run xfce4-clipman &
 numlockx on &
+run volumeicon &
+run nm-applet &
 blueberry-tray &
+run pamac-tray &
+run megasync &
 picom --config $HOME/.config/qtile/scripts/picom.conf &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
-run volumeicon &
-run megasync &
+(conky -c $HOME/.conkyrc) &

@@ -2,7 +2,7 @@ from libqtile import layout, bar
 from libqtile.config import Screen, Group, Match
 
 from settings.widgets import init_widgets_list, init_widgets_list01
-from settings.themes import colors
+from settings.manager import theme
 
 widget_screen1 = init_widgets_list()
 widget_screen2 = init_widgets_list01()
@@ -15,8 +15,8 @@ screens = [
 layout_theme = {
     "margin": 4,
     "border_width": 2,
-    "border_focus": colors["active"],
-    "border_normal": colors["inactive"],
+    "border_focus": theme["active"],
+    "border_normal": theme["inactive"],
 }
 layouts = [
     layout.Bsp(**layout_theme),
@@ -40,8 +40,8 @@ floating_layout = layout.Floating(
         Match(wm_class='splash'),
         Match(wm_class='toolbar'),
     ],
-    border_normal=colors["inactive"],
-    border_focus=colors["active"],
+    border_normal=theme["inactive"],
+    border_focus=theme["active"],
 )
 
 

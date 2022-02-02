@@ -1,8 +1,8 @@
 import subprocess
 from libqtile.command import lazy
-from libqtile import hook
+from libqtile import hook, qtile
 
-from settings.shortcut import qtile_scripts
+from settings.manager import qtile_scripts
 from settings.keys import keys
 from settings.screen import *
 from settings.widgets import *

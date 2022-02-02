@@ -1,12 +1,14 @@
-import json
 from os import path
-from settings.shortcut import qtile_path, qtile_themes
+import json
 
+home = path.expanduser("~")
+qtile_path = path.join(home, '.config', 'qtile')
+qtile_scripts = path.join(qtile_path, "scripts")
+qtile_themes = path.join(qtile_path, "themes")
+config = path.join(qtile_path, "manager.json")
 
 def check_theme():
     theme = "default"
-    config = path.join(qtile_path, "theme.json")
-
     if path.isfile(config):
         with open(config) as f:
             theme = json.load(f)["theme"]
@@ -35,13 +37,25 @@ def theme_selector_v2(theme=check_theme()):
 
 
 def scheme_selector():
-    color_scheme = None
-
     if theme_selector() != 0:
-        color_scheme = theme_selector()
-    else:
-        color_scheme = theme_selector_v2()
-    return color_scheme
+        return theme_selector()
+
+    if theme_selector_v2() != 0:
+        return theme_selector_v2()
+
+    return theme_selector_v2("default")
 
 
-colors = scheme_selector()
+def check_property(property:str):
+    prop=''
+    with open(config) as f:
+        prop = json.load(f)[property]
+    return prop
+
+browser = check_property("browser")
+theme = scheme_selector()
+editor = check_property("editor")
+fileManager = check_property("fileManager")
+font = check_property("font") # nerd fonts https://www.nerdfonts.com/cheat-sheet
+mail = check_property("mail")
+terminal = check_property("terminal")

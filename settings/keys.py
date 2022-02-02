@@ -1,16 +1,15 @@
 from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
-from settings.shortcut import editor, terminal, fileManager, browser, mail
-from settings.screen import groups
-
 from libqtile.config import Click, Drag
 from libqtile.command import lazy
+from settings.screen import groups
+from settings.manager import editor, terminal, fileManager, browser, mail
 
 mod = "mod4"  # mod4 or mod = super key
 keys = [
     # SUPER + FUNCTION KEYS
     Key([mod], "a", lazy.spawn("xfce4-appfinder")),
-    Key([mod], "b", lazy.spawn("bitwarden")),
+    Key([mod], "b", lazy.spawn("bitwarden-desktop")),
     Key([mod], "c", lazy.spawn("catfish")),
     Key([mod], "e", lazy.spawn(editor)),
     Key([mod], "f", lazy.spawn("firefox")),
