@@ -1,6 +1,4 @@
-from libqtile.config import Key, KeyChord
-from libqtile.command import lazy
-from libqtile.config import Click, Drag
+from libqtile.config import Key, KeyChord, Click, Drag
 from libqtile.command import lazy
 from settings.screen import groups
 from settings.manager import editor, terminal, fileManager, browser, mail
@@ -49,34 +47,37 @@ keys = [
     Key(["mod1"], "F2", lazy.spawn("rofi -show drun")),
     Key(["mod1"], "F3", lazy.spawn("rofi -show file-browser-extended")),
     Key(["mod1"], "F4", lazy.spawn("rofi -show ssh ")),
+    Key(["mod1"], "F5", lazy.spawn("menu_apps")),
+    Key(["mod1"], "F6", lazy.spawn("menu_time")),
+    Key(["mod1"], "F7", lazy.spawn("menu_network")),
 
     KeyChord(["mod1"], "q", [
         Key([], "h", lazy.spawn(
-            "rofi -show file-browser-extended -file-browser-dir ~/.config"
-        )),
+            "rofi -show file-browser-extended -file-browser-dir ~/.config")),
         Key([], "j", lazy.spawn(
-            "rofi -show file-browser-extended -file-browser-dir ~/Git"
-        )),
+            "rofi -show file-browser-extended -file-browser-dir ~/Git")),
         Key([], "k", lazy.spawn(
-            "rofi -show file-browser-extended -file-browser-dir ~/.screenlayout"
-        )),
+            "rofi -show file-browser-extended -file-browser-dir ~/.screenlayout")),
         Key([], "l", lazy.spawn(
-            "rofi -show file-browser-extended -file-browser-dir ~/Proyectos"
-        )),
-    ]
-    ),
+            "rofi -show file-browser-extended -file-browser-dir ~/Proyectos")),
+    ]),
+    KeyChord(["mod1"], "k", [
+        Key([], "1",
+            lazy.spawn(
+                terminal + ' -e xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --off --output HDMI2 --off'),
+            lazy.restart()),  # mono screen
+        Key([], "2",
+            lazy.spawn(terminal + ' -e xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal'),
+            lazy.restart()),  # dual screen
+    ]),
     Key(["mod1"], "h", lazy.spawn(terminal + ' -e htop')),
     Key(["mod1"], "Left", lazy.spawn('variety -p')),
     Key(["mod1"], "Right", lazy.spawn('variety -n')),
 
     # SCREENSHOTS
     Key(["mod1"], "Print", lazy.spawn("xfce4-screenshooter")),
-    Key(
-        [], "Print",
-        lazy.spawn(
-            "scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir SCREENSHOTS)'"
-        ),
-    ),
+    Key([], "Print", lazy.spawn(
+        "scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir SCREENSHOTS)'")),
 ]
 
 # Media keys
@@ -86,16 +87,10 @@ keys.extend([
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")),
     # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key(
-        [], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -q set Master 5%-"),
-        lazy.spawn("amixer -q set Master unmuted")
-    ),
-    Key(
-        [], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -q set Master 5%+"),
-        lazy.spawn("amixer -q set Master unmuted")
-    ),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-"),
+        lazy.spawn("amixer -q set Master unmuted")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+"),
+        lazy.spawn("amixer -q set Master unmuted")),
     # MULTIMEDIA KEYS
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
@@ -126,115 +121,99 @@ keys.extend([
     Key([mod, "shift"], "space", lazy.layout.flip(), lazy.layout.toggle_split()),
 
     # MOVE WINDOW
-    Key(
-        [mod, "shift"], "j",
+    Key([mod, "shift"], "j",
         lazy.layout.shuffle_down(),
         lazy.layout.swap_down(),
         lazy.layout.flip_down(),
-    ),
-    Key(
-        [mod, "shift"], "Down",
+        ),
+    Key([mod, "shift"], "Down",
         lazy.layout.shuffle_down(),
         lazy.layout.swap_down(),
         lazy.layout.flip_down(),
-    ),
-    Key(
-        [mod, "shift"], "k",
+        ),
+    Key([mod, "shift"], "k",
         lazy.layout.shuffle_up(),
         lazy.layout.swap_up(),
         lazy.layout.flip_up(),
-    ),
-    Key(
-        [mod, "shift"], "Up",
+        ),
+    Key([mod, "shift"], "Up",
         lazy.layout.shuffle_up(),
         lazy.layout.swap_up(),
         lazy.layout.flip_up(),
-    ),
-    Key(
-        [mod, "shift"], "h",
+        ),
+    Key([mod, "shift"], "h",
         lazy.layout.shuffle_left(),
         lazy.layout.swap_left(),
         lazy.layout.swap_column_left(),
         lazy.layout.flip_left(),
-    ),
-    Key(
-        [mod, "shift"], "Left",
+        ),
+    Key([mod, "shift"], "Left",
         lazy.layout.shuffle_left(),
         lazy.layout.swap_left(),
         lazy.layout.swap_column_left(),
         lazy.layout.flip_left(),
-    ),
-    Key(
-        [mod, "shift"], "l",
+        ),
+    Key([mod, "shift"], "l",
         lazy.layout.shuffle_right(),
         lazy.layout.swap_right(),
         lazy.layout.swap_column_right(),
         lazy.layout.flip_right(),
-    ),
-    Key(
-        [mod, "shift"], "Right",
+        ),
+    Key([mod, "shift"], "Right",
         lazy.layout.shuffle_right(),
         lazy.layout.swap_right(),
         lazy.layout.swap_column_right(),
         lazy.layout.flip_right(),
-    ),
+        ),
     # SIZE WINDOWS
-    Key(
-        [mod, "control"], "j",
+    Key([mod, "control"], "j",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
         lazy.layout.increase_nmaster(),
         lazy.layout.section_down(),
-    ),
-    Key(
-        [mod, "control"], "Down",
+        ),
+    Key([mod, "control"], "Down",
         lazy.layout.grow_down(),
         lazy.layout.shrink(),
         lazy.layout.increase_nmaster(),
         lazy.layout.section_down(),
-    ),
-    Key(
-        [mod, "control"], "k",
+        ),
+    Key([mod, "control"], "k",
         lazy.layout.grow_up(),
         lazy.layout.grow(),
         lazy.layout.decrease_nmaster(),
         lazy.layout.section_up(),
-    ),
-    Key(
-        [mod, "control"], "Up",
+        ),
+    Key([mod, "control"], "Up",
         lazy.layout.grow_up(),
         lazy.layout.grow(),
         lazy.layout.decrease_nmaster(),
         lazy.layout.section_up(),
-    ),
-    Key(
-        [mod, "control"], "h",
+        ),
+    Key([mod, "control"], "h",
         lazy.layout.grow_left(),
         lazy.layout.shrink(),
         lazy.layout.decrease_ratio(),
         lazy.layout.add(),
-    ),
-    Key(
-        [mod, "control"], "Left",
+        ),
+    Key([mod, "control"], "Left",
         lazy.layout.grow_left(),
         lazy.layout.shrink(),
         lazy.layout.decrease_ratio(),
         lazy.layout.add(),
-    ),
-    Key(
-        [mod, "control"], "l",
+        ),
+    Key([mod, "control"], "l",
         lazy.layout.grow_right(),
         lazy.layout.grow(),
         lazy.layout.increase_ratio(),
         lazy.layout.delete(),
-    ),
-    Key(
-        [mod, "control"], "Right",
+        ),
+    Key([mod, "control"], "Right",
         lazy.layout.grow_right(),
         lazy.layout.grow(),
         lazy.layout.increase_ratio(),
         lazy.layout.delete(),
-    ),
+        ),
 ]
 )
 
@@ -251,22 +230,12 @@ for i in groups:
 
         # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
-    ]
-    )
+    ])
 
 mouse = [
-    Click(
-        ["mod"], "Button1",
-        lazy.window.bring_to_front()
-    ),
-    Drag(
-        ["mod"], "Button2",
-        lazy.window.set_position_floating(),
-        start=lazy.window.get_position(),
-    ),
-    Drag(
-        ["mod"], "Button3",
-        lazy.window.set_size_floating(),
-        start=lazy.window.get_size()
-    ),
+    Click(["mod"], "Button1", lazy.window.bring_to_front(), ),
+    Drag(["mod"], "Button2", lazy.window.set_position_floating(),
+         start=lazy.window.get_position(), ),
+    Drag(["mod"], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
 ]

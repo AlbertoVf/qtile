@@ -5,6 +5,7 @@ from libqtile import qtile, widget
 from settings.manager import theme, terminal, font
 from settings.widgets_mod import *
 
+
 # PRYMARY WIDGETS LIST
 def init_widgets_list():
     widgets_list = [
@@ -51,11 +52,12 @@ def init_widgets_list():
             format="\uf5ec %c",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(terminal + " -e calcurse"),
-                "Button3": lambda: qtile.cmd_spawn("gnome-calendar")
+                "Button2": lambda: qtile.cmd_spawn("evolution"),
+                "Button3": lambda: qtile.cmd_spawn("gnome-calendar"),
             },
             foreground=theme["color1"],
         ),
-         systray(size=22),
+        systray(size=22),
     ]
     return widgets_list
 

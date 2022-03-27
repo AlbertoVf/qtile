@@ -3,9 +3,9 @@ import json
 
 home = path.expanduser("~")
 qtile_path = path.join(home, '.config', 'qtile')
-qtile_scripts = path.join(qtile_path, "scripts")
-qtile_themes = path.join(qtile_path, "themes")
-config = path.join(qtile_path, "manager.json")
+qtile_scripts, qtile_themes, config = path.join(qtile_path, "scripts"), path.join(
+    qtile_path, "themes"), path.join(qtile_path, "manager.json")
+
 
 def check_theme():
     theme = "default"
@@ -46,16 +46,13 @@ def scheme_selector():
     return theme_selector_v2("default")
 
 
-def check_property(property:str):
-    prop=''
+def check_property(property: str):
+    prop = ''
     with open(config) as f:
         prop = json.load(f)[property]
     return prop
 
-browser = check_property("browser")
-theme = scheme_selector()
-editor = check_property("editor")
-fileManager = check_property("fileManager")
-font = check_property("font") # nerd fonts https://www.nerdfonts.com/cheat-sheet
-mail = check_property("mail")
-terminal = check_property("terminal")
+
+theme, font = scheme_selector(), check_property("font")
+browser, editor, fileManager, mail, terminal = check_property("browser"), check_property(
+    "editor"), check_property("fileManager"), check_property("mail"), check_property("terminal")
