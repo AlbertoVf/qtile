@@ -1,10 +1,9 @@
 #!/bin/bash
 
 function run {
-  if ! pgrep $1 ;
-  then
-    $@&
-  fi
+    if ! pgrep $1; then
+        $@ &
+    fi
 }
 
 run variety &
@@ -17,7 +16,8 @@ run nm-applet &
 blueberry-tray &
 run pamac-tray &
 run megasync &
-picom --config $HOME/.config/qtile/scripts/picom.conf &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+picom --config $HOME/.config/picom/picom.conf &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 (conky -c $HOME/.conkyrc) &
