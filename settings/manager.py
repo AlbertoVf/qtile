@@ -7,6 +7,19 @@ qtile_scripts, qtile_themes, config = path.join(qtile_path, "scripts"), path.joi
     qtile_path, "themes"), path.join(qtile_path, "manager.json")
 
 
+def check_propertyes(propertyes: list[str]):
+    prop = []
+    with open(config) as f:
+        data = json.load(f)
+        for p in propertyes:
+            prop.append(data[p])
+    return prop
+
+
+browser, editor, fileManager, mail, terminal, font = check_propertyes(
+    ["browser", "editor", "fileManager", "mail", "terminal", "font"])
+
+
 def check_theme():
     theme = "default"
     if path.isfile(config):
@@ -14,7 +27,7 @@ def check_theme():
             theme = json.load(f)["theme"]
     else:
         with open(config, "w") as f:
-            f.write(f'{{\n"theme": "{theme}\n"}}\n')
+            json.dump(theme, f)
     return theme
 
 
@@ -46,13 +59,4 @@ def scheme_selector():
     return theme_selector_v2("default")
 
 
-def check_property(property: str):
-    prop = ''
-    with open(config) as f:
-        prop = json.load(f)[property]
-    return prop
-
-
-theme, font = scheme_selector(), check_property("font")
-browser, editor, fileManager, mail, terminal = check_property("browser"), check_property(
-    "editor"), check_property("fileManager"), check_property("mail"), check_property("terminal")
+theme = scheme_selector()

@@ -1,9 +1,9 @@
 {
-  "browser"     : "brave",
-  "editor"      : "code",
-  "fileManager" : "thunar",
-  "font"        : "FantasqueSansMono Nerd Font",
-  "mail"        : "evolution",
-  "terminal"    : "alacritty",
-  "theme"       : "palenight"
+  "browser": "brave",
+  "editor": "code",
+  "fileManager": "thunar",
+  "font": "FantasqueSansMono Nerd Font",
+  "mail": "evolution",
+  "terminal": "kitty",
+  "theme": "palenight"
 }
