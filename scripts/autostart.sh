@@ -15,7 +15,7 @@ run volumeicon &
 run nm-applet &
 blueberry-tray &
 run pamac-tray &
-run megasync &
+# run megasync &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 picom --config $HOME/.config/picom/picom.conf &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

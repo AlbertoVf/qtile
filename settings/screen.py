@@ -47,12 +47,13 @@ floating_layout = layout.Floating(
 
 def group(group_labels):
     group = []
-    group_names = ["1", "2", "3", "4", "5"]
+    group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     for i in range(len(group_names)):
         group.append(Group(name=group_names[i], label=group_labels[i]))
     return group
 
 
 groups = group(
-    ["Web/Sys", "Developer", "Term/Vbox", "Msg/Docs", "Media/Games"],
+    # ["Web/Sys", "Developer", "Term/Vbox", "Msg/Docs", "Media/Games"],
+    ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
 )

@@ -37,6 +37,7 @@ def group_box(this_screen_color, other_screen_color):
         borderwidth=2,
         rounded=False,
         disable_drag=True,
+        font=f"{font} bold",
         highlight_method="line",
         active=theme["active"],
         inactive=theme["inactive"],
