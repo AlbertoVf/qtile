@@ -3,8 +3,7 @@ import json
 
 home = path.expanduser("~")
 qtile_path = path.join(home, '.config', 'qtile')
-qtile_scripts, qtile_themes, config = path.join(qtile_path, "scripts"), path.join(
-    qtile_path, "themes"), path.join(qtile_path, "manager.json")
+qtile_scripts, qtile_themes, config = path.join(qtile_path, "scripts"), path.join( qtile_path, "themes"), path.join(qtile_path, "manager.json")
 
 
 def check_propertyes(propertyes: list[str]):
@@ -16,8 +15,7 @@ def check_propertyes(propertyes: list[str]):
     return prop
 
 
-browser, editor, fileManager, mail, terminal, font = check_propertyes(
-    ["browser", "editor", "fileManager", "mail", "terminal", "font"])
+browser, editor, fileManager, mail, terminal, font = check_propertyes(["browser", "editor", "fileManager", "mail", "terminal", "font"])
 
 
 def check_theme():
@@ -42,7 +40,6 @@ def theme_selector(theme=check_theme()):
 
 def theme_selector_v2(theme=check_theme()):
     theme_file = path.join(qtile_themes, 'themes.json')
-
     if not path.isfile(theme_file):
         return 0
     with open(theme_file) as f:
@@ -52,10 +49,8 @@ def theme_selector_v2(theme=check_theme()):
 def scheme_selector():
     if theme_selector() != 0:
         return theme_selector()
-
     if theme_selector_v2() != 0:
         return theme_selector_v2()
-
     return theme_selector_v2("default")
 
 

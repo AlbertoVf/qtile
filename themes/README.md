@@ -1,18 +1,18 @@
 # Configuracion de nuevo tema
 
-1. Crear un fichero __json__ con el nombre del tema.
+1. Crear un fichero **json** con el nombre del tema.
 2. Copiar la siguiente estructura y añadir los valores.
 
 ```json
 {
-  "background":"",
-  "foreground":"",
-  "active":"",
-  "inactive":"",
-  "color1":"",
-  "color2":"",
-  "color3":"",
-  "color4":""
+    "background": "",
+    "foreground": "",
+    "active": "",
+    "inactive": "",
+    "color1": "",
+    "color2": "",
+    "color3": "",
+    "color4": ""
 }
 ```
 

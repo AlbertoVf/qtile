@@ -2,9 +2,7 @@ from libqtile import widget
 from settings.manager import theme, font
 
 
-widget_defaults = dict(font=font, fontsize=14, padding=8, margin=8,
-                       foreground=theme["foreground"], background=theme["background"], )
-
+widget_defaults = dict(font=font, fontsize=14, padding=8, margin=8, foreground=theme["foreground"], background=theme["background"], )
 
 def powerline(tx="", fg=theme["background"], bg=theme["background"]):
     return widget.TextBox(
