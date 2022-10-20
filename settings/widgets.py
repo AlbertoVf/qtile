@@ -44,7 +44,7 @@ def init_widgets_list():
             distro="Arch_checkupdates",
             execute=f"{terminal} -e sudo pacman -Syu",
             update_interval=1800,
-            display_format='\uf547 {updates} Updates',
+            display_format="\uf547 {updates} Updates",
             colour_have_updates=theme["foreground"],
         ),
         widget.Clock(

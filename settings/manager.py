@@ -5,27 +5,23 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-home = os.path.expanduser("~")
-qtile_path = os.path.join( home, '.config', 'qtile')
+qtile_path = os.path.join(os.path.expanduser("~"), ".config", "qtile")
 qtile_scripts = os.path.join(qtile_path, "scripts")
 
-browser = os.getenv('browser')
-editor = os.getenv('editor')
-fileManager = os.getenv('fileManager')
-mail = os.getenv('mail')
-terminal = os.getenv('terminal')
-font = os.getenv('font')
-theme = os.getenv('theme', 'default')
+fileManager = os.getenv("fileManager")
+terminal = os.getenv("terminal")
+font = os.getenv("font")
+theme = os.getenv("theme")
 
 
 def theme_selector():
     qtile_themes = os.path.join(qtile_path, "themes")
     try:
-        with open(os.path.join(qtile_themes, 'themes.json')) as f:
+        with open(os.path.join(qtile_themes, "themes.json")) as f:
             return json.load(f)[theme]
     except:
         try:
-            with open(os.path.join(qtile_themes, f'{theme}.json')) as g:
+            with open(os.path.join(qtile_themes, f"{theme}.json")) as g:
                 return json.load(g)
         except:
             pass

@@ -1,17 +1,17 @@
 from libqtile.config import Key, KeyChord, Click, Drag
 from libqtile.command import lazy
 from settings.screen import groups
-from settings.manager import editor, terminal, fileManager, browser, mail
+from settings.manager import fileManager
 
 mod = "mod4"  # mod4 or mod = super key
 keys = [
     # SUPER + FUNCTION KEYS
-    Key([mod], "q", lazy.window.kill(), desc='Kill the focused window'),
+    Key([mod], "q", lazy.window.kill(), desc="Kill the focused window"),
     # SUPER + SHIFT KEYS
-    Key([mod, "shift"], "q", lazy.window.kill(), desc='Kill the focused window'),
+    Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill the focused window"),
     # SUPER + CONTROL KEYS
-    Key([mod, "control"], "r", lazy.restart(), desc='restart qtile'),
-    Key([mod, "control"], "q", lazy.shutdown(), desc='Close session'),
+    Key([mod, "control"], "r", lazy.restart(), desc="restart qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Close session"),
     Key([mod, "control"], "Return", lazy.spawn(fileManager)),
     # Switch focus of monitors
     Key([mod], "period", lazy.next_screen()),
