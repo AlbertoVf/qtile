@@ -1,57 +1,58 @@
-from os import path
+import os
 import json
 
-home = path.expanduser("~")
-qtile_path = path.join(home, '.config', 'qtile')
-qtile_scripts, qtile_themes, config = path.join(qtile_path, "scripts"), path.join( qtile_path, "themes"), path.join(qtile_path, "manager.json")
+from dotenv import load_dotenv
+
+load_dotenv()
+
+home = os.path.expanduser("~")
+qtile_path = os.path.join( home, '.config', 'qtile')
+qtile_scripts = os.path.join(qtile_path, "scripts")
+
+browser = os.getenv('browser')
+editor = os.getenv('editor')
+fileManager = os.getenv('fileManager')
+mail = os.getenv('mail')
+terminal = os.getenv('terminal')
+font = os.getenv('font')
+theme = os.getenv('theme', 'default')
 
 
-def check_propertyes(propertyes: list[str]):
-    prop = []
-    with open(config) as f:
+def theme_selector():
+    qtile_themes = os.path.join(qtile_path, "themes")
+    try:
+        with open(os.path.join(qtile_themes, 'themes.json')) as f:
+            return json.load(f)[theme]
+    except:
+        try:
+            with open(os.path.join(qtile_themes, f'{theme}.json')) as g:
+                return json.load(g)
+        except:
+            pass
+
+    return {"background": "#0f101a", "foreground": "#f1ffff", "active": "#f1ffff", "inactive": "#4c566a", "color1": "#a151d3", "color2": "#F07178", "color3": "#fb9f7f", "color4": "#ffd47e"}
+
+
+def build_theme_json():
+    themes = []
+
+    with open("themes/themes.json", "r") as f:
         data = json.load(f)
-        for p in propertyes:
-            prop.append(data[p])
-    return prop
+
+    for t in data:
+        themes.append(t)
+        scheme = data[t]
+        with open(f"themes/{t}.json", "w") as outfile:
+            json.dump(scheme, outfile, indent=2)
+
+    with open("themes/Previews.md", "w") as f:
+        f.write("# Previews\n")
+        for theme in themes:
+            l = f"\n## {theme}\n![{theme}](./scheme/{theme}.jpg)\n"
+            f.write(l)
 
 
-browser, editor, fileManager, mail, terminal, font = check_propertyes(["browser", "editor", "fileManager", "mail", "terminal", "font"])
+theme = theme_selector()
 
-
-def check_theme():
-    theme = "default"
-    if path.isfile(config):
-        with open(config) as f:
-            theme = json.load(f)["theme"]
-    else:
-        with open(config, "w") as f:
-            json.dump(theme, f)
-    return theme
-
-
-def theme_selector(theme=check_theme()):
-    # 1 theme in 1 file
-    theme_file = path.join(qtile_themes, f'{theme}.json')
-    if not path.isfile(theme_file):
-        return 0
-    with open(theme_file) as f:
-        return json.load(f)
-
-
-def theme_selector_v2(theme=check_theme()):
-    theme_file = path.join(qtile_themes, 'themes.json')
-    if not path.isfile(theme_file):
-        return 0
-    with open(theme_file) as f:
-        return json.load(f)[theme]
-
-
-def scheme_selector():
-    if theme_selector() != 0:
-        return theme_selector()
-    if theme_selector_v2() != 0:
-        return theme_selector_v2()
-    return theme_selector_v2("default")
-
-
-theme = scheme_selector()
+if __name__ == "__main__":
+    build_theme_json()

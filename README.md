@@ -22,7 +22,7 @@ Configuracion personalizada para Qtile en ArcoLinux.
     ```
 
     ```python
-    python themes/make_themes.py # actualiza previews.md y crea .json para cada thema
+    python settings/manager.py # actualiza previews.md y crea .json para cada thema
     ```
 
 2. Modificar el archivo __manager.json__ y substituir el valor de la propiedad **theme**.
