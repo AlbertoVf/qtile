@@ -2,7 +2,7 @@ import os
 import socket
 from libqtile import qtile, widget
 
-from settings.manager import theme, terminal, font
+from settings.manager import theme, terminal, font, mail
 from settings.widgets_mod import *
 
 
@@ -30,8 +30,7 @@ def init_widgets_list():
             font=f"{font} Bold",
             format=" {percent:2.0%} \ufbd3",
             mouse_callbacks={
-                "Button1":
-                lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
+                "Button1": lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
                 "Button2": lambda: qtile.cmd_spawn(terminal + " -e htop"),
                 "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
             },
@@ -51,9 +50,8 @@ def init_widgets_list():
             font=f"{font} Bold",
             format="\uf5ec %c",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn(terminal + " -e calcurse"),
-                "Button2": lambda: qtile.cmd_spawn("evolution"),
-                "Button3": lambda: qtile.cmd_spawn("gnome-calendar"),
+                "Button1": lambda: qtile.cmd_spawn(mail),
+                "Button3": lambda: qtile.cmd_spawn(terminal + " -e calcurse"),
             },
             foreground=theme["color1"],
         ),

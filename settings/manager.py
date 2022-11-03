@@ -12,6 +12,7 @@ fileManager = os.getenv("fileManager")
 terminal = os.getenv("terminal")
 font = os.getenv("font")
 theme = os.getenv("theme")
+mail = os.getenv("mail")
 
 
 def theme_selector():

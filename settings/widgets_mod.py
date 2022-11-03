@@ -2,15 +2,14 @@ from libqtile import widget
 from settings.manager import theme, font
 
 
-widget_defaults = dict(font=font, fontsize=14, padding=8, margin=8, foreground=theme["foreground"], background=theme["background"], )
+widget_defaults = dict(
+    font=font, fontsize=14, padding=8, margin=8,
+    foreground=theme["foreground"], background=theme["background"]
+)
+
 
 def powerline(tx="", fg=theme["background"], bg=theme["background"]):
-    return widget.TextBox(
-        padding=-6,
-        text=tx,
-        foreground=fg,
-        background=bg,
-    )
+    return widget.TextBox(padding=-6, text=tx, foreground=fg, background=bg, )
 
 
 def separator(fg=theme["color1"], bg=theme["background"], size=50):

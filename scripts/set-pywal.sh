@@ -23,75 +23,82 @@ declare -r myname='set-pywal'
 declare -r myver='1.1.1'
 
 usage() {
-	printf "%s v%s\n" "${myname}" "${myver}"
-	echo
-	printf "%s Pywal will use the wallpaper of variety"
-	echo
-	echo
-	echo "    -h, --help        display this help message and exit"
-	echo "    -v, --version     display version information and exit"
-	echo
-	echo "These options can be passed to the script:"
-	echo "    -f,     favorite"
-	echo "    -p,     previous"
-	echo "    -n,     next"
-  echo "    -u,     update"
+    printf "%s v%s\n" "${myname}" "${myver}"
+    echo
+    printf "%s Pywal will use the wallpaper of variety"
+    echo
+    echo
+    echo "    -h, --help        display this help message and exit"
+    echo "    -v, --version     display version information and exit"
+    echo
+    echo "These options can be passed to the script:"
+    echo "    -f,     favorite"
+    echo "    -p,     previous"
+    echo "    -n,     next"
+    echo "    -u,     update"
 }
 
 version() {
-	printf "%s %s\n" "$myname" "$myver"
-	echo 'Copyright (C) 2012-2013 Erik Dubois <erik.dubois@gmail.com>'
+    printf "%s %s\n" "$myname" "$myver"
+    echo 'Copyright (C) 2012-2013 Erik Dubois <erik.dubois@gmail.com>'
 }
 
-
 # Verifies if 'python-pywal' is installed
-if ! type "wal" >> /dev/null 2>&1; then
+if ! type "wal" >>/dev/null 2>&1; then
     echo -e \
         "\nThis script requires 'python-pywal' to be installed\n" \
         "\rPlease install it and rerun this script."
 fi
 
-
 # Verifies if 'variety' is installed
-if ! type "variety" >> /dev/null 2>&1; then
+if ! type "variety" >>/dev/null 2>&1; then
     echo -e \
         "\nThis script requires 'variety' to be installed\n" \
         "\rPlease install it and rerun this script."
 fi
 
-if ! type "wal" >> /dev/null 2>&1 || ! type "variety" >> /dev/null 2>&1  ; then
+if ! type "wal" >>/dev/null 2>&1 || ! type "variety" >>/dev/null 2>&1; then
     exit
 fi
 
-find-wallpaper(){
-	current_wallpaper=$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
+find-wallpaper() {
+    current_wallpaper=$(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
 }
 
 set-variety() {
-	case "$1" in
-		-f) variety -f ;;
-		-p) variety -p ;;
-		-n) variety -n ;;
-	esac
+    case "$1" in
+    -f) variety -f ;;
+    -p) variety -p ;;
+    -n) variety -n ;;
+    esac
 }
 
-set-wal(){
-	wal -i $current_wallpaper
+set-wal() {
+    wal -i $current_wallpaper
 }
 
 setwal() {
-	case "$1" in
-		-f) set-variety -f && find-wallpaper && sleep 1 && set-wal && exit;;
-		-p) set-variety -p && find-wallpaper && sleep 1 && set-wal && exit;;
-		-n) set-variety -n && find-wallpaper && sleep 1 && set-wal && exit;;
-		-u) find-wallpaper && set-wal ;;
-	esac
+    case "$1" in
+    -f) set-variety -f && find-wallpaper && sleep 1 && set-wal && exit ;;
+    -p) set-variety -p && find-wallpaper && sleep 1 && set-wal && exit ;;
+    -n) set-variety -n && find-wallpaper && sleep 1 && set-wal && exit ;;
+    -u) find-wallpaper && set-wal ;;
+    esac
 }
 
-while (( "$#" )); do
-	case "$1" in
-		-h|--help) usage; exit ;;
-		-v|--version) version; exit ;;
-		*) setwal $1; exit  ;;
-	esac
+while (("$#")); do
+    case "$1" in
+    -h | --help)
+        usage
+        exit
+        ;;
+    -v | --version)
+        version
+        exit
+        ;;
+    *)
+        setwal $1
+        exit
+        ;;
+    esac
 done
