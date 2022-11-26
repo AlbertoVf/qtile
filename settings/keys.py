@@ -1,4 +1,4 @@
-from libqtile.config import Key, KeyChord, Click, Drag
+from libqtile.config import Key, Click, Drag
 from libqtile.command import lazy
 from settings.screen import groups
 from settings.manager import fileManager
@@ -64,7 +64,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right(), lazy.layout.grow(),
         lazy.layout.increase_ratio(), lazy.layout.delete(), ),
     Key([mod, "control"], "Right", lazy.layout.grow_right(), lazy.layout.grow(
-    ), lazy.layout.increase_ratio(), lazy.layout.delete(), ),
+    ), lazy.layout.increase_ratio(), lazy.layout.delete(), )
 ]
 
 for i in groups:
@@ -76,7 +76,7 @@ for i in groups:
         Key(["mod1"], "Tab", lazy.screen.next_group()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
         # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
     ])
 
 mouse = [
@@ -84,5 +84,5 @@ mouse = [
     Drag(["mod"], "Button2", lazy.window.set_position_floating(),
          start=lazy.window.get_position(), ),
     Drag(["mod"], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
+         start=lazy.window.get_size())
 ]
