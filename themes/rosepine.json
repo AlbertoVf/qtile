@@ -1,10 +1,10 @@
 {
-  "background": "#1f1d29",
-  "foreground": "#4c566a",
-  "active": "#eabbb9",
-  "inactive": "#f1ffff",
-  "color1": "#ea6f91",
-  "color2": "#eabbb9",
-  "color3": "#f1ca93",
-  "color4": "#9bced7"
+    "background": "#1f1d29",
+    "foreground": "#4c566a",
+    "active": "#eabbb9",
+    "inactive": "#f1ffff",
+    "color1": "#ea6f91",
+    "color2": "#eabbb9",
+    "color3": "#f1ca93",
+    "color4": "#9bced7"
 }
