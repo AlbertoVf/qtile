@@ -1,7 +1,7 @@
 from libqtile.config import Key, Click, Drag
 from libqtile.command import lazy
-from settings.screen import groups
-from settings.manager import fileManager
+from .screen import groups
+from .manager import fileManager
 
 mod = "mod4"  # mod4 or mod = super key
 keys = [

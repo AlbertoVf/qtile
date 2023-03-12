@@ -1,8 +1,8 @@
 from libqtile import layout, bar
 from libqtile.config import Screen, Group, Match
 
-from settings.widgets import init_widgets_list
-from settings.manager import theme
+from .widgets import init_widgets_list
+from .manager import theme
 
 screens = [
     Screen(top=bar.Bar(widgets=init_widgets_list(), size=28))

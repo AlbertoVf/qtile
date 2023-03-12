@@ -1,6 +1,6 @@
 from libqtile import qtile, widget
 
-from settings.manager import theme, terminal, font, mail
+from .manager import theme, terminal, font, mail
 
 widget_defaults = dict(
     font=font,
@@ -83,7 +83,6 @@ def init_widgets_list():
             foreground=theme["color1"],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(mail),
-                "Button3": lambda: qtile.cmd_spawn(terminal + " -e calcurse")
             }
         ),
         widget.Systray(
