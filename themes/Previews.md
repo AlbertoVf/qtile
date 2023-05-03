@@ -41,3 +41,6 @@
 
 ## rosepine
 ![rosepine](./scheme/rosepine.jpg)
+
+## gruvbox
+![gruvbox](./scheme/gruvbox.jpg)
