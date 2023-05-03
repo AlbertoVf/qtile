@@ -28,8 +28,7 @@ def theme_selector(theme=os.getenv("theme")):
 
     return {"background": "#0f101a", "foreground": "#f1ffff", "active": "#f1ffff", "inactive": "#4c566a", "color1": "#a151d3", "color2": "#F07178", "color3": "#fb9f7f", "color4": "#ffd47e"}
 
-
-theme = theme_selector("palenight")
+theme = theme_selector()
 
 if __name__ == "__main__":
     themes = []
