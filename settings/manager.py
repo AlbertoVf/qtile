@@ -1,20 +1,20 @@
 import os
 import json
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 qtile_path = os.path.join(os.path.expanduser("~"), ".config", "qtile")
 qtile_scripts = os.path.join(qtile_path, "scripts")
 
-fileManager = os.getenv("fileManager")
-terminal = os.getenv("terminal")
-font = os.getenv("font")
-mail = os.getenv("mail")
+
+def getenv(key): return json.load(open(f"{qtile_path}/.env", "r"))[key]
 
 
-def theme_selector(theme=os.getenv("theme")):
+fileManager = getenv("fileManager")
+terminal = getenv("terminal")
+font = getenv("font")
+mail = getenv("mail")
+
+
+def theme_selector(theme=getenv("theme")):
     qtile_themes = os.path.join(qtile_path, "themes")
     try:
         with open(os.path.join(qtile_themes, "themes.json")) as f:
@@ -27,6 +27,7 @@ def theme_selector(theme=os.getenv("theme")):
             pass
 
     return {"background": "#0f101a", "foreground": "#f1ffff", "active": "#f1ffff", "inactive": "#4c566a", "color1": "#a151d3", "color2": "#F07178", "color3": "#fb9f7f", "color4": "#ffd47e"}
+
 
 theme = theme_selector()
 
