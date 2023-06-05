@@ -59,7 +59,7 @@ def init_widgets_list():
         ),
         widget.Battery(
             font=f"{font} Bold",
-            format=" {percent:2.0%} \ufbd3",
+            format=" 󱟠 {percent:2.0%}",
             update_interval=10,
             foreground=theme["color2"],
             background=theme["background"],
@@ -74,12 +74,12 @@ def init_widgets_list():
             distro="Arch_checkupdates",
             execute=f"{terminal} -e sudo pacman -Syu",
             update_interval=1800,
-            display_format="\uf547 {updates} Updates",
+            display_format="󱑥 {updates} Updates",
             colour_have_updates=theme["foreground"]
         ),
         widget.Clock(
             font=f"{font} Bold",
-            format="\uf5ec %c",
+            format="󱪺 %c",
             foreground=theme["color1"],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(mail),
