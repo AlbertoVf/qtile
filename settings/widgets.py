@@ -65,7 +65,6 @@ def init_widgets_list():
             background=theme["background"],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
-                "Button2": lambda: qtile.cmd_spawn(terminal + " -e htop"),
                 "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager")
             }
         ),

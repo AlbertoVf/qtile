@@ -7,8 +7,6 @@ qtile_scripts = os.path.join(qtile_path, "scripts")
 
 def getenv(key): return json.load(open(f"{qtile_path}/.env", "r"))[key]
 
-
-fileManager = getenv("fileManager")
 terminal = getenv("terminal")
 font = getenv("font")
 mail = getenv("mail")

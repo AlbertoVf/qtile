@@ -1,7 +1,6 @@
 from libqtile.config import Key, Click, Drag
 from libqtile.command import lazy
 from .screen import groups
-from .manager import fileManager
 
 mod = "mod4"  # mod4 or mod = super key
 keys = [
@@ -12,7 +11,6 @@ keys = [
     # SUPER + CONTROL KEYS
     Key([mod, "control"], "r", lazy.restart(), desc="restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Close session"),
-    Key([mod, "control"], "Return", lazy.spawn(fileManager)),
     # Switch focus of monitors
     Key([mod], "period", lazy.next_screen()),
     Key([mod], "comma", lazy.prev_screen()),
