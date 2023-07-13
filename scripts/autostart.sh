@@ -6,17 +6,18 @@ function run {
     fi
 }
 
-run variety &
-run plank &
-run xfce4-power-manager &
-run xfce4-clipman &
+run variety
+run plank
+run xfce4-power-manager
+run xfce4-clipman
 numlockx on &
-run volumeicon &
-run nm-applet &
+run volumeicon
+run nm-applet
 blueberry-tray &
-run pamac-tray &
+run pamac-tray
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 picom --config $HOME/.config/picom/picom.conf &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 (conky -c $HOME/.conkyrc) &
+run lxappearance
