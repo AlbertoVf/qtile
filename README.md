@@ -6,27 +6,39 @@ Configuracion personalizada para Qtile en ArcoLinux.
 
 ## Personalizacion de thema
 
-1. Agregar al fichero __themes/themes.json__ una nueva propiedad con el formato:
+1. Agregar al fichero **themes/themes.json** una nueva propiedad con el formato:
 
     ```json
     "tema":{
-        "background" : "",
-        "foreground" : "",
         "active"     : "",
-        "inactive"   : "",
+        "background" : "",
         "color1"     : "",
         "color2"     : "",
         "color3"     : "",
-        "color4"     : ""
+        "color4"     : "",
+        "foreground" : "",
+        "inactive"   : ""
     }
     ```
 
     ```python
-    python settings/manager.py # actualiza previews.md y crea .json para cada thema
+    # actualiza previews.md y crea .json para cada thema
+    python settings/manager.py
     ```
 
-2. Modificar el archivo __manager.json__ y substituir el valor de la propiedad **theme**.
+2. Modificar el archivo **.env** y substituir el valor de la propiedad **theme**.
+
+    ```python
+    # actualiz el valor de la propiedad
+    python scripts/change_environment.sh "property" "value"
+    ```
+
 3. Reiniciar Qtile para aplicar los cambios.
+
+    ```python
+    # Generar captura de pantallas con cada tema
+    python scripts/qtile_theme_screenshots.py
+    ```
 
 ## Instalacion
 
