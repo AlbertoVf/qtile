@@ -1,5 +1,7 @@
 #!/bin/bash
 
+QTILE_PATH_CONFIG="$HOME/.config/qtile/.config"
+
 function run {
     if ! pgrep $1; then
         $@ &
@@ -15,9 +17,8 @@ run volumeicon
 run nm-applet
 blueberry-tray &
 run pamac-tray
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-picom --config $HOME/.config/picom/picom.conf &
+sxhkd -c $QTILE_PATH_CONFIG/sxhkdrc &
+picom --config $QTILE_PATH_CONFIG/picom.conf &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
-(conky -c $HOME/.conkyrc) &
-# run lxappearance
+(conky -c $QTILE_PATH_CONFIG/.conkyrc) &

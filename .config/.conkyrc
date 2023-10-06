@@ -1,0 +1,88 @@
+conky.config = {
+    --Various settings
+    background = true,
+    cpu_avg_samples = 2,
+    diskio_avg_samples = 10,
+    double_buffer = true,
+    if_up_strictness = 'address',
+    net_avg_samples = 2,
+    no_buffers = true,
+    temperature_unit = 'celsius',
+    text_buffer_size = 2048,
+    update_interval = 1,
+    imlib_cache_size = 0,
+
+    --Placement
+    alignment = 'middle_middle',
+
+    --Arch Duoscreen
+    gap_x = 0,
+    gap_y = 0,
+    minimum_height = 256,
+    maximum_height = 256,
+    minimum_width = 1024,
+    maximum_width = 1024,
+
+    --Graphical
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    border_width = 0,
+    default_bar_width = 280,
+    default_bar_height = 10,
+    default_gauge_height = 25,
+    default_gauge_width =40,
+    default_graph_height = 40,
+    default_graph_width = 153,
+    default_shade_color = '#000000',
+    default_outline_color = '#000000',
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_shades = true,
+    draw_outline = false,
+    stippled_borders = 0,
+
+    --Textual
+    extra_newline = false,
+    format_human_readable = true,
+    font = 'CaskaydiaCove Nerd Font:size=22:bold',
+    max_text_width = 0,
+    max_user_text = 16384,
+    override_utf8_locale = true,
+    short_units = true,
+    top_name_width = 21,
+    top_name_verbose = false,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    xftalpha = 1,
+
+    --Windows
+    own_window = true,
+    own_window_argb_value = 0,
+    own_window_argb_visual = true,
+    own_window_class = 'Conky',
+    own_window_colour = '#000000',
+    own_window_hints = 'undecorated,below,above,sticky,skip_taskbar,skip_pager',
+    own_window_transparent = true,
+    own_window_title = 'system_conky',
+    own_window_type = 'override',
+
+    --Colours
+    default_color = '#000000',
+    color1 = '#292d3e',
+    color2 = '#f1f1f1',
+    color3 = '#f1f1f1',
+    color4 = '#5af78d',
+    color5 = '#ffb86c',
+    color6 = '#ff5454',
+};
+
+conky.text = [[
+${alignc}${color4}${font CaskaydiaCove Nerd Font:size=66:bold}\
+${time %H:%M %d.%m.%Y}
+${alignc}${color4}${font CaskaydiaCove Nerd Font:size=30:bold}\
+Cpu:${cpu cpu0}% | Ram:$mem | Bat:${battery_percent BAT0}% | Temp:${hwmon 1 temp 1}˚C
+
+${alignc}${color4}\
+Ip: ${addr enp3s0f1}  ${exec wget http://ipinfo.io/ip -qO-}
+]];
