@@ -7,7 +7,7 @@ qtile_scripts = os.path.join(qtile_path, "scripts")
 
 def getenv(key): return json.load(open(f"{qtile_path}/.env", "r"))[key]
 
-terminal = getenv("terminal")
+terminal = getenv("console")
 font = getenv("font")
 mail = getenv("mail")
 
@@ -28,21 +28,3 @@ def theme_selector(theme=getenv("theme")):
 
 
 theme = theme_selector()
-
-if __name__ == "__main__":
-    themes = []
-    qtile_themes = os.path.join(qtile_path, "themes")
-    with open(f"{qtile_themes}/themes.json", "r") as f:
-        data = json.load(f)
-
-    for t in data:
-        themes.append(t)
-        scheme = data[t]
-        with open(f"{qtile_themes}/{t}.json", "w") as outfile:
-            json.dump(scheme, outfile, indent=4)
-
-    with open(f"{qtile_themes}/Previews.md", "w") as f:
-        f.write("# Previews\n")
-        for theme in themes:
-            l = f"\n## {theme}\n![{theme}](./scheme/{theme}.jpg)\n"
-            f.write(l)
