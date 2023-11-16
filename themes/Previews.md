@@ -1,12 +1,28 @@
 # Previews
 
-## arc-dark-crimson
+## 3024_day
 
-![arc-dark-crimson](./scheme/arc-dark-crimson.jpg)
+![3024_day](./scheme/3024_day.jpg)
 
-## arch-linux
+## alien_blood
 
-![arch-linux](./scheme/arch-linux.jpg)
+![alien_blood](./scheme/alien_blood.jpg)
+
+## alucard
+
+![alucard](./scheme/alucard.jpg)
+
+## arc_dark_crimson
+
+![arc_dark_crimson](./scheme/arc_dark_crimson.jpg)
+
+## arch_linux
+
+![arch_linux](./scheme/arch_linux.jpg)
+
+## argonaut
+
+![argonaut](./scheme/argonaut.jpg)
 
 ## default
 
@@ -24,17 +40,21 @@
 
 ![green](./scheme/green.jpg)
 
-## material-ocean
+## gruvbox
 
-![material-ocean](./scheme/material-ocean.jpg)
+![gruvbox](./scheme/gruvbox.jpg)
+
+## material_ocean
+
+![material_ocean](./scheme/material_ocean.jpg)
 
 ## nord
 
 ![nord](./scheme/nord.jpg)
 
-## one-dark
+## one_dark
 
-![one-dark](./scheme/one-dark.jpg)
+![one_dark](./scheme/one_dark.jpg)
 
 ## palenight
 
@@ -55,7 +75,3 @@
 ## rosepine
 
 ![rosepine](./scheme/rosepine.jpg)
-
-## gruvbox
-
-![gruvbox](./scheme/gruvbox.jpg)
