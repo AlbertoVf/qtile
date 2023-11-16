@@ -2,17 +2,15 @@ from libqtile import layout, bar
 from libqtile.config import Screen, Group, Match
 
 from .widgets import init_widgets_list
-from .manager import theme
+from .manager import theme, Theme
 
-screens = [
-    Screen(top=bar.Bar(widgets=init_widgets_list(), size=28))
-]
+screens = [Screen(top=bar.Bar(widgets=init_widgets_list(), size=28))]
 
 layout_theme = {
-    "margin": 4,
-    "border_width": 2,
-    "border_focus": theme["active"],
-    "border_normal": theme["inactive"]
+    "margin"        : 4,
+    "border_width"  : 2,
+    "border_focus"  : theme[Theme.active],
+    "border_normal" : theme[Theme.inactive],
 }
 layouts = [
     layout.Bsp(**layout_theme),
@@ -20,7 +18,7 @@ layouts = [
     layout.MonadWide(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Floating(**layout_theme)
+    layout.Floating(**layout_theme),
 ]
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
@@ -34,11 +32,12 @@ floating_layout = layout.Floating(
         Match(wm_class="file_progress"),
         Match(wm_class="notification"),
         Match(wm_class="splash"),
-        Match(wm_class="toolbar")
+        Match(wm_class="toolbar"),
     ],
-    border_normal=theme["inactive"],
-    border_focus=theme["active"]
+    border_normal=theme[Theme.inactive],
+    border_focus=theme[Theme.active],
 )
+
 
 def group(group_labels):
     group = []
@@ -47,6 +46,5 @@ def group(group_labels):
         group.append(Group(name=group_names[i], label=group_labels[i]))
     return group
 
-groups = group(
-    ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
-)
+
+groups = group(["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"])

@@ -1,37 +1,47 @@
-from os import path
-import json
+from os.path import join, expanduser
 
-home = path.expanduser("~")
-qtile_path = path.join(home, ".config", "qtile")
-qtile_scripts = path.join(qtile_path, "scripts")
+from json import load
 
 
-getenv = lambda key: json.load(open(f"{qtile_path}/.env", "r"))[key]
+class Theme:
+    background = "background"
+    foreground = "foreground"
+    active     = "active"
+    inactive   = "inactive"
+    color1     = "color1"
+    color2     = "color2"
+    color3     = "color3"
+    color4     = "color4"
 
-terminal = getenv("console")
-font = getenv("font")
-mail = getenv("mail")
+
+getenv        = lambda key: load(open(f"{qtile_path}/.env", "r"))[key]
+home          = expanduser("~")
+qtile_path    = join(home, ".config", "qtile")
+qtile_scripts = join(qtile_path, "scripts")
+terminal      = getenv("console")
+font          = getenv("font")
+mail          = getenv("mail")
 
 
-def theme_selector(theme=getenv("theme")):
-    qtile_themes = path.join(qtile_path, "themes")
+def theme_selector(theme=getenv("theme")) -> Theme:
+    qtile_themes = join(qtile_path, "themes")
     try:
-        return json.load(open(path.join(qtile_themes, "themes.json")))[theme]
+        t = load(open(join(qtile_themes, "themes.json")))[theme]
     except:
         try:
-            return json.load(open(path.join(qtile_themes, f"{theme}.json")))
+            t = load(open(join(qtile_themes, f"{theme}.json")))
         except:
-            pass
+            t = {
+                Theme.background : "#0f101a",
+                Theme.foreground : "#f1ffff",
+                Theme.active     : "#f1ffff",
+                Theme.inactive   : "#4c566a",
+                Theme.color1     : "#a151d3",
+                Theme.color2     : "#F07178",
+                Theme.color3     : "#fb9f7f",
+                Theme.color4     : "#ffd47e",
+            }
+    return t
 
-    return {
-        "background": "#0f101a",
-        "foreground": "#f1ffff",
-        "active": "#f1ffff",
-        "inactive": "#4c566a",
-        "color1": "#a151d3",
-        "color2": "#F07178",
-        "color3": "#fb9f7f",
-        "color4": "#ffd47e",
-    }
 
 theme = theme_selector()
