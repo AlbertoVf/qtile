@@ -1,5 +1,5 @@
-themes/*.json
-!themes/themes.json
+themes/*.yml
+!themes/themes.yml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

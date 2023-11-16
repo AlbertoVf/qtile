@@ -1,7 +1,6 @@
 from os.path import join, expanduser
 
-from json import load
-
+from yaml import safe_load as load
 
 class Theme:
     background = "background"
@@ -22,14 +21,13 @@ terminal      = getenv("console")
 font          = getenv("font")
 mail          = getenv("mail")
 
-
 def theme_selector(theme=getenv("theme")) -> Theme:
     qtile_themes = join(qtile_path, "themes")
     try:
-        t = load(open(join(qtile_themes, "themes.json")))[theme]
+        t = load(open(join(qtile_themes, "themes.yml")))[theme]
     except:
         try:
-            t = load(open(join(qtile_themes, f"{theme}.json")))
+            t = load(open(join(qtile_themes, f"{theme}.yml")))
         except:
             t = {
                 Theme.background : "#0f101a",

@@ -1,0 +1,189 @@
+3024_day:
+    background : '#282828'
+    foreground : '#3A3332'
+    active     : '#00A0E4'
+    inactive   : '#B5E4F4'
+    color1     : '#DA2C20'
+    color2     : '#FCEC02'
+    color3     : '#D6D4D3'
+    color4     : '#00A152'
+
+alien_blood:
+    background : '#0F160F'
+    foreground : '#637D75'
+    active     : '#73F990'
+    inactive   : '#2F7E25'
+    color1     : '#7F2B26'
+    color2     : '#0058DF'
+    color3     : '#647D75'
+    color4     : '#73F990'
+
+alucard:
+    background : '#222330'
+    foreground : '#CEF3FF'
+    active     : '#FA0074'
+    inactive   : '#FF5454'
+    color1     : '#3282FF'
+    color2     : '#FF78C5'
+    color3     : '#FF5454'
+    color4     : '#F0FA8B'
+
+arc_dark_crimson:
+    background : '#292D3E'
+    foreground : '#F9F9F9'
+    active     : '#DC141E'
+    inactive   : '#7C8189'
+    color1     : '#CC6666'
+    color2     : '#F0883E'
+    color3     : '#586875'
+    color4     : '#65ACFF'
+
+arch_linux:
+    background : '#222C37'
+    foreground : '#FFFFFF'
+    active     : '#1793D1'
+    inactive   : '#FFFFFF'
+    color1     : '#FFFFFF'
+    color2     : '#1793D1'
+    color3     : '#FFFFFF'
+    color4     : '#1793D1'
+
+argonaut:
+    background : '#0D0F18'
+    foreground : '#FFFAF3'
+    active     : '#008DF8'
+    inactive   : '#00D7EB'
+    color1     : '#FF273F'
+    color2     : '#8CE00A'
+    color3     : '#FFB900'
+    color4     : '#9A5FEB'
+
+default:
+    background : '#0F101A'
+    foreground : '#F1FFFF'
+    active     : '#F1FFFF'
+    inactive   : '#4C566A'
+    color1     : '#A151D3'
+    color2     : '#F07178'
+    color3     : '#FB9F7F'
+    color4     : '#FFD47E'
+
+dracula:
+    background : '#292D3E'
+    foreground : '#FFFFFF'
+    active     : '#FF5454'
+    inactive   : '#F1FFFF'
+    color1     : '#5AF78D'
+    color2     : '#BD93F9'
+    color3     : '#7197E7'
+    color4     : '#FFB86C'
+
+github:
+    background : '#24292E'
+    foreground : '#F1F8FF'
+    active     : '#F0883E'
+    inactive   : '#F8E3A1'
+    color1     : '#3FB950'
+    color2     : '#DA3633'
+    color3     : '#0366D6'
+    color4     : '#8957E5'
+
+green:
+    background : '#212121'
+    foreground : '#FFFFFF'
+    active     : '#2E8447'
+    inactive   : '#3FBC64'
+    color1     : '#256839'
+    color2     : '#37A056'
+    color3     : '#2E8447'
+    color4     : '#3FBC64'
+
+material_ocean:
+    background : '#0F101A'
+    foreground : '#F1FFFF'
+    active     : '#F1FFFF'
+    inactive   : '#4C566A'
+    color1     : '#A151D3'
+    color2     : '#F07178'
+    color3     : '#FB9F7F'
+    color4     : '#FFD47E'
+
+nord:
+    background : '#212121'
+    foreground : '#FFFFFF'
+    active     : '#F1FFFF'
+    inactive   : '#4C566A'
+    color1     : '#81A1C1'
+    color2     : '#88C0D0'
+    color3     : '#A3BE8C'
+    color4     : '#EBCB8B'
+
+one_dark:
+    background : '#23272E'
+    foreground : '#FFFFFF'
+    active     : '#F1FFFF'
+    inactive   : '#4C566A'
+    color1     : '#C678DD'
+    color2     : '#E06C75'
+    color3     : '#61AFEF'
+    color4     : '#98C379'
+
+palenight:
+    background : '#292D3E'
+    foreground : '#F1F1F1'
+    active     : '#82AAFF'
+    inactive   : '#959DCB'
+    color1     : '#C3E88D'
+    color2     : '#82AAFF'
+    color3     : '#C792EA'
+    color4     : '#FFCB6B'
+
+pico:
+    background : '#292D3E'
+    foreground : '#FFFFFF'
+    active     : '#FF77A8'
+    inactive   : '#F1FFFF'
+    color1     : '#FFA300'
+    color2     : '#FF004D'
+    color3     : '#29ADFF'
+    color4     : '#00E756'
+
+pop:
+    background : '#202020'
+    foreground : '#FFFFFF'
+    active     : '#00AABB'
+    inactive   : '#F1FFFF'
+    color1     : '#0E5A94'
+    color2     : '#00AABB'
+    color3     : '#37B349'
+    color4     : '#F8CA12'
+
+purple:
+    background : '#292D3E'
+    foreground : '#FFFFFF'
+    active     : '#B455C9'
+    inactive   : '#AF82D5'
+    color1     : '#9E67CB'
+    color2     : '#7955C9'
+    color3     : '#B455C9'
+    color4     : '#B5458B'
+
+rosepine:
+    background : '#1F1D29'
+    foreground : '#4C566A'
+    active     : '#EABBB9'
+    inactive   : '#F1FFFF'
+    color1     : '#EA6F91'
+    color2     : '#EABBB9'
+    color3     : '#F1CA93'
+    color4     : '#9BCED7'
+
+gruvbox:
+    background : '#282828'
+    foreground : '#3C3836'
+    active     : '#EBDBB2'
+    inactive   : '#A89984'
+    color1     : '#FB4934'
+    color2     : '#FABD2F'
+    color3     : '#8EC07C'
+    color4     : '#83A598'
