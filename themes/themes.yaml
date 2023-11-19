@@ -1,4 +1,4 @@
-3024_day:
+3024_day :
   background : '#282828'
   foreground : '#3A3332'
   active     : '#00A0E4'
@@ -8,7 +8,7 @@
   color3     : '#D6D4D3'
   color4     : '#00A152'
 
-alien_blood:
+alien_blood :
   background : '#0F160F'
   foreground : '#637D75'
   active     : '#73F990'
@@ -18,7 +18,7 @@ alien_blood:
   color3     : '#647D75'
   color4     : '#73F990'
 
-alucard:
+alucard :
   background : '#222330'
   foreground : '#CEF3FF'
   active     : '#FA0074'
@@ -28,7 +28,7 @@ alucard:
   color3     : '#FF5454'
   color4     : '#F0FA8B'
 
-arc_dark_crimson:
+arc_dark_crimson :
   background : '#292D3E'
   foreground : '#F9F9F9'
   active     : '#DC141E'
@@ -38,7 +38,7 @@ arc_dark_crimson:
   color3     : '#586875'
   color4     : '#65ACFF'
 
-arch_linux:
+arch_linux :
   background : '#222C37'
   foreground : '#FFFFFF'
   active     : '#1793D1'
@@ -48,7 +48,7 @@ arch_linux:
   color3     : '#FFFFFF'
   color4     : '#1793D1'
 
-argonaut:
+argonaut :
   background : '#0D0F18'
   foreground : '#FFFAF3'
   active     : '#008DF8'
@@ -58,7 +58,7 @@ argonaut:
   color3     : '#FFB900'
   color4     : '#9A5FEB'
 
-default:
+default :
   background : '#0F101A'
   foreground : '#F1FFFF'
   active     : '#F1FFFF'
@@ -68,7 +68,7 @@ default:
   color3     : '#FB9F7F'
   color4     : '#FFD47E'
 
-dracula:
+dracula :
   background : '#292D3E'
   foreground : '#FFFFFF'
   active     : '#FF5454'
@@ -78,7 +78,7 @@ dracula:
   color3     : '#7197E7'
   color4     : '#FFB86C'
 
-github:
+github :
   background : '#24292E'
   foreground : '#F1F8FF'
   active     : '#F0883E'
@@ -88,7 +88,7 @@ github:
   color3     : '#0366D6'
   color4     : '#8957E5'
 
-green:
+green :
   background : '#212121'
   foreground : '#FFFFFF'
   active     : '#2E8447'
@@ -98,7 +98,17 @@ green:
   color3     : '#2E8447'
   color4     : '#3FBC64'
 
-material_ocean:
+gruvbox :
+  background : '#282828'
+  foreground : '#3C3836'
+  active     : '#EBDBB2'
+  inactive   : '#A89984'
+  color1     : '#FB4934'
+  color2     : '#FABD2F'
+  color3     : '#8EC07C'
+  color4     : '#83A598'
+
+material_ocean :
   background : '#0F101A'
   foreground : '#F1FFFF'
   active     : '#F1FFFF'
@@ -108,7 +118,7 @@ material_ocean:
   color3     : '#FB9F7F'
   color4     : '#FFD47E'
 
-nord:
+nord :
   background : '#212121'
   foreground : '#FFFFFF'
   active     : '#F1FFFF'
@@ -118,7 +128,7 @@ nord:
   color3     : '#A3BE8C'
   color4     : '#EBCB8B'
 
-one_dark:
+one_dark :
   background : '#23272E'
   foreground : '#FFFFFF'
   active     : '#F1FFFF'
@@ -128,7 +138,7 @@ one_dark:
   color3     : '#61AFEF'
   color4     : '#98C379'
 
-palenight:
+palenight :
   background : '#292D3E'
   foreground : '#F1F1F1'
   active     : '#82AAFF'
@@ -138,7 +148,7 @@ palenight:
   color3     : '#C792EA'
   color4     : '#FFCB6B'
 
-pico:
+pico :
   background : '#292D3E'
   foreground : '#FFFFFF'
   active     : '#FF77A8'
@@ -148,7 +158,7 @@ pico:
   color3     : '#29ADFF'
   color4     : '#00E756'
 
-pop:
+pop :
   background : '#202020'
   foreground : '#FFFFFF'
   active     : '#00AABB'
@@ -158,7 +168,7 @@ pop:
   color3     : '#37B349'
   color4     : '#F8CA12'
 
-purple:
+purple :
   background : '#292D3E'
   foreground : '#FFFFFF'
   active     : '#B455C9'
@@ -168,7 +178,7 @@ purple:
   color3     : '#B455C9'
   color4     : '#B5458B'
 
-rosepine:
+rosepine :
   background : '#1F1D29'
   foreground : '#4C566A'
   active     : '#EABBB9'
@@ -177,13 +187,3 @@ rosepine:
   color2     : '#EABBB9'
   color3     : '#F1CA93'
   color4     : '#9BCED7'
-
-gruvbox:
-  background : '#282828'
-  foreground : '#3C3836'
-  active     : '#EBDBB2'
-  inactive   : '#A89984'
-  color1     : '#FB4934'
-  color2     : '#FABD2F'
-  color3     : '#8EC07C'
-  color4     : '#83A598'

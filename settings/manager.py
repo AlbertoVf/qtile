@@ -24,10 +24,10 @@ mail          = getenv("mail")
 def theme_selector(theme=getenv("theme")) -> Theme:
     qtile_themes = join(qtile_path, "themes")
     try:
-        t = load(open(join(qtile_themes, "themes.yml")))[theme]
+        t = load(open(join(qtile_themes, "themes.yaml")))[theme]
     except:
         try:
-            t = load(open(join(qtile_themes, f"{theme}.yml")))
+            t = load(open(join(qtile_themes, f"{theme}.yaml")))
         except:
             t = {
                 Theme.background : "#0f101a",
