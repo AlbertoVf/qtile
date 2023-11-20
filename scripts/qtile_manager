@@ -63,7 +63,8 @@ def takeScreenshot():
     for t in data:
         changeValue("theme", t)
         sleep(5)
-        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
+        subprocess.run(["scrot", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
+        # subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
     docs()
 
 
@@ -73,7 +74,7 @@ def docs():
     with open(f"{QTILE_THEMES}/Previews.md", "w") as f:
         f.write("# Previews\n")
         for theme in data:
-            f.write(f"\n## {theme}\n\n![{theme}](./scheme/{theme}.jpg)\n")
+            f.write(f"\n1. {theme} ![{theme}](./scheme/{theme}.jpg)\n")
 
 
 def main():

@@ -187,3 +187,123 @@ rosepine :
   color2     : '#EABBB9'
   color3     : '#F1CA93'
   color4     : '#9BCED7'
+
+atom :
+  background : '#161718'
+  foreground : '#c4c8c5'
+  active     : '#fc5ef0'
+  inactive   : '#b9b5fc'
+  color1     : '#94f936'
+  color2     : '#f5ffa7'
+  color3     : '#85befd'
+  color4     : '#b9b5fc'
+
+batman :
+  background : '#1b1d1e'
+  foreground : '#6e6e6e'
+  active     : '#fcee0b'
+  inactive   : '#dadad5'
+  color1     : '#fcee0b'
+  color2     : '#dadad5'
+  color3     : '#c5c5be'
+  color4     : '#615f5e'
+
+espresso :
+  background : '#323232'
+  foreground : '#ffffff'
+  active     : '#d096d9'
+  inactive   : '#bdd6ff'
+  color1     : '#e1e48a'
+  color2     : '#dbf4ff'
+  color3     : '#a4c161'
+  color4     : '#c1df74'
+
+galaxy :
+  background : '#1c2836'
+  foreground : '#545454'
+  active     : '#e75598'
+  inactive   : '#fa8b8e'
+  color1     : '#20af89'
+  color2     : '#1e9ee6'
+  color3     : '#ffff55'
+  color4     : '#589cf5'
+
+molokay :
+  background : '#121212'
+  foreground : '#545454'
+  active     : '#fa2573'
+  inactive   : '#f5669c'
+  color1     : '#0f7fcf'
+  color2     : '#fef26c'
+  color3     : '#b0e05e'
+  color4     : '#42a7cf'
+
+monalisa :
+  background : '#110b0d'
+  foreground : '#f6d56a'
+  active     : '#ff4230'
+  inactive   : '#ff5b6a'
+  color1     : '#ff9565'
+  color2     : '#f6d75c'
+  color3     : '#588056'
+  color4     : '#9eb2b3'
+
+neutron :
+  background : '#1b1d22'
+  foreground : '#e6e8ee'
+  active     : '#3f93a8'
+  inactive   : '#6a7b92'
+  color1     : '#b53f36'
+  color2     : '#5ab977'
+  color3     : '#3f93a8'
+  color4     : '#e6e8ee'
+
+nova :
+  background : '#3c4c54'
+  foreground : '#8798a3'
+  active     : '#7fc1ca'
+  inactive   : '#8799a4'
+  color1     : '#69c8ff'
+  color2     : '#d460da'
+  color3     : '#e5e77f'
+  color4     : '#00e59f'
+
+spacegray :
+  background : '#20232c'
+  foreground : '#b2b8c2'
+  active     : '#84a6a4'
+  inactive   : '#7c8fa3'
+  color1     : '#af4b57'
+  color2     : '#87b279'
+  color3     : '#e5c078'
+  color4     : '#b2b8c2'
+
+spiderman :
+  background : '#1b1d1e'
+  foreground : '#e2e2e2'
+  active     : '#2b3fff'
+  inactive   : '#737bff'
+  color1     : '#ff0325'
+  color2     : '#e22828'
+  color3     : '#e24655'
+  color4     : '#fffef6'
+
+the_hulk :
+  background : '#1b1d1e'
+  foreground : '#b4b4b4'
+  active     : '#48ff76'
+  inactive   : '#15b61a'
+  color1     : '#3afe15'
+  color2     : '#259d1a'
+  color3     : '#72579d'
+  color4     : '#e5e5e0'
+
+wombat :
+  background : '#453a39'
+  foreground : '#ded9ce'
+  active     : '#5da9f6'
+  inactive   : '#f58b7f'
+  color1     : '#dcf88f'
+  color2     : '#e86aff'
+  color3     : '#a5c7ff'
+  color4     : '#ddaaff'

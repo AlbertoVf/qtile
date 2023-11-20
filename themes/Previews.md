@@ -1,77 +1,63 @@
 # Previews
 
-## 3024_day
+1. 3024_day ![3024_day](./scheme/3024_day.jpg)
 
-![3024_day](./scheme/3024_day.jpg)
+1. alien_blood ![alien_blood](./scheme/alien_blood.jpg)
 
-## alien_blood
+1. alucard ![alucard](./scheme/alucard.jpg)
 
-![alien_blood](./scheme/alien_blood.jpg)
+1. arc_dark_crimson ![arc_dark_crimson](./scheme/arc_dark_crimson.jpg)
 
-## alucard
+1. arch_linux ![arch_linux](./scheme/arch_linux.jpg)
 
-![alucard](./scheme/alucard.jpg)
+1. argonaut ![argonaut](./scheme/argonaut.jpg)
 
-## arc_dark_crimson
+1. default ![default](./scheme/default.jpg)
 
-![arc_dark_crimson](./scheme/arc_dark_crimson.jpg)
+1. dracula ![dracula](./scheme/dracula.jpg)
 
-## arch_linux
+1. github ![github](./scheme/github.jpg)
 
-![arch_linux](./scheme/arch_linux.jpg)
+1. green ![green](./scheme/green.jpg)
 
-## argonaut
+1. gruvbox ![gruvbox](./scheme/gruvbox.jpg)
 
-![argonaut](./scheme/argonaut.jpg)
+1. material_ocean ![material_ocean](./scheme/material_ocean.jpg)
 
-## default
+1. nord ![nord](./scheme/nord.jpg)
 
-![default](./scheme/default.jpg)
+1. one_dark ![one_dark](./scheme/one_dark.jpg)
 
-## dracula
+1. palenight ![palenight](./scheme/palenight.jpg)
 
-![dracula](./scheme/dracula.jpg)
+1. pico ![pico](./scheme/pico.jpg)
 
-## github
+1. pop ![pop](./scheme/pop.jpg)
 
-![github](./scheme/github.jpg)
+1. purple ![purple](./scheme/purple.jpg)
 
-## green
+1. rosepine ![rosepine](./scheme/rosepine.jpg)
 
-![green](./scheme/green.jpg)
+1. atom ![atom](./scheme/atom.jpg)
 
-## gruvbox
+1. batman ![batman](./scheme/batman.jpg)
 
-![gruvbox](./scheme/gruvbox.jpg)
+1. espresso ![espresso](./scheme/espresso.jpg)
 
-## material_ocean
+1. galaxy ![galaxy](./scheme/galaxy.jpg)
 
-![material_ocean](./scheme/material_ocean.jpg)
+1. molokay ![molokay](./scheme/molokay.jpg)
 
-## nord
+1. monalisa ![monalisa](./scheme/monalisa.jpg)
 
-![nord](./scheme/nord.jpg)
+1. neutron ![neutron](./scheme/neutron.jpg)
 
-## one_dark
+1. nova ![nova](./scheme/nova.jpg)
 
-![one_dark](./scheme/one_dark.jpg)
+1. spacegray ![spacegray](./scheme/spacegray.jpg)
 
-## palenight
+1. spiderman ![spiderman](./scheme/spiderman.jpg)
 
-![palenight](./scheme/palenight.jpg)
+1. the_hulk ![the_hulk](./scheme/the_hulk.jpg)
 
-## pico
-
-![pico](./scheme/pico.jpg)
-
-## pop
-
-![pop](./scheme/pop.jpg)
-
-## purple
-
-![purple](./scheme/purple.jpg)
-
-## rosepine
-
-![rosepine](./scheme/rosepine.jpg)
+1. wombat ![wombat](./scheme/wombat.jpg)
