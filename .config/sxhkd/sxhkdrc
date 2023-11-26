@@ -79,6 +79,6 @@ super + shift 1
 super + shift 2
 	kitty -e xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal
 super + shift o
-	picom ~/.config/qtile/.config/picom-toggle.sh
+	picom ~/.config/qtile/.config/picom-toogle.sh
 super + shift s
 	pkill -USR1 -x sxhkd

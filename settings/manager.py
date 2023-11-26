@@ -14,15 +14,15 @@ class Theme:
 
 
 getenv        = lambda key: load(open(f"{qtile_path}/.env", "r"))[key]
-home          = expanduser("~")
-qtile_path    = join(home, ".config", "qtile")
+config        = join(expanduser("~"),'.config')
+qtile_path    = join(config, "qtile")
 qtile_scripts = join(qtile_path, "scripts")
+qtile_themes  = join(qtile_path, "themes")
 terminal      = getenv("console")
 font          = getenv("font")
 mail          = getenv("mail")
 
 def theme_selector(theme=getenv("theme")) -> Theme:
-    qtile_themes = join(qtile_path, "themes")
     try:
         t = load(open(join(qtile_themes, "themes.yaml")))[theme]
     except:
