@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-##? usage :  qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
+##? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
 ##? help  : qtile updater settings and docs.
 
 import argparse, subprocess, os
@@ -63,18 +63,16 @@ def takeScreenshot():
     for t in data:
         changeValue("theme", t)
         sleep(5)
-        subprocess.run(["scrot", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
-        # subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
+        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
     docs()
 
 
 def docs():
     data = __themes_list()
-
     with open(f"{QTILE_THEMES}/Previews.md", "w") as f:
         f.write("# Previews\n")
-        for theme in data:
-            f.write(f"\n1. {theme} ![{theme}](./scheme/{theme}.jpg)\n")
+        for i, (theme) in enumerate(data, start=1):
+            f.write(f"\n{i}. {theme} ![{theme}](./scheme/{theme}.jpg)")
 
 
 def main():

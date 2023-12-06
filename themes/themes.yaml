@@ -298,16 +298,6 @@ the_hulk :
   color3     : '#72579d'
   color4     : '#e5e5e0'
 
-wombat :
-  background : '#453a39'
-  foreground : '#ded9ce'
-  active     : '#5da9f6'
-  inactive   : '#f58b7f'
-  color1     : '#dcf88f'
-  color2     : '#e86aff'
-  color3     : '#a5c7ff'
-  color4     : '#ddaaff'
-
 tokyo_night:
   background : '#1a1b26'
   foreground : '#a9b1d6'
@@ -317,3 +307,13 @@ tokyo_night:
   color2     : '#f7768e'
   color3     : '#73daca'
   color4     : '#bb9af7'
+
+wombat :
+  background : '#453a39'
+  foreground : '#ded9ce'
+  active     : '#5da9f6'
+  inactive   : '#f58b7f'
+  color1     : '#dcf88f'
+  color2     : '#e86aff'
+  color3     : '#a5c7ff'
+  color4     : '#ddaaff'
