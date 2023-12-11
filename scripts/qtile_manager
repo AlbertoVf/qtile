@@ -11,6 +11,7 @@ from dataclasses import dataclass
 QTILE_PATH = os.path.join(os.path.expanduser("~"), ".config", "qtile")
 ENV_FILE = os.path.join(QTILE_PATH, ".env")
 QTILE_THEMES = os.path.join(QTILE_PATH, "themes")
+QTILE_THEME = os.path.join(QTILE_THEMES, "themes.yaml")
 
 
 @dataclass
@@ -54,13 +55,18 @@ def changeValue(key: str, value: str):
     restart()
 
 
-__themes_list = lambda: load(open(f"{QTILE_THEMES}/themes.yaml", "r"))
-
+def __themes_list():
+    data = dict(sorted(load(open(QTILE_THEME, "r")).items()))
+    # dump(data, open(QTILE_THEME, "w"), default_flow_style=False)
+    return data
 
 def takeScreenshot():
     data = __themes_list()
-    sleep(3)
-    for t in data:
+    subprocess.Popen(["code", f"{QTILE_PATH}/.env"])
+    sleep(2)
+    subprocess.Popen(["thunar", f"{QTILE_PATH}"])
+    sleep(2)
+    for t,c in data.items():
         changeValue("theme", t)
         sleep(5)
         subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")

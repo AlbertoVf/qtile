@@ -298,7 +298,7 @@ the_hulk :
   color3     : '#72579d'
   color4     : '#e5e5e0'
 
-tokyo_night:
+tokyo_night :
   background : '#1a1b26'
   foreground : '#a9b1d6'
   active     : '#c0caf5'
@@ -317,3 +317,203 @@ wombat :
   color2     : '#e86aff'
   color3     : '#a5c7ff'
   color4     : '#ddaaff'
+
+afterglow :
+  background : '#2c2c2c'
+  foreground : '#d9d9d9'
+  active     : '#86d3ce'
+  inactive   : '#7eaac7'
+  color1     : '#bc5653'
+  color2     : '#909d63'
+  color3     : '#ebc17a'
+  color4     : '#7eaac7'
+
+city_lights :
+  background : '#171d23'
+  foreground : '#ffffff'
+  active     : '#333f4a'
+  inactive   : '#b7c5d3'
+  color1     : '#8bd49c'
+  color2     : '#539afc'
+  color3     : '#b62d65'
+  color4     : '#70e1e8'
+
+cyberpunk_neon :
+  background : '#000b1e'
+  foreground : '#0abdc6'
+  active     : '#0abdc6'
+  inactive   : '#123e7c'
+  color1     : '#ff0000'
+  color2     : '#00ff00'
+  color3     : '#0abdc6'
+  color4     : '#d7d7d5'
+
+doom_one :
+  background : '#282c34'
+  foreground : '#bbc2cf'
+  active     : '#51afef'
+  inactive   : '#46d9ff'
+  color1     : '#98be65'
+  color2     : '#ecbe7b'
+  color3     : '#ff6c6b'
+  color4     : '#51afef'
+
+horizontal_dark :
+  background : '#1c1e26'
+  foreground : '#e0e0e0'
+  active     : '#59e1e3'
+  inactive   : '#3fc4de'
+  color1     : '#29d398'
+  color2     : '#fab795'
+  color3     : '#26bbd9'
+  color4     : '#ee64ac'
+
+iterm :
+  background : '#101421'
+  foreground : '#fffbf6'
+  active     : '#49a4f8'
+  inactive   : '#a47de9'
+  color1     : '#565656'
+  color2     : '#ec5357'
+  color3     : '#c0e17d'
+  color4     : '#f9da6a'
+
+monokay_pro :
+  background : '#2D2A2E'
+  foreground : '#fff1f3'
+  active     : '#f9cc6c'
+  inactive   : '#f38d70'
+  color1     : '#adda78'
+  color2     : '#fd6883'
+  color3     : '#fff1f3'
+  color4     : '#a8a9eb'
+
+moonlight :
+  background : '#1e2030'
+  foreground : '#7f85a3'
+  active     : '#ff5370'
+  inactive   : '#fc7b7b'
+  color1     : '#ffc777'
+  color2     : '#3e68d7'
+  color3     : '#ff5370'
+  color4     : '#4fd6be'
+
+omni :
+  background : '#191622'
+  foreground : '#f8f8f2'
+  active     : '#ff79c6'
+  inactive   : '#8d79ba'
+  color1     : '#bb006b'
+  color2     : '#aa91e3'
+  color3     : '#530aba'
+  color4     : '#effa78'
+
+pencil :
+  background : '#212121'
+  foreground : '#f1f1f1'
+  active     : '#fb007a'
+  inactive   : '#f1f1f1'
+  color1     : '#5fd7af'
+  color2     : '#f3e430'
+  color3     : '#20bbfc'
+  color4     : '#6855de'
+
+tender :
+  background : '#282828'
+  foreground : '#eeeeee'
+  active     : '#ffc24b'
+  inactive   : '#d3b987'
+  color1     : '#f43753'
+  color2     : '#c9d05c'
+  color3     : '#ffc24b'
+  color4     : '#73cef4'
+
+lovelace :
+  background : '#1D1F28'
+  foreground : '#FDFDFD'
+  active     : '#FF4971'
+  inactive   : '#F37F97'
+  color1     : '#F2A272'
+  color2     : '#8897F4'
+  color3     : '#C574DD'
+  color4     : '#79E6F3'
+
+tokyo_night_storm :
+  background : '#24283b'
+  foreground : '#a9b1d6'
+  active     : '#7da6ff'
+  inactive   : '#bb9af7'
+  color1     : '#9ece6a'
+  color2     : '#ff9e64'
+  color3     : '#7aa2f7'
+  color4     : '#f7768e'
+
+ubuntu :
+  background : '#300a24'
+  foreground : '#eeeeec'
+  active     : '#ef2929'
+  inactive   : '#fce94f'
+  color1     : '#729fcf'
+  color2     : '#ad7fa8'
+  color3     : '#34e2e2'
+  color4     : '#eeeeec'
+
+ayu_dark :
+  background : '#0A0E14'
+  foreground : '#B3B1AD'
+  active     : '#F9AF4F'
+  inactive   : '#FAE994'
+  color1     : '#EA6C73'
+  color3     : '#91B362'
+  color2     : '#59C2FF'
+  color4     : '#95E6CB'
+
+base_16 :
+  background : '#181818'
+  foreground : '#d8d8d8'
+  active     : '#f7ca88'
+  inactive   : '#ab4642'
+  color1     : '#f8f8f8'
+  color2     : '#ba8baf'
+  color3     : '#86c1b9'
+  color4     : '#ab4642'
+
+breeze :
+  background : '#eff0f1'
+  foreground : '#31363b'
+  active     : '#1cdc9a'
+  inactive   : '#16a085'
+  color1     : '#31363b'
+  color2     : '#1b668f'
+  color3     : '#11d116'
+  color4     : '#9b59b6'
+
+challenger_deep :
+  background : '#1e1c31'
+  foreground : '#cbe1e7'
+  active     : '#ff5458'
+  inactive   : '#ff271d'
+  color1     : '#62d196'
+  color2     : '#ffb378'
+  color3     : '#65b2ff'
+  color4     : '#906cff'
+
+cobalt2 :
+  background : '#122637'
+  foreground : '#f0cb09'
+  active     : '#fee409'
+  inactive   : '#bbbbbb'
+  color1     : '#5555ff'
+  color2     : '#ff55ff'
+  color3     : '#6ae3f9'
+  color4     : '#ffffff'
+
+gotham :
+  background : '#0a0f14'
+  foreground : '#98d1ce'
+  active     : '#195465'
+  inactive   : '#4e5165'
+  color1     : '#d26939'
+  color2     : '#081f2d'
+  color3     : '#245361'
+  color4     : '#d3ebe9'
