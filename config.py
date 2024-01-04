@@ -5,7 +5,6 @@ from libqtile import hook, qtile
 from settings.manager import qtile_scripts
 from settings.keys import keys
 from settings.screen import *
-from settings.widgets import *
 
 dgroups_key_binder = None
 dgroups_app_rules = []

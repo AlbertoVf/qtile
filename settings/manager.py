@@ -32,16 +32,16 @@ def theme_selector(theme=getenv("theme")) -> Theme:
             t = load(open(join(qtile_themes, f"{theme}.yaml")))
         if not set(t.keys()).issubset(set([Theme.background, Theme.foreground, Theme.active, Theme.inactive, Theme.color1, Theme.color2, Theme.color3, Theme.color4])):
             raise ValueError("Theme must have 8 values")
-    except:
+    except Exception:
         t = {
-            Theme.background: "#0f101a",
-            Theme.foreground: "#f1ffff",
-            Theme.active: "#f1ffff",
-            Theme.inactive: "#4c566a",
-            Theme.color1: "#a151d3",
-            Theme.color2: "#F07178",
-            Theme.color3: "#fb9f7f",
-            Theme.color4: "#ffd47e",
+            Theme.background : "#0f101a",
+            Theme.foreground : "#f1ffff",
+            Theme.active     : "#f1ffff",
+            Theme.inactive   : "#4c566a",
+            Theme.color1     : "#a151d3",
+            Theme.color2     : "#F07178",
+            Theme.color3     : "#fb9f7f",
+            Theme.color4     : "#ffd47e",
         }
     return {layout: color.replace("0x", "#") for layout, color in t.items()}
 
