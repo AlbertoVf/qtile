@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QTILE_PATH_CONFIG="$HOME/.config/qtile/.config"
+QTILE_PATH_CONFIG="$HOME/.config/qtile/scripts/.config"
 USER_PATH_CONFIG="$HOME/.config"
 
 CONFIG=$USER_PATH_CONFIG # QTILE_PATH_CONFIG
