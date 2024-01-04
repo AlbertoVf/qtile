@@ -1,17 +1,16 @@
 #!/usr/bin/env python
-##? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
 ##? help  : qtile updater settings and docs.
+##? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
 
 import argparse, subprocess, os
+from dataclasses import dataclass
 from time import sleep
 from yaml import dump, safe_load as load
-from enum import Enum
-from dataclasses import dataclass
 
-QTILE_PATH = os.path.join(os.path.expanduser("~"), ".config", "qtile")
-ENV_FILE = os.path.join(QTILE_PATH, ".env")
+QTILE_PATH   = os.path.join(os.path.expanduser("~"), ".config", "qtile")
+ENV_FILE     = os.path.join(QTILE_PATH, ".env")
 QTILE_THEMES = os.path.join(QTILE_PATH, "themes")
-QTILE_THEME = os.path.join(QTILE_THEMES, "themes.yaml")
+QTILE_THEME  = os.path.join(QTILE_THEMES, "themes.yaml")
 
 
 @dataclass
@@ -31,34 +30,30 @@ class Env:
         )
 
     def save(self):
-        dump(self.__dict__, open(ENV_FILE, "w"))
+        dump(self.__dict__, open(ENV_FILE, "w", encoding="utf-8"))
 
 
-read_env = lambda: Env.from_dict(load(open(ENV_FILE, "r")))
+read_env = lambda: Env.from_dict(load(open(ENV_FILE, "r", encoding="utf-8")))
 
-logout = lambda: subprocess.run("qtile cmd-obj -o cmd -f shutdown", shell=True)
+logout = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=True )
 
-restart = lambda: subprocess.run("qtile cmd-obj -o cmd -f restart", shell=True)
+restart = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=True )
 
 
 def changeValue(key: str, value: str):
     env = read_env()
-    if key == "font":
-        env.font = value
-    elif key == "mail":
-        env.mail = value
-    elif key == "console":
-        env.console = value
-    elif key == "theme":
-        env.theme = value
+    if key == "font": env.font = value
+    elif key == "mail": env.mail = value
+    elif key == "console": env.console = value
+    elif key == "theme": env.theme = value
     env.save()
     restart()
 
 
 def __themes_list():
-    data = dict(sorted(load(open(QTILE_THEME, "r")).items()))
-    # dump(data, open(QTILE_THEME, "w"), default_flow_style=False)
+    data = dict(sorted(load(open(QTILE_THEME, "r", encoding="utf-8")).items()))
     return data
+
 
 def takeScreenshot():
     data = __themes_list()
@@ -66,19 +61,19 @@ def takeScreenshot():
     sleep(2)
     subprocess.Popen(["thunar", f"{QTILE_PATH}"])
     sleep(2)
-    for t,c in data.items():
+    for t in data.items():
         changeValue("theme", t)
         sleep(5)
-        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/scheme")
+        subprocess.run( ["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/Previews", check=True )
     docs()
 
 
 def docs():
     data = __themes_list()
-    with open(f"{QTILE_THEMES}/Previews.md", "w") as f:
+    with open(f"{QTILE_THEMES}/Previews.md", "w", encoding="utf-8") as f:
         f.write("# Previews\n")
         for i, (theme) in enumerate(data, start=1):
-            f.write(f"\n{i}. {theme} ![{theme}](./scheme/{theme}.jpg)")
+            f.write(f"\n{i}. {theme} ![{theme}](./Previews/{theme}.jpg)")
 
 
 def main():
@@ -98,22 +93,14 @@ def main():
     )
 
     args = parser.parse_args()
-    if args.logout:
-        logout()
-    if args.restart:
-        restart()
-    if args.theme:
-        changeValue("theme", args.theme)
-    if args.font:
-        changeValue("font", args.font)
-    if args.mail:
-        changeValue("mail", args.mail)
-    if args.console:
-        changeValue("console", args.console)
-    if args.screenshot:
-        takeScreenshot()
-    if args.docs:
-        docs()
+    if args.logout: logout()
+    if args.restart: restart()
+    if args.theme: changeValue("theme", args.theme)
+    if args.font: changeValue("font", args.font)
+    if args.mail: changeValue("mail", args.mail)
+    if args.console: changeValue("console", args.console)
+    if args.screenshot: takeScreenshot()
+    if args.docs: docs()
 
 
 main()
