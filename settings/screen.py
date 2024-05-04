@@ -1,6 +1,5 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group, Match
-
 from .manager import theme, Theme, terminal, font, mail
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
@@ -35,7 +34,7 @@ floating_layout = layout.Floating(
 )
 widget_defaults = dict(
     font=font,
-    fontsize=14,
+    fontsize=13,
     padding=8,
     margin=8,
     foreground=theme[Theme.foreground],
@@ -45,23 +44,23 @@ widget_defaults = dict(
 
 def group(group_labels):
     group = []
-    group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    group_names = [str(f) for f in range(1, len(group_labels) + 1)]
     for i in range(len(group_names)):
         group.append(Group(name=group_names[i], label=group_labels[i]))
     return group
 
-# *
+
 # * WIDGETS
-# *
+
 
 def group_box(this_screen_color, other_screen_color):
     return widget.GroupBox(
-        fontsize=13,
+        fontsize=16,
         borderwidth=2,
         rounded=False,
         disable_drag=True,
         font=f"{font} bold",
-        highlight_method="line",
+        highlight_method="text",
         active=theme[Theme.active],
         inactive=theme[Theme.inactive],
         highlight_color=theme[Theme.background],
@@ -70,6 +69,7 @@ def group_box(this_screen_color, other_screen_color):
         other_current_screen_border=other_screen_color,
         other_screen_border=other_screen_color,
     )
+
 
 def init_widgets_list():
     widgets_list = [
@@ -82,17 +82,17 @@ def init_widgets_list():
             foreground=theme[Theme.active],
         ),
         widget.CapsNumLockIndicator(
-            font=f"{font} Bold", fontsize=12, fmt="{}", foreground=theme[Theme.color4]
+            font=f"{font} Bold", fmt="{}", foreground=theme[Theme.color4]
         ),
         widget.Volume(
-            font=f"{font}",
-            fmt="\uf026 {}",
+            font=f"{font} Bold",
+            fmt="󰕾 {}",
             foreground=theme[Theme.color3],
             mouse_callbacks={"Button3": lambda: qtile.cmd_spawn("pavucontrol")},
         ),
         widget.Battery(
             font=f"{font} Bold",
-            format=" 󱟠 {percent:2.0%}",
+            format="󰂋 {percent:2.0%}",
             update_interval=10,
             foreground=theme[Theme.color2],
             background=theme[Theme.background],
@@ -106,12 +106,12 @@ def init_widgets_list():
             distro="Arch_checkupdates",
             execute=f"{terminal} -e sudo pacman -Syu",
             update_interval=1800,
-            display_format="󱑥 {updates} Updates",
+            display_format="󰁇 {updates} Updates",
             colour_have_updates=theme[Theme.foreground],
         ),
         widget.Clock(
             font=f"{font} Bold",
-            format="󱪺 %c",
+            format="󱁳 %c",
             foreground=theme[Theme.color1],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(mail),
@@ -121,10 +121,9 @@ def init_widgets_list():
     ]
     return widgets_list
 
-# *
+
 # * END WIDGETS
-# *
 
 screens = [Screen(top=bar.Bar(widgets=init_widgets_list(), size=28))]
 
-groups = group(["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"])
+groups = group(["󰮯", "󱙝", "󰊠", "󰊠"])

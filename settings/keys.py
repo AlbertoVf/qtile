@@ -39,13 +39,13 @@ keys = [
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), lazy.layout.swap_right(), lazy.layout.swap_column_right(), lazy.layout.flip_right()),
     Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), lazy.layout.swap_right(), lazy.layout.swap_column_right(), lazy.layout.flip_right()),
     # SIZE WINDOWS
-    Key([mod, "control"], "j", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(), lazy.layout.section_down()),
+    # Key([mod, "control"], "j", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(), lazy.layout.section_down()),
     Key([mod, "control"], "Down", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(), lazy.layout.section_down()),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(), lazy.layout.section_up()),
+    # Key([mod, "control"], "k", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(), lazy.layout.section_up()),
     Key([mod, "control"], "Up", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(), lazy.layout.section_up()),
-    Key([mod, "control"], "h", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add()),
+    # Key([mod, "control"], "h", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add()),
     Key([mod, "control"], "Left", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add()),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete()),
+    # Key([mod, "control"], "l", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete()),
     Key([mod, "control"], "Right", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete()),
 ]
 
