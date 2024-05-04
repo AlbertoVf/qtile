@@ -75,6 +75,11 @@ def docs():
         for i, (theme) in enumerate(data, start=1):
             f.write(f"\n{i}. {theme} ![{theme}](./Previews/{theme}.jpg)")
 
+def version():
+    print("qtile version:")
+    subprocess.run("qtile --version", shell=True, check=True)
+    print(dump(load(open(ENV_FILE, "r", encoding="utf-8"))))
+    pass
 
 def main():
     parser = argparse.ArgumentParser(description="Modify settings from qtile")
@@ -91,6 +96,7 @@ def main():
         action="store_true",
         help="Take screenshots with all themes",
     )
+    parser.add_argument("-v","--version",action="store_true",help="Print qtile information")
 
     args = parser.parse_args()
     if args.logout: logout()
@@ -101,6 +107,7 @@ def main():
     if args.console: changeValue("console", args.console)
     if args.screenshot: takeScreenshot()
     if args.docs: docs()
+    if args.version: version()
 
 
 main()
