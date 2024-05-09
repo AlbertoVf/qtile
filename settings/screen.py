@@ -32,6 +32,7 @@ floating_layout = layout.Floating(
     border_normal=theme[Theme.inactive],
     border_focus=theme[Theme.active],
 )
+
 widget_defaults = dict(
     font=font,
     fontsize=13,
@@ -79,7 +80,7 @@ def init_widgets_list():
             font=f"{font} Bold Italic",
             format="{name}",
             max_chars=90,
-            foreground=theme[Theme.active],
+            foreground=theme[Theme.active]
         ),
         widget.CapsNumLockIndicator(
             font=f"{font} Bold", fmt="{}", foreground=theme[Theme.color4]
@@ -121,9 +122,8 @@ def init_widgets_list():
     ]
     return widgets_list
 
-
 # * END WIDGETS
 
 screens = [Screen(top=bar.Bar(widgets=init_widgets_list(), size=28))]
 
-groups = group(["󰮯", "󱙝", "󰊠", "󰊠"])
+groups = group(["󱙝", "󰮯", "󰊠", "󰊠", "󰊠"])

@@ -2,15 +2,15 @@
 ##? help  : qtile updater settings and docs.
 ##? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
 
-import argparse, subprocess, os
+import argparse, subprocess
 from dataclasses import dataclass
 from time import sleep
 from yaml import dump, safe_load as load
-
-QTILE_PATH   = os.path.join(os.path.expanduser("~"), ".config", "qtile")
-ENV_FILE     = os.path.join(QTILE_PATH, ".env")
-QTILE_THEMES = os.path.join(QTILE_PATH, "themes")
-QTILE_THEME  = os.path.join(QTILE_THEMES, "themes.yaml")
+from os.path import join,expanduser
+QTILE_PATH   = join(expanduser("~"), ".config", "qtile")
+ENV_FILE     = join(QTILE_PATH, ".env")
+QTILE_THEMES = join(QTILE_PATH, "themes")
+QTILE_THEME  = join(QTILE_THEMES, "themes.yaml")
 
 
 @dataclass
@@ -35,10 +35,11 @@ class Env:
 
 read_env = lambda: Env.from_dict(load(open(ENV_FILE, "r", encoding="utf-8")))
 
-logout = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=True )
+logout = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=False )
 
-restart = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=True )
+restart = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=False )
 
+__themes_list = lambda: dict(sorted(load(open(QTILE_THEME, "r", encoding="utf-8")).items())).keys()
 
 def changeValue(key: str, value: str):
     env = read_env()
@@ -50,36 +51,30 @@ def changeValue(key: str, value: str):
     restart()
 
 
-def __themes_list():
-    data = dict(sorted(load(open(QTILE_THEME, "r", encoding="utf-8")).items()))
-    return data
-
-
 def takeScreenshot():
-    data = __themes_list()
-    subprocess.Popen(["code", f"{QTILE_PATH}/.env"])
-    sleep(2)
+    sleep(1)
+    subprocess.Popen(["code","--new-window", f"{QTILE_PATH}/.env"])
     subprocess.Popen(["thunar", f"{QTILE_PATH}"])
     sleep(2)
-    for t in data.items():
+    for t in __themes_list():
         changeValue("theme", t)
-        sleep(5)
-        subprocess.run( ["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/Previews", check=True )
+        sleep(4)
+        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/Previews", check=True )
     docs()
 
-
 def docs():
-    data = __themes_list()
     with open(f"{QTILE_THEMES}/Previews.md", "w", encoding="utf-8") as f:
         f.write("# Previews\n")
-        for i, (theme) in enumerate(data, start=1):
+        for i, (theme) in enumerate(__themes_list(), start=1):
             f.write(f"\n{i}. {theme} ![{theme}](./Previews/{theme}.jpg)")
+
 
 def version():
     print("qtile version:")
     subprocess.run("qtile --version", shell=True, check=True)
     print(dump(load(open(ENV_FILE, "r", encoding="utf-8"))))
     pass
+
 
 def main():
     parser = argparse.ArgumentParser(description="Modify settings from qtile")
@@ -90,13 +85,8 @@ def main():
     parser.add_argument("-d", "--docs", action="store_true", help="Update Previews.md")
     parser.add_argument("-l", "--logout", action="store_true", help="Close sesión")
     parser.add_argument("-r", "--restart", action="store_true", help="Restart qtile")
-    parser.add_argument(
-        "-s",
-        "--screenshot",
-        action="store_true",
-        help="Take screenshots with all themes",
-    )
-    parser.add_argument("-v","--version",action="store_true",help="Print qtile information")
+    parser.add_argument( "-s", "--screenshot", action="store_true", help="Take screenshots with all themes", )
+    parser.add_argument( "-v", "--version", action="store_true", help="Print qtile information" )
 
     args = parser.parse_args()
     if args.logout: logout()
