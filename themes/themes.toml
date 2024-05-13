@@ -1,0 +1,519 @@
+[3024_day]
+background = '#282828'
+foreground = '#3A3332'
+active     = '#00A0E4'
+inactive   = '#B5E4F4'
+color1     = '#DA2C20'
+color2     = '#FCEC02'
+color3     = '#D6D4D3'
+color4     = '#00A152'
+
+[alien_blood]
+background = '#0F160F'
+foreground = '#637D75'
+active     = '#73F990'
+inactive   = '#2F7E25'
+color1     = '#7F2B26'
+color2     = '#0058DF'
+color3     = '#647D75'
+color4     = '#73F990'
+
+[alucard]
+background = '#222330'
+foreground = '#CEF3FF'
+active     = '#FA0074'
+inactive   = '#FF5454'
+color1     = '#3282FF'
+color2     = '#FF78C5'
+color3     = '#FF5454'
+color4     = '#F0FA8B'
+
+[arc_dark_crimson]
+background = '#292D3E'
+foreground = '#F9F9F9'
+active     = '#DC141E'
+inactive   = '#7C8189'
+color1     = '#CC6666'
+color2     = '#F0883E'
+color3     = '#586875'
+color4     = '#65ACFF'
+
+[arch_linux]
+background = '#222C37'
+foreground = '#FFFFFF'
+active     = '#1793D1'
+inactive   = '#FFFFFF'
+color1     = '#FFFFFF'
+color2     = '#1793D1'
+color3     = '#FFFFFF'
+color4     = '#1793D1'
+
+[argonaut]
+background = '#0D0F18'
+foreground = '#FFFAF3'
+active     = '#008DF8'
+inactive   = '#00D7EB'
+color1     = '#FF273F'
+color2     = '#8CE00A'
+color3     = '#FFB900'
+color4     = '#9A5FEB'
+
+[default]
+background = '#0F101A'
+foreground = '#F1FFFF'
+active     = '#F1FFFF'
+inactive   = '#4C566A'
+color1     = '#A151D3'
+color2     = '#F07178'
+color3     = '#FB9F7F'
+color4     = '#FFD47E'
+
+[dracula]
+background = '#292D3E'
+foreground = '#FFFFFF'
+active     = '#FF5454'
+inactive   = '#F1FFFF'
+color1     = '#5AF78D'
+color2     = '#BD93F9'
+color3     = '#7197E7'
+color4     = '#FFB86C'
+
+[github]
+background = '#24292E'
+foreground = '#F1F8FF'
+active     = '#F0883E'
+inactive   = '#F8E3A1'
+color1     = '#3FB950'
+color2     = '#DA3633'
+color3     = '#0366D6'
+color4     = '#8957E5'
+
+[green]
+background = '#212121'
+foreground = '#FFFFFF'
+active     = '#2E8447'
+inactive   = '#3FBC64'
+color1     = '#256839'
+color2     = '#37A056'
+color3     = '#2E8447'
+color4     = '#3FBC64'
+
+[gruvbox]
+background = '#282828'
+foreground = '#3C3836'
+active     = '#EBDBB2'
+inactive   = '#A89984'
+color1     = '#FB4934'
+color2     = '#FABD2F'
+color3     = '#8EC07C'
+color4     = '#83A598'
+
+[material_ocean]
+background = '#0F101A'
+foreground = '#F1FFFF'
+active     = '#F1FFFF'
+inactive   = '#4C566A'
+color1     = '#A151D3'
+color2     = '#F07178'
+color3     = '#FB9F7F'
+color4     = '#FFD47E'
+
+[nord]
+background = '#212121'
+foreground = '#FFFFFF'
+active     = '#F1FFFF'
+inactive   = '#4C566A'
+color1     = '#81A1C1'
+color2     = '#88C0D0'
+color3     = '#A3BE8C'
+color4     = '#EBCB8B'
+
+[one_dark]
+background = '#23272E'
+foreground = '#FFFFFF'
+active     = '#F1FFFF'
+inactive   = '#4C566A'
+color1     = '#C678DD'
+color2     = '#E06C75'
+color3     = '#61AFEF'
+color4     = '#98C379'
+
+[palenight]
+background = '#292D3E'
+foreground = '#F1F1F1'
+active     = '#82AAFF'
+inactive   = '#959DCB'
+color1     = '#C3E88D'
+color2     = '#82AAFF'
+color3     = '#C792EA'
+color4     = '#FFCB6B'
+
+[pico]
+background = '#292D3E'
+foreground = '#FFFFFF'
+active     = '#FF77A8'
+inactive   = '#F1FFFF'
+color1     = '#FFA300'
+color2     = '#FF004D'
+color3     = '#29ADFF'
+color4     = '#00E756'
+
+[pop]
+background = '#202020'
+foreground = '#FFFFFF'
+active     = '#00AABB'
+inactive   = '#F1FFFF'
+color1     = '#0E5A94'
+color2     = '#00AABB'
+color3     = '#37B349'
+color4     = '#F8CA12'
+
+[purple]
+background = '#292D3E'
+foreground = '#FFFFFF'
+active     = '#B455C9'
+inactive   = '#AF82D5'
+color1     = '#9E67CB'
+color2     = '#7955C9'
+color3     = '#B455C9'
+color4     = '#B5458B'
+
+[rosepine]
+background = '#1F1D29'
+foreground = '#4C566A'
+active     = '#EABBB9'
+inactive   = '#F1FFFF'
+color1     = '#EA6F91'
+color2     = '#EABBB9'
+color3     = '#F1CA93'
+color4     = '#9BCED7'
+
+[atom]
+background = '#161718'
+foreground = '#c4c8c5'
+active     = '#fc5ef0'
+inactive   = '#b9b5fc'
+color1     = '#94f936'
+color2     = '#f5ffa7'
+color3     = '#85befd'
+color4     = '#b9b5fc'
+
+[batman]
+background = '#1b1d1e'
+foreground = '#6e6e6e'
+active     = '#fcee0b'
+inactive   = '#dadad5'
+color1     = '#fcee0b'
+color2     = '#dadad5'
+color3     = '#c5c5be'
+color4     = '#615f5e'
+
+[espresso]
+background = '#323232'
+foreground = '#ffffff'
+active     = '#d096d9'
+inactive   = '#bdd6ff'
+color1     = '#e1e48a'
+color2     = '#dbf4ff'
+color3     = '#a4c161'
+color4     = '#c1df74'
+
+[galaxy]
+background = '#1c2836'
+foreground = '#545454'
+active     = '#e75598'
+inactive   = '#fa8b8e'
+color1     = '#20af89'
+color2     = '#1e9ee6'
+color3     = '#ffff55'
+color4     = '#589cf5'
+
+[molokay]
+background = '#121212'
+foreground = '#545454'
+active     = '#fa2573'
+inactive   = '#f5669c'
+color1     = '#0f7fcf'
+color2     = '#fef26c'
+color3     = '#b0e05e'
+color4     = '#42a7cf'
+
+[monalisa]
+background = '#110b0d'
+foreground = '#f6d56a'
+active     = '#ff4230'
+inactive   = '#ff5b6a'
+color1     = '#ff9565'
+color2     = '#f6d75c'
+color3     = '#588056'
+color4     = '#9eb2b3'
+
+[neutron]
+background = '#1b1d22'
+foreground = '#e6e8ee'
+active     = '#3f93a8'
+inactive   = '#6a7b92'
+color1     = '#b53f36'
+color2     = '#5ab977'
+color3     = '#3f93a8'
+color4     = '#e6e8ee'
+
+[nova]
+background = '#3c4c54'
+foreground = '#8798a3'
+active     = '#7fc1ca'
+inactive   = '#8799a4'
+color1     = '#69c8ff'
+color2     = '#d460da'
+color3     = '#e5e77f'
+color4     = '#00e59f'
+
+[spacegray]
+background = '#20232c'
+foreground = '#b2b8c2'
+active     = '#84a6a4'
+inactive   = '#7c8fa3'
+color1     = '#af4b57'
+color2     = '#87b279'
+color3     = '#e5c078'
+color4     = '#b2b8c2'
+
+[spiderman]
+background = '#1b1d1e'
+foreground = '#e2e2e2'
+active     = '#2b3fff'
+inactive   = '#737bff'
+color1     = '#ff0325'
+color2     = '#e22828'
+color3     = '#e24655'
+color4     = '#fffef6'
+
+[the_hulk]
+background = '#1b1d1e'
+foreground = '#b4b4b4'
+active     = '#48ff76'
+inactive   = '#15b61a'
+color1     = '#3afe15'
+color2     = '#259d1a'
+color3     = '#72579d'
+color4     = '#e5e5e0'
+
+[tokyo_night]
+background = '#1a1b26'
+foreground = '#a9b1d6'
+active     = '#c0caf5'
+inactive   = '#3d59a1'
+color1     = '#e0af68'
+color2     = '#f7768e'
+color3     = '#73daca'
+color4     = '#bb9af7'
+
+[wombat]
+background = '#453a39'
+foreground = '#ded9ce'
+active     = '#5da9f6'
+inactive   = '#f58b7f'
+color1     = '#dcf88f'
+color2     = '#e86aff'
+color3     = '#a5c7ff'
+color4     = '#ddaaff'
+
+[afterglow]
+background = '#202020'
+foreground = '#f5f5f5'
+active     = '#7dd5cf'
+inactive   = '#6c99ba'
+color1     = '#bc5653'
+color2     = '#7e8d50'
+color3     = '#e5b566'
+color4     = '#6c99ba'
+
+[city_lights]
+background = '#171d23'
+foreground = '#ffffff'
+active     = '#333f4a'
+inactive   = '#b7c5d3'
+color1     = '#8bd49c'
+color2     = '#539afc'
+color3     = '#b62d65'
+color4     = '#70e1e8'
+
+[cyberpunk_neon]
+background = '#000b1e'
+foreground = '#0abdc6'
+active     = '#0abdc6'
+inactive   = '#123e7c'
+color1     = '#ff0000'
+color2     = '#00ff00'
+color3     = '#0abdc6'
+color4     = '#d7d7d5'
+
+[doom_one]
+background = '#282c34'
+foreground = '#bbc2cf'
+active     = '#51afef'
+inactive   = '#46d9ff'
+color1     = '#98be65'
+color2     = '#ecbe7b'
+color3     = '#ff6c6b'
+color4     = '#51afef'
+
+[horizontal_dark]
+background = '#1c1e26'
+foreground = '#e0e0e0'
+active     = '#59e1e3'
+inactive   = '#3fc4de'
+color1     = '#29d398'
+color2     = '#fab795'
+color3     = '#26bbd9'
+color4     = '#ee64ac'
+
+[iterm]
+background = '#101421'
+foreground = '#fffbf6'
+active     = '#49a4f8'
+inactive   = '#a47de9'
+color1     = '#565656'
+color2     = '#ec5357'
+color3     = '#c0e17d'
+color4     = '#f9da6a'
+
+[monokay_pro]
+background = '#2D2A2E'
+foreground = '#fff1f3'
+active     = '#f9cc6c'
+inactive   = '#f38d70'
+color1     = '#adda78'
+color2     = '#fd6883'
+color3     = '#fff1f3'
+color4     = '#a8a9eb'
+
+[moonlight]
+background = '#1e2030'
+foreground = '#7f85a3'
+active     = '#ff5370'
+inactive   = '#fc7b7b'
+color1     = '#ffc777'
+color2     = '#3e68d7'
+color3     = '#ff5370'
+color4     = '#4fd6be'
+
+[omni]
+background = '#191622'
+foreground = '#f8f8f2'
+active     = '#ff79c6'
+inactive   = '#8d79ba'
+color1     = '#bb006b'
+color2     = '#aa91e3'
+color3     = '#530aba'
+color4     = '#effa78'
+
+[pencil]
+background = '#212121'
+foreground = '#f1f1f1'
+active     = '#fb007a'
+inactive   = '#f1f1f1'
+color1     = '#5fd7af'
+color2     = '#f3e430'
+color3     = '#20bbfc'
+color4     = '#6855de'
+
+[tender]
+background = '#282828'
+foreground = '#eeeeee'
+active     = '#ffc24b'
+inactive   = '#d3b987'
+color1     = '#f43753'
+color2     = '#c9d05c'
+color3     = '#ffc24b'
+color4     = '#73cef4'
+
+[lovelace]
+background = '#1D1F28'
+foreground = '#FDFDFD'
+active     = '#FF4971'
+inactive   = '#F37F97'
+color1     = '#F2A272'
+color2     = '#8897F4'
+color3     = '#C574DD'
+color4     = '#79E6F3'
+
+[tokyo_night_storm]
+background = '#24283b'
+foreground = '#a9b1d6'
+active     = '#7da6ff'
+inactive   = '#bb9af7'
+color1     = '#9ece6a'
+color2     = '#ff9e64'
+color3     = '#7aa2f7'
+color4     = '#f7768e'
+
+[ubuntu]
+background = '#300a24'
+foreground = '#eeeeec'
+active     = '#ef2929'
+inactive   = '#fce94f'
+color1     = '#729fcf'
+color2     = '#ad7fa8'
+color3     = '#34e2e2'
+color4     = '#eeeeec'
+
+[ayu_dark]
+background = '#0A0E14'
+foreground = '#B3B1AD'
+active     = '#F9AF4F'
+inactive   = '#FAE994'
+color1     = '#EA6C73'
+color3     = '#91B362'
+color2     = '#59C2FF'
+color4     = '#95E6CB'
+
+[base_16]
+background = '#181818'
+foreground = '#d8d8d8'
+active     = '#f7ca88'
+inactive   = '#ab4642'
+color1     = '#f8f8f8'
+color2     = '#ba8baf'
+color3     = '#86c1b9'
+color4     = '#ab4642'
+
+[breeze]
+background = '#eff0f1'
+foreground = '#31363b'
+active     = '#1cdc9a'
+inactive   = '#16a085'
+color1     = '#31363b'
+color2     = '#1b668f'
+color3     = '#11d116'
+color4     = '#9b59b6'
+
+[challenger_deep]
+background = '#1e1c31'
+foreground = '#cbe1e7'
+active     = '#ff5458'
+inactive   = '#ff271d'
+color1     = '#62d196'
+color2     = '#ffb378'
+color3     = '#65b2ff'
+color4     = '#906cff'
+
+[cobalt2]
+background = '#122637'
+foreground = '#f0cb09'
+active     = '#fee409'
+inactive   = '#bbbbbb'
+color1     = '#5555ff'
+color2     = '#ff55ff'
+color3     = '#6ae3f9'
+color4     = '#ffffff'
+
+[gotham]
+background = '#0a0f14'
+foreground = '#98d1ce'
+active     = '#195465'
+inactive   = '#4e5165'
+color1     = '#d26939'
+color2     = '#081f2d'
+color3     = '#245361'
+color4     = '#d3ebe9'

@@ -5,62 +5,36 @@
 import argparse, subprocess
 from dataclasses import dataclass
 from time import sleep
-from yaml import dump, safe_load as load
-from os.path import join,expanduser
-QTILE_PATH   = join(expanduser("~"), ".config", "qtile")
-ENV_FILE     = join(QTILE_PATH, ".env")
-QTILE_THEMES = join(QTILE_PATH, "themes")
-QTILE_THEME  = join(QTILE_THEMES, "themes.yaml")
+from os.path import join, expanduser
+from toml import dump, load, loads
+from dotenv import dotenv_values
 
+QTILE_PATH    = join(expanduser("~"), ".config", "qtile")
+ENV_FILE      = join(QTILE_PATH, "qtile.conf")
+QTILE_THEMES  = join(QTILE_PATH, "themes")
+QTILE_THEME   = join(QTILE_THEMES, "themes.toml")
+logout        = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=False )
+restart       = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=False )
+__themes_list = lambda: dict(sorted(loads(open(QTILE_THEME, "r").read()).items())).keys()
 
-@dataclass
-class Env:
-    font: str
-    mail: str
-    console: str
-    theme: str
-
-    @staticmethod
-    def from_dict(obj: dict) -> "Env":
-        return Env(
-            str(obj.get("font")),
-            str(obj.get("mail")),
-            str(obj.get("console")),
-            str(obj.get("theme")),
-        )
-
-    def save(self):
-        dump(self.__dict__, open(ENV_FILE, "w", encoding="utf-8"))
-
-
-read_env = lambda: Env.from_dict(load(open(ENV_FILE, "r", encoding="utf-8")))
-
-logout = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=False )
-
-restart = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=False )
-
-__themes_list = lambda: dict(sorted(load(open(QTILE_THEME, "r", encoding="utf-8")).items())).keys()
 
 def changeValue(key: str, value: str):
-    env = read_env()
-    if key == "font": env.font = value
-    elif key == "mail": env.mail = value
-    elif key == "console": env.console = value
-    elif key == "theme": env.theme = value
-    env.save()
+    data = load(open(ENV_FILE))
+    data["USER"][key] = value
+    dump(data, open(ENV_FILE,'w'))
     restart()
-
 
 def takeScreenshot():
     sleep(1)
-    subprocess.Popen(["code","--new-window", f"{QTILE_PATH}/.env"])
-    subprocess.Popen(["thunar", f"{QTILE_PATH}"])
+    subprocess.Popen(["code", "--new-window", ENV_FILE])
+    subprocess.Popen(["thunar", QTILE_PATH])
     sleep(2)
     for t in __themes_list():
         changeValue("theme", t)
         sleep(4)
-        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/Previews", check=True )
+        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/Previews", check=True)
     docs()
+
 
 def docs():
     with open(f"{QTILE_THEMES}/Previews.md", "w", encoding="utf-8") as f:
@@ -70,10 +44,8 @@ def docs():
 
 
 def version():
-    print("qtile version:")
     subprocess.run("qtile --version", shell=True, check=True)
-    print(dump(load(open(ENV_FILE, "r", encoding="utf-8"))))
-    pass
+    subprocess.run(f"cat {ENV_FILE}", shell=True, check=True)
 
 
 def main():
