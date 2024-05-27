@@ -3,41 +3,41 @@
 ##? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
 
 import argparse, subprocess
-from dataclasses import dataclass
 from time import sleep
 from os.path import join, expanduser
 from toml import dump, load, loads
-from dotenv import dotenv_values
 
-QTILE_PATH    = join(expanduser("~"), ".config", "qtile")
-ENV_FILE      = join(QTILE_PATH, "qtile.conf")
-QTILE_THEMES  = join(QTILE_PATH, "themes")
-QTILE_THEME   = join(QTILE_THEMES, "themes.toml")
+qtile_path    = join(expanduser("~"), ".config", "qtile")
+env_file      = join(qtile_path, "qtile.conf")
+qtile_themes  = join(qtile_path, "themes")
+qtile_theme   = join(qtile_themes, "themes.toml")
 logout        = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=False )
 restart       = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=False )
-__themes_list = lambda: dict(sorted(loads(open(QTILE_THEME, "r").read()).items())).keys()
-
+__themes_list = lambda: dict(sorted(loads(open(qtile_theme, "r").read()).items())).keys()
 
 def changeValue(key: str, value: str):
-    data = load(open(ENV_FILE))
+    data = load(open(env_file))
     data["USER"][key] = value
-    dump(data, open(ENV_FILE,'w'))
+    dump(data, open(env_file,'w'))
     restart()
 
 def takeScreenshot():
-    sleep(1)
-    subprocess.Popen(["code", "--new-window", ENV_FILE])
-    subprocess.Popen(["thunar", QTILE_PATH])
     sleep(2)
+    subprocess.Popen(["code", "--new-window", env_file])
+    subprocess.Popen(["thunar", qtile_path])
+    th = load(open(env_file))["USER"]["theme"]
+    sleep(5)
     for t in __themes_list():
         changeValue("theme", t)
-        sleep(4)
-        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{QTILE_THEMES}/Previews", check=True)
+        sleep(5)
+        subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{qtile_themes}/Previews", check=True)
+        subprocess.run(["convert", f"{t}.jpg","-resize","900x850^", f"{t}.jpg"], cwd=f"{qtile_themes}/Previews", check=False)
     docs()
+    changeValue("theme",th)
 
 
 def docs():
-    with open(f"{QTILE_THEMES}/Previews.md", "w", encoding="utf-8") as f:
+    with open(f"{qtile_themes}/Previews.md", "w", encoding="utf-8") as f:
         f.write("# Previews\n")
         for i, (theme) in enumerate(__themes_list(), start=1):
             f.write(f"\n{i}. {theme} ![{theme}](./Previews/{theme}.jpg)")
@@ -45,7 +45,7 @@ def docs():
 
 def version():
     subprocess.run("qtile --version", shell=True, check=True)
-    subprocess.run(f"cat {ENV_FILE}", shell=True, check=True)
+    subprocess.run(f"cat {env_file}", shell=True, check=True)
 
 
 def main():
@@ -54,22 +54,22 @@ def main():
     parser.add_argument("-m", "--mail", help="Update mail")
     parser.add_argument("-c", "--console", help="Update the terminal")
     parser.add_argument("-t", "--theme", help="Change theme")
-    parser.add_argument("-d", "--docs", action="store_true", help="Update Previews.md")
+    parser.add_argument("-s", "--screenshot", action="store_true", help="Take screenshots with all themes", )
+    # parser.add_argument("-d", "--docs", action="store_true", help="Update Previews.md")
+    # parser.add_argument("-v", "--version", action="store_true", help="Print qtile information" )
     parser.add_argument("-l", "--logout", action="store_true", help="Close sesión")
     parser.add_argument("-r", "--restart", action="store_true", help="Restart qtile")
-    parser.add_argument( "-s", "--screenshot", action="store_true", help="Take screenshots with all themes", )
-    parser.add_argument( "-v", "--version", action="store_true", help="Print qtile information" )
 
     args = parser.parse_args()
     if args.logout: logout()
     if args.restart: restart()
-    if args.theme: changeValue("theme", args.theme)
-    if args.font: changeValue("font", args.font)
     if args.mail: changeValue("mail", args.mail)
     if args.console: changeValue("console", args.console)
+    if args.theme: changeValue("theme", args.theme)
+    if args.font: changeValue("font", args.font)
     if args.screenshot: takeScreenshot()
-    if args.docs: docs()
-    if args.version: version()
+    # if args.docs: docs()
+    # if args.version: version()
 
 
 main()
