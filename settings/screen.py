@@ -1,6 +1,6 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group, Match
-from .manager import theme, Theme, terminal, font, mail
+from .manager import Theme, theme, font,terminal,mail
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 layout_theme = {
@@ -15,8 +15,9 @@ layouts = [
     layout.MonadWide(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Floating(**layout_theme),
+    layout.Spiral(**layout_theme,main_pane='left',clockwise=False)
 ]
+
 floating_layout = layout.Floating(
     float_rules=[
         *layout.Floating.default_float_rules,
@@ -37,7 +38,6 @@ widget_defaults = dict(
     font=font,
     fontsize=13,
     padding=8,
-    margin=8,
     foreground=theme[Theme.foreground],
     background=theme[Theme.background],
 )
@@ -54,7 +54,7 @@ def group(group_labels):
 # * WIDGETS
 
 
-def group_box(this_screen_color, other_screen_color):
+def group_box(this_screen_color):
     return widget.GroupBox(
         fontsize=16,
         borderwidth=2,
@@ -66,41 +66,25 @@ def group_box(this_screen_color, other_screen_color):
         inactive=theme[Theme.inactive],
         highlight_color=theme[Theme.background],
         this_current_screen_border=this_screen_color,
-        this_screen_border=this_screen_color,
-        other_current_screen_border=other_screen_color,
-        other_screen_border=other_screen_color,
+        this_screen_border=this_screen_color
     )
 
 
 def init_widgets_list():
     widgets_list = [
-        group_box(theme[Theme.color2], theme[Theme.color3]),
-        widget.CurrentLayout(font=f"{font} Bold", foreground=theme[Theme.color1]),
+        group_box(theme[Theme.color1]),
+        widget.CurrentLayout(font=f"{font} Bold", foreground=theme[Theme.color2], fmt="[ {} ]"),
         widget.WindowName(
             font=f"{font} Bold Italic",
             format="{name}",
-            max_chars=90,
+            max_chars=128,
             foreground=theme[Theme.active]
-        ),
-        widget.CapsNumLockIndicator(
-            font=f"{font} Bold", fmt="{}", foreground=theme[Theme.color4]
         ),
         widget.Volume(
             font=f"{font} Bold",
             fmt="󰕾 {}",
             foreground=theme[Theme.color3],
             mouse_callbacks={"Button3": lambda: qtile.cmd_spawn("pavucontrol")},
-        ),
-        widget.Battery(
-            font=f"{font} Bold",
-            format="󰂋 {percent:2.0%}",
-            update_interval=10,
-            foreground=theme[Theme.color2],
-            background=theme[Theme.background],
-            mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("xfce4-power-manager-settings"),
-                "Button3": lambda: qtile.cmd_spawn("xfce4-taskmanager"),
-            },
         ),
         widget.CheckUpdates(
             font=f"{font} Bold",
@@ -113,7 +97,7 @@ def init_widgets_list():
         widget.Clock(
             font=f"{font} Bold",
             format="󱁳 %c",
-            foreground=theme[Theme.color1],
+            foreground=theme[Theme.color4],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(mail),
             },
