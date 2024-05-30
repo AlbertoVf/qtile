@@ -1,7 +1,7 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group, Match
 from .manager import Theme, theme, font,terminal,mail
-
+from libqtile.lazy import lazy
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 layout_theme = {
     "margin"        : 4,
@@ -81,10 +81,15 @@ def init_widgets_list():
             foreground=theme[Theme.active]
         ),
         widget.Volume(
+            volume_app = "pavucontrol",
             font=f"{font} Bold",
-            fmt="󰕾 {}",
+            mute_format="󰖁 OFF",
+            unmute_format="󰕾 {volume}%",
             foreground=theme[Theme.color3],
-            mouse_callbacks={"Button3": lambda: qtile.cmd_spawn("pavucontrol")},
+            mouse_callbacks={
+                "Button1": lazy.widget["volume"].mute(),
+                "Button3": lazy.widget["volume"].run_app()
+            },
         ),
         widget.CheckUpdates(
             font=f"{font} Bold",
