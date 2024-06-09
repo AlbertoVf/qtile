@@ -25,12 +25,13 @@ keys = [
     Key([mod], "Right", lazy.layout.right(), desc="change focus to right window"),
     # # WINDOWS STATE
     Key([mod, "shift"], "m", lazy.layout.maximize(), desc='window is maximized'),
-    Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc='make float window'),
+    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc='make fullscreen window'),
     Key([mod, "shift"], "n", lazy.layout.normalize(), lazy.layout.reset(), desc="Reset window size"),
     Key([mod, "shift"], "space", lazy.layout.flip(), lazy.layout.toggle_split(), desc="Change flip orientation"),
+    Key([mod, "control"], "f", lazy.window.toggle_floating(), desc='make float window'),
 
     # monadtall / monadwide / bsp / max
-    # windows size
+    # windows position
     Key([mod, "shift"], "h", lazy.layout.swap_left(), lazy.layout.shuffle_left(), lazy.layout.flip_left()),
     Key([mod, "shift"], "l", lazy.layout.swap_right(), lazy.layout.shuffle_right(), lazy.layout.flip_right()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), lazy.layout.flip_down()),

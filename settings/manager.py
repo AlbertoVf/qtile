@@ -33,8 +33,8 @@ def theme_selector(theme=getenv("theme")) -> Theme:
     return t
 
 
-mail,terminal = (getenv("mail"), getenv("terminal"))
-font, theme   = (getenv("font"), theme_selector())
+mail, terminal = (getenv("mail"), getenv("terminal"))
+font, theme    = (getenv("font"), theme_selector())
 
 if __name__ == "__main__":
     print(theme)
