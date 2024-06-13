@@ -45,18 +45,15 @@ keys = [
     Key([mod,"control"], "Down", lazy.layout.shrink(), lazy.layout.grow_down(),lazy.layout.shrink_main()),
     Key([mod,"control"], "Right", lazy.layout.grow(), lazy.layout.grow_right(),lazy.layout.grow_main()),
     Key([mod,"control"], "Left", lazy.layout.shrink(), lazy.layout.grow_left(),lazy.layout.shrink_main()),
+    # CHANGE WORKSPACE
+    Key([mod], "Tab", lazy.screen.next_group()),
+    Key([mod, "shift"], "Tab", lazy.screen.prev_group())
 ]
 
 for i in groups:
     keys.extend(
         [
-            # CHANGE WORKSPACES
             Key([mod], i.name, lazy.group[i.name].toscreen()),
-            Key([mod], "Tab", lazy.screen.next_group()),
-            Key([mod, "shift"], "Tab", lazy.screen.prev_group()),
-            Key([mod], "Tab", lazy.screen.next_group()),
-            Key([mod, "shift"], "Tab", lazy.screen.prev_group()),
-            # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
             Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
         ]
     )
