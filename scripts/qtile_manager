@@ -38,9 +38,9 @@ def takeScreenshot():
 
 def docs():
     with open(f"{qtile_themes}/Previews.md", "w", encoding="utf-8") as f:
-        f.write("# Previews\n")
+        f.write("# Previews\n\n")
         for i, (theme) in enumerate(__themes_list(), start=1):
-            f.write(f"\n{i}. {theme} ![{theme}](./Previews/{theme}.jpg)")
+            f.write(f"{i}. {theme} ![{theme}](./Previews/{theme}.jpg)\n")
 
 
 def version():
@@ -72,4 +72,5 @@ def main():
     # if args.version: version()
 
 
-main()
+# main()
+docs()
