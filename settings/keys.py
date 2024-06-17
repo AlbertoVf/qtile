@@ -15,14 +15,10 @@ keys = [
     Key([mod], "comma", lazy.prev_screen(), desc="show previous screen"),
     Key([mod], "space", lazy.next_layout(), desc="change layout"),
     # CHANGE FOCUS
-    Key([mod], "k", lazy.layout.up(), desc="change focus to up window"),
     Key([mod], "Up", lazy.layout.up(), desc="change focus to up window"),
-    Key([mod], "j", lazy.layout.down(), desc="change focus to down window"),
     Key([mod], "Down", lazy.layout.down(), desc="change focus to down window"),
-    Key([mod], "h", lazy.layout.left(), desc="change focus to left window"),
-    Key([mod], "Left", lazy.layout.left(), desc="change focus to left window"),
-    Key([mod], "l", lazy.layout.right(), desc="change focus to right window"),
     Key([mod], "Right", lazy.layout.right(), desc="change focus to right window"),
+    Key([mod], "Left", lazy.layout.left(), desc="change focus to left window"),
     # # WINDOWS STATE
     Key([mod, "shift"], "m", lazy.layout.maximize(), desc='window is maximized'),
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc='make fullscreen window'),
@@ -32,10 +28,6 @@ keys = [
 
     # monadtall / monadwide / bsp / max
     # windows position
-    Key([mod, "shift"], "h", lazy.layout.swap_left(), lazy.layout.shuffle_left(), lazy.layout.flip_left()),
-    Key([mod, "shift"], "l", lazy.layout.swap_right(), lazy.layout.shuffle_right(), lazy.layout.flip_right()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), lazy.layout.flip_down()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), lazy.layout.flip_up()),
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), lazy.layout.flip_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), lazy.layout.flip_down()),
     Key([mod, "shift"], "Right", lazy.layout.swap_right(), lazy.layout.shuffle_right(), lazy.layout.flip_right()),

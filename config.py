@@ -1,6 +1,5 @@
-import subprocess
-from libqtile.lazy import lazy
-from libqtile import hook, qtile
+from subprocess import call
+from libqtile import hook
 
 from settings.manager import qtile_scripts
 from settings.keys import keys
@@ -19,7 +18,7 @@ wmname                     = "LG3D"
 
 @hook.subscribe.startup_once
 def start_once():
-    subprocess.call([qtile_scripts + "/autostart.sh"])
+    call([qtile_scripts + "/autostart.sh"])
 
 
 @hook.subscribe.client_new

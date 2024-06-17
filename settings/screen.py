@@ -1,14 +1,17 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group, Match
-from .manager import Theme, theme, font,terminal,mail
+from .manager import Theme, theme, font, console, mail
 from libqtile.lazy import lazy
+
 floating_types = ["notification", "toolbar", "splash", "dialog"]
+
 layout_theme = {
     "margin"        : 4,
     "border_width"  : 2,
     "border_focus"  : theme[Theme.active],
     "border_normal" : theme[Theme.inactive],
 }
+
 layouts = [
     layout.Bsp(**layout_theme),
     layout.MonadTall(**layout_theme),
@@ -29,6 +32,18 @@ floating_layout = layout.Floating(
         Match(wm_class="notification"),
         Match(wm_class="splash"),
         Match(wm_class="toolbar"),
+        Match(wm_class="confirmreset"),  # gitk
+        Match(wm_class="makebranch"),  # gitk
+        Match(wm_class="maketag"),  # gitk
+        Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(title="branchdialog"),  # gitk
+        Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="Brightness_widget"),
+        Match(wm_class="Volume_widget"),
+        Match(wm_class="Monitoring_widget"),
+        Match(wm_class="Mic_widget"),
+        Match(wm_class="Calendar_widget"),
+        Match(title="Password_Entry")
     ],
     border_normal=theme[Theme.inactive],
     border_focus=theme[Theme.active],
@@ -94,7 +109,7 @@ def init_widgets_list():
         widget.CheckUpdates(
             font=f"{font} Bold",
             distro="Arch_checkupdates",
-            execute=f"{terminal} -e sudo pacman -Syu",
+            execute=f"{console} -e sudo pacman -Syu",
             update_interval=1800,
             display_format="󰁇 {updates} Updates",
             colour_have_updates=theme[Theme.foreground],
