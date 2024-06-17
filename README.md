@@ -1,8 +1,9 @@
 # Arco Qtile
 
-Configuracion personalizada para Qtile en ArcoLinux.
+![arcolinux](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Arcolinux.svg/240px-Arcolinux.svg.png)
+![qtile](https://docs.qtile.org/en/stable/_images/qtile-logo.svg)
 
-![wall](./wall.jpg)
+Configuracion personalizada para [Qtile](https://docs.qtile.org/en/stable/) en ArcoLinux.
 
 ## Instalacion
 
@@ -33,9 +34,15 @@ git clone https://github.com/AlbertoVf/qtile ~/.config/qtile
 Usa qtile_manager para configurar las demas caracteristicas de qtile
 
 ```bash
-qtile_manager -t [nombre]
+qtile_manager -c console -v <valor>
+qtile_manager -c font -v <valor>
+qtile_manager -c mail -v <valor>
+qtile_manager -c theme -v <valor>
 ```
 
 ```bash
-qtile_manager -h
+qtile_manager -s # toma captura de pantalla con cada tema
+qtile_manager -r # reinicia qtile
+qtile_manager -l # muestra logs
+qtile_manager -h # imprime ayuda
 ```
