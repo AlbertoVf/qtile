@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-##? help  : qtile updater settings and docs.
-##? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
+# ? help  : qtile updater settings and docs.
+# ? usage : qtile_manager [-h] [-f FONT] [-m MAIL] [-c CONSOLE] [-t THEME] [-d] [-l] [-r] [-s]
 
 import argparse, subprocess
 from time import sleep
@@ -11,14 +11,13 @@ qtile_path    = join(expanduser("~"), ".config", "qtile")
 env_file      = join(qtile_path, "qtile.conf")
 qtile_themes  = join(qtile_path, "themes")
 qtile_theme   = join(qtile_themes, "themes.toml")
-logout        = lambda: subprocess.run( "qtile cmd-obj -o cmd -f shutdown", shell=True, check=False )
-restart       = lambda: subprocess.run( "qtile cmd-obj -o cmd -f restart", shell=True, check=False )
+restart       = lambda: subprocess.run( "qtile cmd-obj -f restart", shell=True, check=False )
 __themes_list = lambda: dict(sorted(loads(open(qtile_theme, "r").read()).items())).keys()
 
 def changeValue(key: str, value: str):
     data = load(open(env_file))
     data["USER"][key] = value
-    dump(data, open(env_file,'w'))
+    dump(data, open(env_file, "w"))
     restart()
 
 def takeScreenshot():
@@ -26,14 +25,14 @@ def takeScreenshot():
     subprocess.Popen(["code", "--new-window", env_file])
     subprocess.Popen(["thunar", qtile_path])
     th = load(open(env_file))["USER"]["theme"]
-    sleep(5)
+    sleep(7)
     for t in __themes_list():
         changeValue("theme", t)
         sleep(5)
         subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{qtile_themes}/Previews", check=True)
-        subprocess.run(["convert", f"{t}.jpg","-resize","900x850^", f"{t}.jpg"], cwd=f"{qtile_themes}/Previews", check=False)
+    changeValue("theme", th)
     docs()
-    changeValue("theme",th)
+    subprocess.run(["magick", "mogrify", "-resize", "900x650^", "*.jpg"], cwd=f"{qtile_themes}/Previews", check=False)
 
 
 def docs():
@@ -43,34 +42,18 @@ def docs():
             f.write(f"{i}. {theme} ![{theme}](./Previews/{theme}.jpg)\n")
 
 
-def version():
-    subprocess.run("qtile --version", shell=True, check=True)
-    subprocess.run(f"cat {env_file}", shell=True, check=True)
-
-
 def main():
     parser = argparse.ArgumentParser(description="Modify settings from qtile")
-    parser.add_argument("-f", "--font", help="Change widget bar font")
-    parser.add_argument("-m", "--mail", help="Update mail")
-    parser.add_argument("-c", "--console", help="Update the terminal")
-    parser.add_argument("-t", "--theme", help="Change theme")
     parser.add_argument("-s", "--screenshot", action="store_true", help="Take screenshots with all themes", )
-    # parser.add_argument("-d", "--docs", action="store_true", help="Update Previews.md")
-    # parser.add_argument("-v", "--version", action="store_true", help="Print qtile information" )
-    parser.add_argument("-l", "--logout", action="store_true", help="Close sesión")
+    parser.add_argument("-l", "--logs", action="store_true", help="Print Qtile log file" )
     parser.add_argument("-r", "--restart", action="store_true", help="Restart qtile")
-
+    parser.add_argument("-c", "--configuration", choices=["console", "font", "mail", "theme"], help="Change qtile properties from qtile.conf", )
+    parser.add_argument("-v", help="New value to property from -c")
     args = parser.parse_args()
-    if args.logout: logout()
-    if args.restart: restart()
-    if args.mail: changeValue("mail", args.mail)
-    if args.console: changeValue("console", args.console)
-    if args.theme: changeValue("theme", args.theme)
-    if args.font: changeValue("font", args.font)
+
     if args.screenshot: takeScreenshot()
-    # if args.docs: docs()
-    # if args.version: version()
+    if args.logs: subprocess.run( "tail -n 20 ~/.local/share/qtile/qtile.log | bat -l log", shell=True, check=False)
+    if args.restart: restart()
+    if args.configuration and args.v: changeValue(args.configuration, args.v)
 
-
-# main()
-docs()
+main()
