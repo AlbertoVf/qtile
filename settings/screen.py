@@ -1,6 +1,6 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group, Match
-from .manager import Theme, theme, font, console, mail
+from settings.manager import Theme, theme, font, console, mail
 from libqtile.lazy import lazy
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
@@ -87,8 +87,8 @@ def group_box(this_screen_color):
 
 def init_widgets_list():
     widgets_list = [
-        group_box(theme[Theme.color1]),
-        widget.CurrentLayout(font=f"{font} Bold", foreground=theme[Theme.color2], fmt="[ {} ]"),
+        group_box(theme[Theme.color3]),
+        widget.CurrentLayout(font=f"{font} Bold", foreground=theme[Theme.color4], fmt="[ {} ]"),
         widget.WindowName(
             font=f"{font} Bold Italic",
             format="{name}",
@@ -100,7 +100,7 @@ def init_widgets_list():
             font=f"{font} Bold",
             mute_format="󰖁 OFF",
             unmute_format="󰕾 {volume}%",
-            foreground=theme[Theme.color3],
+            foreground=theme[Theme.color5],
             mouse_callbacks={
                 "Button1": lazy.widget["volume"].mute(),
                 "Button3": lazy.widget["volume"].run_app()
@@ -117,7 +117,7 @@ def init_widgets_list():
         widget.Clock(
             font=f"{font} Bold",
             format="󱁳 %c",
-            foreground=theme[Theme.color4],
+            foreground=theme[Theme.color6],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn(mail),
             },
