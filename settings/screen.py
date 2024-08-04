@@ -6,10 +6,10 @@ from libqtile.lazy import lazy
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 layout_theme = {
-    "margin"        : 4,
-    "border_width"  : 2,
-    "border_focus"  : theme[Theme.active],
-    "border_normal" : theme[Theme.inactive],
+    "margin": 4,
+    "border_width": 2,
+    "border_focus": theme[Theme.active],
+    "border_normal": theme[Theme.inactive],
 }
 
 layouts = [
@@ -17,33 +17,19 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Matrix(**layout_theme,columns=3),
-    layout.Spiral(**layout_theme,main_pane='left',clockwise=False),
+    layout.Matrix(**layout_theme, columns=2),
+    layout.Spiral(**layout_theme, main_pane="left", clockwise=False),
 ]
 
 floating_layout = layout.Floating(
     float_rules=[
         *layout.Floating.default_float_rules,
-        Match(wm_class="confirm"),
-        Match(wm_class="dialog"),
-        Match(wm_class="download"),
-        Match(wm_class="error"),
-        Match(wm_class="file_progress"),
-        Match(wm_class="notification"),
-        Match(wm_class="splash"),
-        Match(wm_class="toolbar"),
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-        Match(wm_class="Brightness_widget"),
-        Match(wm_class="Volume_widget"),
-        Match(wm_class="Monitoring_widget"),
-        Match(wm_class="Mic_widget"),
-        Match(wm_class="Calendar_widget"),
-        Match(title="Password_Entry")
+        Match(title="Password_Entry"),
+        Match(title="Calculadora"),
+        Match(wm_class="file-roller")
+
     ],
     border_normal=theme[Theme.inactive],
     border_focus=theme[Theme.active],
@@ -81,29 +67,31 @@ def group_box(this_screen_color):
         inactive=theme[Theme.inactive],
         highlight_color=theme[Theme.background],
         this_current_screen_border=this_screen_color,
-        this_screen_border=this_screen_color
+        # this_screen_border=this_screen_color,
     )
 
 
 def init_widgets_list():
     widgets_list = [
         group_box(theme[Theme.color3]),
-        widget.CurrentLayout(font=f"{font} Bold", foreground=theme[Theme.color4], fmt="[ {} ]"),
+        widget.CurrentLayout(
+            font=f"{font} Bold", foreground=theme[Theme.color4], fmt="[ {} ]"
+        ),
         widget.WindowName(
             font=f"{font} Bold Italic",
             format="{name}",
             max_chars=128,
-            foreground=theme[Theme.active]
+            foreground=theme[Theme.active],
         ),
         widget.Volume(
-            volume_app = "pavucontrol",
+            volume_app="pavucontrol",
             font=f"{font} Bold",
             mute_format="󰖁 OFF",
             unmute_format="󰕾 {volume}%",
             foreground=theme[Theme.color5],
             mouse_callbacks={
                 "Button1": lazy.widget["volume"].mute(),
-                "Button3": lazy.widget["volume"].run_app()
+                "Button3": lazy.widget["volume"].run_app(),
             },
         ),
         widget.CheckUpdates(
@@ -125,6 +113,7 @@ def init_widgets_list():
         widget.Systray(icon_size=22, margin=8, padding=8),
     ]
     return widgets_list
+
 
 # * END WIDGETS
 
