@@ -17,8 +17,8 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Matrix(**layout_theme, columns=2),
-    layout.Spiral(**layout_theme, main_pane="left", clockwise=False),
+    # layout.Matrix(**layout_theme, columns=2),
+    # layout.Spiral(**layout_theme, main_pane="left", clockwise=False),
 ]
 
 floating_layout = layout.Floating(
