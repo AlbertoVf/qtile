@@ -8,7 +8,7 @@ qtile_themes  = join(qtile_path, "themes")
 
 class Theme:
     background, foreground = "background", "foreground"
-    active, inactive = "color1", "color2"
+    active, inactive = color1, color2 = "color1", "color2"
     color3, color4, color5, color6 = "color3", "color4", "color5", "color6"
     tf = set([background, foreground, active, inactive, color3, color4, color5, color6])
     file_theme = lambda file: join(qtile_themes, f"{file}.toml")

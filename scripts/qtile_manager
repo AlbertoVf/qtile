@@ -10,8 +10,9 @@ qtile_path    = join(expanduser("~"), ".config", "qtile")
 env_file      = join(qtile_path, "qtile.conf")
 qtile_themes  = join(qtile_path, "themes")
 qtile_theme   = join(qtile_themes, "themes.toml")
-restart       = lambda: subprocess.run( "qtile cmd-obj -f restart", shell=True, check=False )
-__themes_list = lambda: dict(sorted(loads(open(qtile_theme, "r").read()).items())).keys()
+restart       = lambda: subprocess.run("qtile cmd-obj -f restart", shell=True, check=False)
+__themes_list = lambda: dict( sorted(loads(open(qtile_theme, "r").read()).items()) ).keys()
+
 
 def changeValue(key: str, value: str):
     data = load(open(env_file))
@@ -19,11 +20,13 @@ def changeValue(key: str, value: str):
     dump(data, open(env_file, "w"))
     restart()
 
+
 def takeScreenshot():
     from time import sleep
     from os import makedirs
+
     SLEEP_START = 7
-    SLEEP_LOAD  = 5
+    SLEEP_LOAD = 5
     n_themes = len(__themes_list())
     print(f"Tiempo de captura de pantalla [{n_themes}]: {(SLEEP_START + SLEEP_LOAD + SLEEP_LOAD* n_themes)/60} min")
     sleep(SLEEP_LOAD)
@@ -59,8 +62,9 @@ def main():
     args = parser.parse_args()
 
     if args.screenshot: takeScreenshot()
-    if args.logs: subprocess.run( "tail -n 20 ~/.local/share/qtile/qtile.log | bat -l log", shell=True, check=False)
+    if args.logs: subprocess.run( "tail -n 20 ~/.local/share/qtile/qtile.log | bat -l log", shell=True, check=False, )
     if args.restart: restart()
     if args.property and args.v: changeValue(args.property, args.v)
+
 
 main()

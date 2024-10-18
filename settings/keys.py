@@ -12,20 +12,26 @@ class KEYCODE:
     Right = "Right"  # "l"
     position = [mod, "shift"]
     size = [mod, "control"]
-    flip = [mod,"mod1"] # mod + alt
+    flip = [mod, "mod1"]  # mod + alt
 
 
 configuration_keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill the focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Close session"),
+    Key([mod, "control"], "m", lazy.hide_show_bar("top")),
 ]
 
 screen_keys = [
     Key([mod], "space", lazy.next_layout(), desc="change layout"),
-    Key([mod, "shift"], "space", lazy.prev_layout(), desc="change layout"),
+    Key(KEYCODE.position, "space", lazy.prev_layout(), desc="change layout"),
     Key([mod], "Tab", lazy.screen.next_group(), desc="change to next workspace/group"),
-    Key([mod, "shift"], "Tab", lazy.screen.prev_group(), desc="change to previous workspace/group"),
+    Key(
+        KEYCODE.position,
+        "Tab",
+        lazy.screen.prev_group(),
+        desc="change to previous workspace/group",
+    ),
     Key([mod], KEYCODE.Up, lazy.layout.up(), desc="change focus to up window"),
     Key([mod], KEYCODE.Down, lazy.layout.down(), desc="change focus to down window"),
     Key([mod], KEYCODE.Right, lazy.layout.right(), desc="change focus to right window"),
@@ -42,6 +48,8 @@ window_position_keys = [
     Key(KEYCODE.flip, KEYCODE.Down, lazy.layout.flip_down()),
     Key(KEYCODE.flip, KEYCODE.Left, lazy.layout.flip_left()),
     Key(KEYCODE.flip, KEYCODE.Right, lazy.layout.flip_right()),
+    Key(KEYCODE.position, "f", lazy.window.toggle_floating(), desc="make float window"),
+    Key(KEYCODE.position, "m", lazy.layout.bring_to_front(), desc="window is maximized" ),
 ]
 
 window_size_keys = [

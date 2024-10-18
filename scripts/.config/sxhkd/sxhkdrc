@@ -2,70 +2,32 @@
 # Generated on 2023-07-23 20:59
 Print
 	scrot 'screenshot_%Y%m%d_%H%M%S.jpg' -e 'mv $f $$(xdg-user-dir SCREENSHOTS)'
-{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+{ XF86AudioLowerVolume,XF86AudioRaiseVolume }
 	amixer set Master {5%-,5%+}
 XF86AudioMute
 	amixer -D pulse set Master 1+ toggle
-{XF86AudioNext,XF86AudioPlay,XF86AudioPrev,XF86AudioStop}
+{ XF86AudioNext,XF86AudioPlay,XF86AudioPrev,XF86AudioStop }
 	playerctl {next,play-pause,previous,stop}
-{XF86MonBrightnessDown,XF86MonBrightnessUp}
+{ XF86MonBrightnessDown,XF86MonBrightnessUp }
 	xbacklight {-dec,-inc} 5
 alt Escape
 	xfce4-taskmanager
-alt {F1,F2,F3,F4,F5}
-	rofi -show {file-browser-extended,drun,window,ssh,emoji}
 alt Print
 	xfce4-screenshooter
 alt {Left,Right}
 	variety -{p,n}
-alt + shift {h,j,k,l}
-	rofi -show file-browser-extended -file-browser-dir {~/.config,~/Proyectos/Git, ~/.screenlayout,~/Proyectos}
 super F1
 	brave
 super F2
 	code
-super F3
-	gimp
-super F4
-	timeshift-launcher
-super F5
-	notion-app
-super F6
-	ferdium
-super F7
-	virtualbox
 super F8
 	thunar
 super F9
 	thunderbird
-super F10
-	spotify
-super F11
-	kodi
-super a
-	xfce4-appfinder
-super b
-	bitwarden-desktop
 super e
 	code
 super f
 	firefox
-super g
-	github-desktop
-super m
-	pragha
-super n
-	notion-app
-super r
-	retroarch
-super s
-	pamac-manager
-super v
-	vlc --video-on-top
-super x
-	archlinux-logout
-super z
-	zeal
 super KP_Enter
 	gnome-calculator
 super Return
@@ -74,10 +36,6 @@ super + ctrl Return
 	thunar
 super + shift Escape
 	xkill
-super + shift 1
-	kitty -e xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --off --output HDMI2 --off
-super + shift 2
-	kitty -e xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal
 super + shift o
 	picom ~/.config/qtile/.config/picom-toogle.sh
 super + shift s
