@@ -1,0 +1,30 @@
+{
+	"theme": {
+		"scope": "toml",
+		"prefix": "theme",
+		"description": "theme. new theme",
+		"body": [
+			"\n[$0]",
+			"background = '#$1'",
+			"foreground = '#$2'",
+			"color1     = '#$3'",
+			"color2     = '#$4'",
+			"color3     = '#$5'",
+			"color4     = '#$6'",
+			"color5     = '#$7'",
+			"color6     = '#$8'\n"
+		],
+	},
+	"configuration": {
+		"scope": "conf",
+		"prefix": "conf",
+		"description": "Add new configuration",
+		"body": [
+			"\n[$0]",
+			"theme   = '#$1'",
+			"mail    = '#$2'",
+			"console = '#$3'",
+			"font    = '#$4'\n"
+		],
+	},
+}

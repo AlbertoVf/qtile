@@ -1,6 +1,7 @@
 themes/*.yml
 !themes/themes.yml
-
+qtile.conf
+scripts/autostart.sh
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
