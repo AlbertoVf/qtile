@@ -136,7 +136,7 @@ def window_box(focused_group) -> widget.WidgetBox:
 def init_widgets_list():
     widgets_list = [
         widget.Spacer(length=8),
-        window_box(theme[Theme.color3]),
+        window_box(theme[Theme.focus]),
         widget.Spacer(length=bar.STRETCH),
         tool_box(),
         widget.Spacer(length=8),
@@ -145,9 +145,7 @@ def init_widgets_list():
 
 
 def secondary_widgets_list():
-    widgets_list = [
-        window_box(theme[Theme.color3]),
-    ]
+    widgets_list = [ window_box(theme[Theme.focus]), ]
     return widgets_list
 
 
@@ -159,8 +157,6 @@ screens = [
             widgets=init_widgets_list(),
             size=40,
             margin=[4, 4, 0, 4],
-            # border_width = 1,
-            # border_color=theme[Theme.foreground],
             opacity=0.6,
         )
     ),
