@@ -27,7 +27,9 @@ git clone https://github.com/AlbertoVf/qtile ~/.config/qtile
         color4     = ""
     ```
 
-2. Modificar el archivo **qtile.conf** y substituir el valor de la propiedad **theme**.
+1. Modificar el archivo **qtile.conf** y substituir el valor de la propiedad **theme**.
+
+![Previews](themes/previews.gif)
 
 ## Configurar entorno
 

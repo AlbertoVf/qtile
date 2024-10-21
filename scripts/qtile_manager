@@ -40,8 +40,7 @@ def takeScreenshot():
         sleep(SLEEP_LOAD)
         subprocess.run(["scrot", "-o", f"{t}.jpg"], cwd=f"{qtile_themes}/Previews", check=True)
     changeValue("theme", th)
-    docs()
-    subprocess.run(["magick", "mogrify", "-resize", "900x650^", "*.jpg"], cwd=f"{qtile_themes}/Previews", check=False)
+    subprocess.run(["convert", "-delay", "100", "-loop", "0", "Previews/*.jpg", "previews.gif"], cwd=f"{qtile_themes}", check=False)
 
 
 def docs():
