@@ -12,9 +12,14 @@ follow_mouse_focus         = True
 bring_front_click          = True
 cursor_warp                = False
 auto_fullscreen            = True
-bring_front_click          = True
 focus_on_window_activation = "smart"
 wmname                     = "LG3D"
+floats_kept_above          = True
+reconfigure_screens        = True
+auto_minimize              = True
+wl_input_rules             = None
+wl_xcursor_theme           = None
+wl_xcursor_size            = 24
 
 
 @hook.subscribe.startup_once

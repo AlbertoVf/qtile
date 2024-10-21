@@ -19,7 +19,7 @@ configuration_keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill the focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Close session"),
-    Key([mod, "control"], "m", lazy.hide_show_bar("top")),
+    Key(KEYCODE.position, "m", lazy.hide_show_bar("top")),
 ]
 
 screen_keys = [
@@ -49,7 +49,7 @@ window_position_keys = [
     Key(KEYCODE.flip, KEYCODE.Left, lazy.layout.flip_left()),
     Key(KEYCODE.flip, KEYCODE.Right, lazy.layout.flip_right()),
     Key(KEYCODE.position, "f", lazy.window.toggle_floating(), desc="make float window"),
-    Key(KEYCODE.position, "m", lazy.layout.bring_to_front(), desc="window is maximized" ),
+    Key(KEYCODE.flip, "f", lazy.layout.bring_to_front(), desc="window is maximized" ),
 ]
 
 window_size_keys = [

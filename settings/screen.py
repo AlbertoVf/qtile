@@ -6,17 +6,20 @@ from libqtile.lazy import lazy
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 layout_theme = {
-    "margin": 4,
-    "border_width": 2,
-    "border_focus": theme[Theme.active],
+    "margin": [2, 1, 2, 1],
+    "border_width": 1,
+    "border_focus": theme[Theme.focus],
     "border_normal": theme[Theme.inactive],
+    "border_on_single": True,
+    "margin_on_single": 2,
+    "single_margin": 2,
 }
 
 layouts = [
     layout.Bsp(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.Max(**layout_theme),
 ]
 
 floating_layout = layout.Floating(
@@ -30,7 +33,7 @@ floating_layout = layout.Floating(
         Match(title="Bluetooth"),
     ],
     border_normal=theme[Theme.inactive],
-    border_focus=theme[Theme.active],
+    border_focus=theme[Theme.focus],
 )
 
 widget_defaults = dict(
@@ -53,21 +56,7 @@ def group(group_labels):
 # * WIDGETS
 
 
-def group_box(this_screen_color) -> widget.GroupBox:
-    return widget.GroupBox(
-        fontsize=16,
-        rounded=False,
-        disable_drag=True,
-        font=f"{font} bold",
-        highlight_method="text",
-        active=theme[Theme.active],  # group with window
-        inactive=theme[Theme.inactive],  # group without window
-        highlight_color=theme[Theme.background],
-        this_current_screen_border=this_screen_color,  # focused group
-    )
-
-
-def widget_box() -> widget.WidgetBox:
+def tool_box() -> widget.WidgetBox:
     return widget.WidgetBox(
         widgets=[
             widget.Volume(
@@ -86,13 +75,13 @@ def widget_box() -> widget.WidgetBox:
                 font=f"{font} Bold",
                 distro="Arch_checkupdates",
                 execute=f"{console} -e sudo pacman -Syu",
-                update_interval=1800,
+                update_interval=7200,
                 display_format="󰁇 {updates} Updates",
                 colour_have_updates=theme[Theme.foreground],
             ),
             widget.Clock(
                 font=f"{font} Bold",
-                format=" %a %H:%M",
+                format=" %a %d/%m %H:%M",
                 foreground=theme[Theme.color6],
                 mouse_callbacks={
                     "Button1": lambda: qtile.cmd_spawn(mail),
@@ -104,7 +93,7 @@ def widget_box() -> widget.WidgetBox:
         start_opened=True,
         fmt="󰣇",
         fontsize=24,
-        foreground="#0f94d1",
+        foreground=theme[Theme.active],
         mouse_callbacks={
             "Button3": lambda: qtile.cmd_spawn("rofi -show combi"),
         },
@@ -112,23 +101,44 @@ def widget_box() -> widget.WidgetBox:
     )
 
 
+def window_box(focused_group) -> widget.WidgetBox:
+    return widget.WidgetBox(
+        widgets=[
+            widget.WindowName(
+                font=f"{font} Bold Italic",
+                format="{name}",
+                width=bar.CALCULATED,
+                max_chars=64,
+                foreground=theme[Theme.focus],
+            ),
+            widget.Spacer(),
+            widget.GroupBox(
+                fontsize=16,
+                rounded=False,
+                disable_drag=True,
+                font=f"{font} bold",
+                highlight_method="text",
+                active=theme[Theme.active],  # group with window
+                inactive=theme[Theme.inactive],  # group without window
+                highlight_color=theme[Theme.background],
+                this_current_screen_border=focused_group,  # focused group
+            ),
+            widget.CurrentLayout(
+                font=f"{font} Bold", foreground=theme[Theme.color4], fmt="[ {} ]"
+            ),
+        ],
+        start_opened=True,
+        fmt="",
+        foreground=theme[Theme.active],
+    )
+
+
 def init_widgets_list():
     widgets_list = [
         widget.Spacer(length=8),
-        widget.WindowName(
-            font=f"{font} Bold Italic",
-            format="{name}",
-            width=bar.CALCULATED,
-            max_chars=64,
-            foreground=theme[Theme.active],
-        ),
-        widget.Spacer(),
-        group_box(theme[Theme.color3]),
-        widget.CurrentLayout(
-            font=f"{font} Bold", foreground=theme[Theme.color4], fmt="[ {} ]"
-        ),
+        window_box(theme[Theme.color3]),
         widget.Spacer(length=bar.STRETCH),
-        widget_box(),
+        tool_box(),
         widget.Spacer(length=8),
     ]
     return widgets_list
@@ -136,16 +146,7 @@ def init_widgets_list():
 
 def secondary_widgets_list():
     widgets_list = [
-        group_box(theme[Theme.color3]),
-        widget.CurrentLayout(
-            font=f"{font} Bold", foreground=theme[Theme.color4], fmt="[ {} ]"
-        ),
-        widget.WindowName(
-            font=f"{font} Bold Italic",
-            format="{name}",
-            max_chars=128,
-            foreground=theme[Theme.active],
-        ),
+        window_box(theme[Theme.color3]),
     ]
     return widgets_list
 
