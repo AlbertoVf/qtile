@@ -7,12 +7,19 @@ qtile_themes  = join(qtile_path, "themes")
 
 
 class Theme:
-    background, foreground = "background", "foreground"
-    active, inactive, focus = color1, color2, color3 = "color1", "color2", "color3"
-    color4, color5, color6 = "color4", "color5", "color6"
+    background, foreground = "#0f101a", "#f1ffff"
+    color1, active = "#f1ffff", property(lambda self: self.color1)
+    color2, inactive = "#4c566a", property(lambda self: self.color2)
+    color3, focus = "#a151d3", property(lambda self: self.color3)
+    color4, color5, color6 = "#F07178", "#fb9f7f", "#ffd47e"
+
     file_theme = lambda file: join(qtile_themes, f"{file}.toml")
-    default = { background: "#0f101a", foreground: "#f1ffff", color1: "#f1ffff", color2: "#4c566a", color3: "#a151d3", color4: "#F07178", color5: "#fb9f7f", color6: "#ffd47e", }
+    default = { "background": background, "foreground": foreground, "color1": active, "color2": inactive, "color3": focus, "color4": color4, "color5": color5, "color6": color6, }
     tf = set(default.keys())
+
+    def __init__(self, theme: dict = default):
+        for clave, valor in theme.items():
+            setattr(self, clave, valor)
 
 
 getenv = lambda key: load(open(f"{qtile_path}/qtile.conf"))["USER"][key]
@@ -29,11 +36,11 @@ def theme_selector(theme=getenv("theme")) -> Theme:
             raise TypeError
     except (ValueError, FileNotFoundError, TypeError):
         t = Theme.default
-    return t
+    return Theme(t)
 
 
 mail, console = (getenv("mail"), getenv("console"))
 font, theme   = (getenv("font"), theme_selector())
 
 if __name__ == "__main__":
-    print(theme)
+    print(getenv("theme"), theme.__dict__)
