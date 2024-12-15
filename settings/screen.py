@@ -1,6 +1,6 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group, Match
-from settings.manager import theme, font, console, mail
+from settings.manager import theme, font, console, mail, config
 from libqtile.lazy import lazy
 
 
@@ -81,6 +81,7 @@ def tool_box() -> widget.WidgetBox:
         foreground=theme.active,
         mouse_callbacks={
             "Button3": lambda: qtile.cmd_spawn("rofi -show drun"),
+            "Button2": lambda: qtile.cmd_spawn(f"{config}/rofi/scripts/powermenu"),
         },
         close_button_location="right",
     )
@@ -162,7 +163,7 @@ screens = [
             widgets=init_widgets_list(),
             size=40,
             margin=[4, 4, 0, 4],
-            opacity=0.6,
+            opacity=0.75,
         )
     ),
     Screen(top=bar.Bar(widgets=secondary_widgets_list(), size=28)),

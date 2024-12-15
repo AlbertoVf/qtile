@@ -1,17 +1,18 @@
 from os.path import join, expanduser, exists
 from toml import load, loads
 
-qtile_path    = join(expanduser("~"), ".config", "qtile")
+config        = join(expanduser("~"), ".config")
+qtile_path    = join(config, "qtile")
 qtile_scripts = join(qtile_path, "scripts")
 qtile_themes  = join(qtile_path, "themes")
 
 
 class Theme:
     background, foreground = "#0f101a", "#f1ffff"
-    color1, active = "#f1ffff", property(lambda self: self.color1)
-    color2, inactive = "#4c566a", property(lambda self: self.color2)
-    color3, focus = "#a151d3", property(lambda self: self.color3)
-    color4, color5, color6 = "#F07178", "#fb9f7f", "#ffd47e"
+    color1    , active     = "#f1ffff", property(lambda self: self.color1)
+    color2    , inactive   = "#4c566a", property(lambda self: self.color2)
+    color3    , focus      = "#a151d3", property(lambda self: self.color3)
+    color4    , color5,     color6     = "#F07178", "#fb9f7f", "#ffd47e"
 
     file_theme = lambda file: join(qtile_themes, f"{file}.toml")
     default = { "background": background, "foreground": foreground, "color1": active, "color2": inactive, "color3": focus, "color4": color4, "color5": color5, "color6": color6, }
