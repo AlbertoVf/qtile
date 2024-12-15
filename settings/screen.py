@@ -3,7 +3,6 @@ from libqtile.config import Screen, Group, Match
 from settings.manager import theme, font, console, mail
 from libqtile.lazy import lazy
 
-floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 layout_theme = {
     "margin": [2, 1, 2, 1],
@@ -22,21 +21,6 @@ layouts = [
     layout.Max(**layout_theme),
 ]
 
-floating_layout = layout.Floating(
-    float_rules=[
-        *layout.Floating.default_float_rules,
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="pinentry"),  # GPG key password entry
-        Match(title="Password_Entry"),
-        Match(wm_class="qalculate-gtk"),
-        Match(wm_class="file-roller"),
-        Match(title="Bluetooth"),
-        Match(wm_class="blueman-manager"),
-    ],
-    border_normal=theme.inactive,
-    border_focus=theme.focus,
-)
-
 widget_defaults = dict(
     font=font,
     fontsize=13,
@@ -48,7 +32,6 @@ widget_defaults = dict(
 
 def group(group_labels: list | str):
     group = []
-
     group_names = [str(f) for f in range(1, len(group_labels) + 1)]
     for i in range(len(group_names)):
         group.append(Group(name=group_names[i], label=group_labels[i]))
@@ -157,6 +140,21 @@ def secondary_widgets_list():
 
 
 # * END WIDGETS
+
+floating_layout = layout.Floating(
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(title="pinentry"),  # GPG key password entry
+        Match(title="Password_Entry"),
+        Match(wm_class="qalculate-gtk"),
+        Match(wm_class="file-roller"),
+        Match(title="Bluetooth"),
+        Match(wm_class="blueman-manager"),
+    ],
+    border_normal=theme.inactive,
+    border_focus=theme.focus,
+)
 
 screens = [
     Screen(
