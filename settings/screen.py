@@ -1,8 +1,8 @@
 from libqtile import layout, bar, qtile, widget
-from libqtile.config import Screen, Group, Match
-from settings.manager import theme, font, console, mail, config
+from libqtile.config import Screen, Group
+from settings import theme, font, console, mail, config
 from libqtile.lazy import lazy
-
+from settings.float_rules import floating_rules
 
 layout_theme = {
     "margin": [2, 1, 2, 1],
@@ -17,9 +17,18 @@ layout_theme = {
 layouts = [
     layout.Bsp(**layout_theme),
     layout.MonadTall(**layout_theme),
-    layout.MonadWide(**layout_theme),
+    # layout.MonadWide(**layout_theme),
     layout.Max(**layout_theme),
 ]
+
+floating_layout = layout.Floating(
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        *floating_rules
+    ],
+    border_normal=theme.inactive,
+    border_focus=theme.focus,
+)
 
 widget_defaults = dict(
     font=font,
@@ -60,7 +69,7 @@ def tool_box() -> widget.WidgetBox:
                 font=f"{font} Bold",
                 distro="Arch_checkupdates",
                 execute=f"{console} -e sudo pacman -Syu",
-                update_interval=7200,
+                update_interval=180,
                 display_format="󰁇 {updates} Updates",
                 colour_have_updates=theme.foreground,
             ),
@@ -72,7 +81,7 @@ def tool_box() -> widget.WidgetBox:
                     "Button1": lambda: qtile.cmd_spawn(mail),
                 },
             ),
-            widget.Systray(icon_size=22),
+            widget.Systray(icon_size=16),
             widget.Spacer(length=10),
         ],
         start_opened=True,
@@ -114,7 +123,8 @@ def window_box(focused_group) -> widget.WidgetBox:
             ),
         ],
         start_opened=True,
-        fmt="",
+        fmt="󱂬",
+        fontsize=20,
         foreground=theme.active,
         mouse_callbacks={
             "Button3": lambda: qtile.cmd_spawn("rofi -show window"),
@@ -124,11 +134,11 @@ def window_box(focused_group) -> widget.WidgetBox:
 
 def init_widgets_list():
     widgets_list = [
-        widget.Spacer(length=8),
+        widget.Spacer(length=10),
         window_box(theme.focus),
         widget.Spacer(length=bar.STRETCH),
         tool_box(),
-        widget.Spacer(length=8),
+        widget.Spacer(length=10),
     ]
     return widgets_list
 
@@ -142,31 +152,16 @@ def secondary_widgets_list():
 
 # * END WIDGETS
 
-floating_layout = layout.Floating(
-    float_rules=[
-        *layout.Floating.default_float_rules,
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="pinentry"),  # GPG key password entry
-        Match(title="Password_Entry"),
-        Match(wm_class="qalculate-gtk"),
-        Match(wm_class="file-roller"),
-        Match(title="Bluetooth"),
-        Match(wm_class="blueman-manager"),
-    ],
-    border_normal=theme.inactive,
-    border_focus=theme.focus,
-)
-
 screens = [
     Screen(
         top=bar.Bar(
             widgets=init_widgets_list(),
-            size=40,
+            size=36,
             margin=[4, 4, 0, 4],
-            opacity=0.75,
+            opacity=0.80,
         )
     ),
-    Screen(top=bar.Bar(widgets=secondary_widgets_list(), size=28)),
+    Screen(top=bar.Bar(widgets=secondary_widgets_list(), size=32)),
 ]
 
 groups = group(["󱙝", "󰮯", "󰊠", "󱁂", "󰊠", ""])
