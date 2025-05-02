@@ -15,6 +15,7 @@ class_rules = [
         "qalculate-gtk",
         "file-roller",
         "blueman-manager",
+        "xfce4-clipman-history",
     ]
 ]
 

@@ -78,7 +78,9 @@ def tool_box() -> widget.WidgetBox:
                 format=" %a %d/%m %H:%M",
                 foreground=theme.color6,
                 mouse_callbacks={
-                    "Button1": lambda: qtile.cmd_spawn(mail),
+                    "Button1": lambda: qtile.cmd_spawn("sh -c 'rofi -e \"$(cal -3)\"'"),
+                    "Button3": lambda: qtile.cmd_spawn("sh -c 'rofi -e \"$(cal -y)\"'")
+                    # "Button3": lambda: qtile.cmd_spawn(mail),
                 },
             ),
             widget.Systray(icon_size=16),
