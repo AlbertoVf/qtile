@@ -23,7 +23,7 @@ class Theme:
             setattr(self, clave, valor)
 
 
-getenv = lambda key: load(open(f"{qtile_path}/qtile.conf"))["USER"][key]
+getenv = lambda key: load(open(f"{qtile_path}/qtile.conf")).get("USER", {}).get(key)
 
 
 def theme_selector(theme=getenv("theme")) -> Theme:
@@ -40,7 +40,7 @@ def theme_selector(theme=getenv("theme")) -> Theme:
     return Theme(t)
 
 
-mail, console = (getenv("mail"), getenv("console"))
+mail, terminal = (getenv("mail"), getenv("terminal"))
 font, theme   = (getenv("font"), theme_selector())
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 from libqtile import layout, bar, qtile, widget
 from libqtile.config import Screen, Group
-from settings import theme, font, console, mail, config
+from settings import theme, font, terminal, mail, config
 from libqtile.lazy import lazy
 from settings.float_rules import floating_rules
 
@@ -68,7 +68,7 @@ def tool_box() -> widget.WidgetBox:
             widget.CheckUpdates(
                 font=f"{font} Bold",
                 distro="Arch_checkupdates",
-                execute=f"{console} -e sudo pacman -Syu",
+                execute=f"{terminal} -e sudo pacman -Syu",
                 update_interval=180,
                 display_format="󰁇 {updates} Updates",
                 colour_have_updates=theme.foreground,
