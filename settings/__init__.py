@@ -3,7 +3,6 @@ from toml import load, loads
 
 config        = join(expanduser("~"), ".config")
 qtile_path    = join(config, "qtile")
-qtile_scripts = join(qtile_path, "scripts")
 qtile_themes  = join(qtile_path, "themes")
 
 

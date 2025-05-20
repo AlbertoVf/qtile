@@ -2,9 +2,9 @@ from libqtile import hook
 
 @hook.subscribe.startup_once
 def start_once():
-    from settings import qtile_scripts
+    from settings import config
     from subprocess import call
-    call([qtile_scripts + "/autostart.sh"])
+    call([config + "/autostart/autostart-qtile.sh"])
 
 
 @hook.subscribe.client_new
